@@ -1,0 +1,10 @@
+.table1 {
+  width: 30vw;
+  padding: 5px;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.table2 {
+  width: 70vw;
+  padding: 5px;
+}

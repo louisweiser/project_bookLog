@@ -1,0 +1,37 @@
+.navbar {
+  position: fixed;
+  bottom: 0;
+
+  width: 100%;
+  height: 53px;
+
+  background-color: #03314b;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.navbarList {
+  display: flex;
+  justify-content: space-between; /*horizontale Ausrichtung*/
+  align-items: center; /*vertikale Ausrichtung */
+  list-style: none;
+  margin: 0 30px;
+  padding: 0;
+  height: 100%;
+}
+
+.navbarListItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+.navbarListItem:active {
+  transform: scale(0.9);
+}
+
+.h5 {
+  text-align: center;
+}

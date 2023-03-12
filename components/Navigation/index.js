@@ -9,7 +9,7 @@ import {
   ReadingSVGActive,
   HomeSVGActive,
 } from "@/public/svg/Navigation.js";
-import styles from "./Navigation.module.css";
+import styles from "@/styles/components/navigation.module.css";
 import { useRouter } from "next/router";
 
 const Navigation = () => {
@@ -18,12 +18,13 @@ const Navigation = () => {
   return (
     <nav className={styles.navbar}>
       <ul className={styles.navbarList}>
-        <li className={styles.navbarItem}>
+        <li className={styles.navbarListItem}>
           <Link href="/home">
             {router.pathname === "/home" ? <HomeSVGActive /> : <HomeSVG />}
           </Link>
+          <h5 className={styles.h5}>Home</h5>
         </li>
-        <li className={styles.navbarItem}>
+        <li className={styles.navbarListItem}>
           <Link href="/library">
             {router.pathname === "/library" ? (
               <LibrarySVGActive />
@@ -31,8 +32,9 @@ const Navigation = () => {
               <LibrarySVG />
             )}
           </Link>
+          <h5 className={styles.h5}>Lib</h5>
         </li>
-        <li className={styles.navbarItem}>
+        <li className={styles.navbarListItem}>
           <Link href="/reading">
             {router.pathname === "/reading" ? (
               <ReadingSVGActive />
@@ -40,8 +42,9 @@ const Navigation = () => {
               <ReadingSVG />
             )}
           </Link>
+          <h5 className={styles.h5}>Read</h5>
         </li>
-        <li className={styles.navbarItem}>
+        <li className={styles.navbarListItem}>
           <Link href="/create">
             {router.pathname === "/create" ? (
               <CreateSVGActive />
@@ -49,6 +52,7 @@ const Navigation = () => {
               <CreateSVG />
             )}
           </Link>
+          <h5 className={styles.h5}>Create</h5>
         </li>
       </ul>
     </nav>

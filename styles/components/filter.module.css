@@ -1,0 +1,10 @@
+.list {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+}
+.button {
+  border: 1px solid white;
+  margin: 5px;
+  padding: 5px;
+}

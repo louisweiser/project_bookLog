@@ -1,15 +1,14 @@
 import Header from "@/components/Header";
 import Form4Create from "@/components/Form/FormForCreate";
 import Navigation from "@/components/Navigation";
-import Link from "next/link";
+import BackButton from "@/components/Button/BackButton.js";
 
-export default function CreatePage() {
+export default function CreateNewBookPage() {
   return (
     <>
       <Header title="Create"></Header>
-      <Link href="./create/newbook">add book</Link>
-      <br />
-      <Link href="./create/currentbook">choose current book</Link>
+      <BackButton></BackButton>
+      <Form4Create></Form4Create>
       <Navigation></Navigation>
     </>
   );

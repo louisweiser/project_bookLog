@@ -1,7 +1,9 @@
 import { useRouter } from "next/router";
-import styles from "./Button.module.css";
+import { BackSVG } from "@/public/svg/headerSVGs";
 
-export default function Backbutton() {
+import styles from "@/styles/components/Buttons/button.module.css";
+
+export default function BackButton() {
   const router = useRouter();
 
   const handleBackClick = () => {
@@ -10,7 +12,7 @@ export default function Backbutton() {
 
   return (
     <button className={styles.topLeft} onClick={handleBackClick}>
-      Back
+      <BackSVG></BackSVG>
     </button>
   );
 }

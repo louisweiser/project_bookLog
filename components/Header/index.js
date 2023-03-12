@@ -1,7 +1,6 @@
 import Head from "next/head";
-import styles from "./Header.module.css";
+import styles from "@/styles/components/header.module.css";
 import { useRouter } from "next/router";
-import Link from "next/link";
 
 function Header({ title }) {
   const router = useRouter();
