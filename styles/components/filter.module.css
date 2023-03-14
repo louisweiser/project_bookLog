@@ -1,10 +1,17 @@
 .list {
   display: flex;
-  justify-content: center;
   list-style: none;
+  overflow-x: scroll;
+  white-space: nowrap;
+}
+.listItem {
+  /**/
 }
 .button {
   border: 1px solid white;
   margin: 5px;
   padding: 5px;
+  border-radius: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
 }

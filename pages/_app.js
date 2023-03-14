@@ -1,6 +1,10 @@
 import "@/styles/globals.css";
-import { BrowserRouter as Router } from "react-router-dom";
+import { MyProvider } from "../src/contexts/myContext";
 
 export default function App({ Component, pageProps }) {
-  return <Component {...pageProps} />;
+  return (
+    <MyProvider>
+      <Component {...pageProps} />
+    </MyProvider>
+  );
 }

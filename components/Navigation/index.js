@@ -32,7 +32,7 @@ const Navigation = () => {
               <LibrarySVG />
             )}
           </Link>
-          <h5 className={styles.h5}>Lib</h5>
+          <h5 className={styles.h5}>Library</h5>
         </li>
         <li className={styles.navbarListItem}>
           <Link href="/reading">

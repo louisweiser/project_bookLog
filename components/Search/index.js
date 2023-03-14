@@ -1,16 +1,27 @@
-import React, { useState } from "react";
+import React from "react";
+import { useContext } from "react";
+import { MyContext } from "@/src/contexts/myContext";
+
+import styles from "@/styles/components/search.module.css";
 
 export default function SearchComponent() {
-  const [searchTerm, setSearchTerm] = useState("");
+  //const [searchTerm, setSearchTerm] = useState("");
+  const { myState, setMyState } = useContext(MyContext);
 
   const handleInputChange = (event) => {
-    setSearchTerm(event.target.value);
+    setMyState(event.target.value);
   };
 
   return (
     <>
-      <input type="text" value={searchTerm} onChange={handleInputChange} />
-      <h1>{searchTerm}</h1>
+      <input
+        className={styles.input}
+        type="text"
+        value={myState}
+        onChange={handleInputChange}
+        placeholder="  search"
+      />
+      <h1>{myState}</h1>
     </>
   );
 }

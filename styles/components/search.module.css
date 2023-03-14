@@ -1,0 +1,9 @@
+/* input field for searching */
+.input {
+  /* width dynamisch in abhängigkeit (abzüglich des margin) setzen */
+  width: calc(100vw - 10px);
+  height: 37px;
+  margin: 5px;
+  border: none;
+  border-radius: 5px;
+}
