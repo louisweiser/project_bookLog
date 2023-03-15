@@ -1,4 +1,4 @@
-import styles from "@/styles/components/filter.module.css";
+import styles from "./filter.module.css";
 
 export default function FilterComponent() {
   return (

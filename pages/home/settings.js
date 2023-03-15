@@ -1,5 +1,5 @@
-import Header from "@/components/Header";
-import BackButton from "@/components/Button/BackButton.js";
+import Header from "@/components/common/Heading";
+import BackButton from "@/components/common/Button/BackButton.js";
 
 export default function SettingPage() {
   return (

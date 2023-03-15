@@ -1,6 +1,6 @@
 import Link from "next/link";
-import styles from "@/styles/components/Buttons/button.module.css";
-import { GearSVG } from "@/public/svg/headerSVGs";
+import styles from "./button.module.css";
+import { GearSVG } from "@/public/svgs/headerSVGs";
 
 export default function SettingButton() {
   return (

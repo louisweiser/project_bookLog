@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import styles from "@/styles/components/Buttons/home.module.css";
+import styles from "./home.module.css";
 
 export default function HomePageButton({ page }) {
   const route = "./home/" + page;

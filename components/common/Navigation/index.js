@@ -8,8 +8,8 @@ import {
   LibrarySVGActive,
   ReadingSVGActive,
   HomeSVGActive,
-} from "@/public/svg/Navigation.js";
-import styles from "@/styles/components/navigation.module.css";
+} from "@/public/svgs/Navigation.js";
+import styles from "./navigation.module.css";
 import { useRouter } from "next/router";
 
 const Navigation = () => {
@@ -18,42 +18,46 @@ const Navigation = () => {
   return (
     <nav className={styles.navbar}>
       <ul className={styles.navbarList}>
-        <li className={styles.navbarListItem}>
-          <Link href="/home">
+        <Link href="/home">
+          <li className={styles.navbarListItem}>
             {router.pathname === "/home" ? <HomeSVGActive /> : <HomeSVG />}
-          </Link>
-          <h5 className={styles.h5}>Home</h5>
-        </li>
-        <li className={styles.navbarListItem}>
-          <Link href="/library">
+
+            <h5 className={styles.h5}>Home</h5>
+          </li>
+        </Link>
+        <Link href="/library">
+          <li className={styles.navbarListItem}>
             {router.pathname === "/library" ? (
               <LibrarySVGActive />
             ) : (
               <LibrarySVG />
             )}
-          </Link>
-          <h5 className={styles.h5}>Library</h5>
-        </li>
-        <li className={styles.navbarListItem}>
-          <Link href="/reading">
+
+            <h5 className={styles.h5}>Library</h5>
+          </li>
+        </Link>
+        <Link href="/reading">
+          <li className={styles.navbarListItem}>
             {router.pathname === "/reading" ? (
               <ReadingSVGActive />
             ) : (
               <ReadingSVG />
             )}
-          </Link>
-          <h5 className={styles.h5}>Read</h5>
-        </li>
-        <li className={styles.navbarListItem}>
-          <Link href="/create">
+
+            <h5 className={styles.h5}>Read</h5>
+          </li>
+        </Link>
+        <Link href="/create">
+          <li className={styles.navbarListItem}>
             {router.pathname === "/create" ? (
               <CreateSVGActive />
             ) : (
               <CreateSVG />
             )}
-          </Link>
-          <h5 className={styles.h5}>Create</h5>
-        </li>
+
+            <h5 className={styles.h5}>Create</h5>
+          </li>
+        </Link>
       </ul>
     </nav>
   );

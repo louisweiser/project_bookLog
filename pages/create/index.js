@@ -1,6 +1,6 @@
-import Header from "@/components/Header";
-import Form4Create from "@/components/Form/FormForCreate";
-import Navigation from "@/components/Navigation";
+import Header from "@/components/common/Heading";
+import Form4Create from "@/components/common/Form/FormForCreate";
+import Navigation from "@/components/common/Navigation";
 import Link from "next/link";
 
 export default function CreatePage() {

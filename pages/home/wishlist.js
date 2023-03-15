@@ -1,8 +1,8 @@
-import Header from "@/components/Header";
-import Navigation from "@/components/Navigation";
-import BackButton from "@/components/Button/BackButton.js";
-import DynamicList from "@/components/Home/list.js";
-import SearchComponent from "@/components/Search";
+import Header from "@/components/common/Heading";
+import Navigation from "@/components/common/Navigation";
+import BackButton from "@/components/common/Button/BackButton.js";
+import DynamicList from "@/components/home/list.js";
+import SearchComponent from "@/components/common/Search";
 
 export default function WishListPage() {
   return (

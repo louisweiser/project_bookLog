@@ -1,7 +1,7 @@
-import Header from "@/components/Header";
-import Form4Create from "@/components/Form/FormForCreate";
-import Navigation from "@/components/Navigation";
-import BackButton from "@/components/Button/BackButton.js";
+import Header from "@/components/common/Heading";
+import Form4Create from "@/components/common/Form/FormForCreate";
+import Navigation from "@/components/common/Navigation";
+import BackButton from "@/components/common/Button/BackButton.js";
 
 export default function CreateNewBookPage() {
   return (

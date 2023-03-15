@@ -1,5 +1,5 @@
 import Head from "next/head";
-import styles from "@/styles/components/header.module.css";
+import styles from "./heading.module.css";
 import { useRouter } from "next/router";
 
 function Header({ title }) {

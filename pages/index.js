@@ -1,6 +1,6 @@
 import Head from "next/head";
-import Navigation from "../components/Navigation";
-import Header from "../components/Header";
+import Navigation from "../components/common/Navigation";
+import Header from "../components/common/Heading";
 
 export default function Home() {
   return (

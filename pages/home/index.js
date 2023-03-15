@@ -1,8 +1,8 @@
-import Header from "@/components/Header";
-import SettingButton from "@/components/Button/SettingButton.js";
-import DailyQuotes from "@/components/Home/DailyQuote.js";
-import HomePageButton from "@/components/Button/homePageButton";
-import Navigation from "@/components/Navigation";
+import Header from "@/components/common/Heading";
+import SettingButton from "@/components/common/Button/SettingButton.js";
+import DailyQuotes from "@/components/home/DailyQuote.js";
+import HomePageButton from "@/components/common/Button/homePageButton";
+import Navigation from "@/components/common/Navigation";
 
 import styles from "@/styles/pages/home.module.css";
 

@@ -1,8 +1,8 @@
-import Header from "@/components/Header";
-import BackButton from "@/components/Button/BackButton";
-import DynamicTable from "@/components/Home/table.js";
-import Navigation from "@/components/Navigation";
-import SearchComponent from "@/components/Search";
+import Header from "@/components/common/Heading";
+import BackButton from "@/components/common/Button/BackButton";
+import DynamicTable from "@/components/home/table.js";
+import Navigation from "@/components/common/Navigation";
+import SearchComponent from "@/components/common/Search";
 
 export default function DictonaryPage() {
   return (

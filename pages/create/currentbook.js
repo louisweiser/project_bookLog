@@ -1,7 +1,7 @@
-import SearchComponent from "@/components/Search";
-import Navigation from "@/components/Navigation";
-import Header from "@/components/Header";
-import BackButton from "@/components/Button/BackButton.js";
+import SearchComponent from "@/components/common/Search";
+import Navigation from "@/components/common/Navigation";
+import Header from "@/components/common/Heading";
+import BackButton from "@/components/common/Button/BackButton.js";
 
 export default function SetCurrentbookPage() {
   return (
