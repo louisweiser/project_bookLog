@@ -1,8 +1,9 @@
 .container {
-  background-color: #999999;
-  padding: 10px;
   height: 20vh;
   width: 28vw;
-  border-radius: 5px;
-  color: black;
+}
+
+.imgcon {
+  border-radius: 8px;
+  overflow-y: hidden;
 }
