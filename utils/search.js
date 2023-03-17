@@ -1,33 +1,3 @@
-/* export default function searchObjects(array, searchTerm) {
-  const regex = new RegExp(searchTerm, "i");
-  const result = [];
-
-  array.forEach((item) => {
-    if (typeof item === "object") {
-      const keys = Object.keys(item);
-      keys.forEach((key) => {
-        const value = item[key];
-        if (typeof value === "string" && regex.test(value)) {
-          if (!result.includes(item)) {
-            // Überprüfen, ob das Objekt bereits im Ergebnisarray enthalten ist
-            result.push(item);
-          }
-        } else if (typeof value === "object") {
-          const subResult = searchObjects([value], searchTerm);
-          subResult.forEach((subItem) => {
-            if (!result.includes(subItem)) {
-              // Überprüfen, ob das Objekt bereits im Ergebnisarray enthalten ist
-              result.push(subItem);
-            }
-          });
-        }
-      });
-    }
-  });
-
-  return result;
-} */
-
 export default function searchObjects(array, searchTerm) {
   const regex = new RegExp(searchTerm, "i");
   const result = [];

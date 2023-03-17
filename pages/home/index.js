@@ -6,6 +6,7 @@ import Navigation from "@/components/common/Navigation";
 
 import styles from "@/styles/pages/home.module.css";
 
+//main page 1/4
 export default function HomePage() {
   return (
     <>
