@@ -1,6 +1,5 @@
 import Head from "next/head";
-import Navigation from "../components/common/Navigation";
-import Header from "../components/common/Heading";
+import Homepage from "./home";
 
 export default function Home() {
   return (
@@ -11,8 +10,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Navigation></Navigation>
-      <Header title="BookLog App"></Header>
+      <Homepage></Homepage>
     </>
   );
 }

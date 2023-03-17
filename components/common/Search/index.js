@@ -3,17 +3,17 @@ import { useState } from "react"; // state for searching input
 import { useContext } from "react"; //global state for searching container rendering
 import { MyContext } from "@/contexts/myContext.js"; //global state for searching container rendering
 
-import { BackSVG } from "@/public/svgs/headerSVGs"; //svg for back button in search field
+import { BackSVG } from "@/public/svgs/headerSVGs"; //svg for back-button in search field
 
 import { bookData } from "@/public/data/book.js"; //data for result examples
 
 import styles from "./search.module.css";
 
-import searchObjects from "../../../utils/search.js"; //logic for searching
+import searchObjects from "../../../utils/search.js"; //logic-function for searching
 
 export default function SearchPage() {
-  const [searchTerm, setSearchTerm] = useState(""); // state for searching input
-  const { myState, setMyState } = useContext(MyContext); //global state for searching container rendering
+  const [searchTerm, setSearchTerm] = useState(""); //state for save the searching input
+  const { myState, setMyState } = useContext(MyContext); //global state to render the searching container
 
   const handleBackClick = () => {
     setMyState(false);
@@ -25,7 +25,7 @@ export default function SearchPage() {
 
   const handleInputChange = (event) => {
     setSearchTerm(event.target.value);
-  }; // save input by searching in seaching field
+  }; // save input if searching
 
   const searchResults = searchObjects(bookData, searchTerm); // logic results by searching in seaching field
 
@@ -56,9 +56,7 @@ export default function SearchPage() {
           myState ? styles.resultField_active : styles.resultField_passiv
         }
       >
-        {searchTerm === "" ? (
-          <h1></h1>
-        ) : (
+        {searchTerm !== "" && (
           <ul>
             {searchResults.length !== 0 ? (
               searchResults.map((item) => (
