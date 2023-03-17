@@ -1,7 +1,8 @@
 .container {
-  background-color: black;
+  background-color: #999999;
   padding: 10px;
   height: 20vh;
   width: 28vw;
   border-radius: 5px;
+  color: black;
 }

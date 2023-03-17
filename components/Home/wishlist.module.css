@@ -1,0 +1,13 @@
+.list {
+  font-size: 30px;
+  list-style: none;
+  margin: 10px;
+}
+
+.listitem {
+  padding: 5px;
+  display: flex;
+  overflow-x: scroll;
+  white-space: nowrap;
+  border-bottom: 1px solid;
+}

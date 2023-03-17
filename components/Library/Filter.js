@@ -13,10 +13,13 @@ export default function FilterComponent() {
         <button className={styles.button}>sort</button>
       </li>
       <li className={styles.listIitem}>
-        <button className={styles.button}>width hhhhhhhhhhhhhhhhhhhhhhh</button>
+        <button className={styles.button}>width</button>
       </li>
       <li className={styles.listIitem}>
-        <button className={styles.button}>width hhhhhhhhhhhhhhhhhhhhhhh</button>
+        <button className={styles.button}>order</button>
+      </li>
+      <li className={styles.listIitem}>
+        <button className={styles.button}>clear all</button>
       </li>
     </ul>
   );

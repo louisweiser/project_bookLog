@@ -1,15 +1,1 @@
-.div {
-  display: flex;
-  list-style: none;
-  overflow-x: scroll;
-  white-space: nowrap;
-}
 
-.padding {
-  margin: 10px;
-}
-
-.imgcon {
-  border-radius: 10px;
-  overflow-y: hidden;
-}

@@ -8,7 +8,6 @@ export default function DictonaryPage() {
   return (
     <>
       <Header title="dictonary"></Header>
-      <SearchComponent></SearchComponent>
       <BackButton></BackButton>
       <DynamicTable></DynamicTable>
     </>
