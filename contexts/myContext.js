@@ -6,7 +6,7 @@ import { createContext, useState } from "react";
 export const MyContext = createContext();
 
 export const MyProvider = ({ children }) => {
-  const [myState, setMyState] = useState("initial value");
+  const [myState, setMyState] = useState(false);
 
   return (
     <MyContext.Provider value={{ myState, setMyState }}>

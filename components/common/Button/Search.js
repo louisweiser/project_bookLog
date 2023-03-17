@@ -1,13 +1,18 @@
-import Link from "next/link";
+import { useContext } from "react"; //global state for searching container
+import { MyContext } from "@/contexts/myContext.js"; //global state for searching container
 
 import styles from "./search.module.css";
 
-export default function SearchButton({ link }) {
+export default function SearchButton() {
+  const { myState, setMyState } = useContext(MyContext); //global state for searching container
+
+  const handleOnClick = () => {
+    setMyState(true);
+  };
+
   return (
-    <Link href={link}>
-      <div className={styles.container}>
-        <h5 className={styles.text}>Search ...</h5>
-      </div>
-    </Link>
+    <button className={styles.container} onClick={handleOnClick}>
+      <h5 className={styles.text}>Search ...</h5>
+    </button>
   );
 }

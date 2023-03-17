@@ -1,66 +1,83 @@
 import React from "react";
-import { useState } from "react";
-//import { useContext } from "react";
-//import { MyContext } from "@/src/contexts/myContext";
-import { useRouter } from "next/router";
-import { BackSVG } from "@/public/svgs/headerSVGs";
+import { useState } from "react"; // state for searching input
+import { useContext } from "react"; //global state for searching container rendering
+import { MyContext } from "@/contexts/myContext.js"; //global state for searching container rendering
 
-import { motion } from "framer-motion";
+import { BackSVG } from "@/public/svgs/headerSVGs"; //svg for back button in search field
+
+import { bookData } from "@/public/data/book.js"; //data for result examples
 
 import styles from "./search.module.css";
 
-export default function SearchPage() {
-  const [searchTerm, setSearchTerm] = useState("");
-  //const { myState, setMyState } = useContext(MyContext);
+import searchObjects from "./logic.js";
 
-  const router = useRouter();
+export default function SearchPage() {
+  const [searchTerm, setSearchTerm] = useState(""); // state for searching input
+  const { myState, setMyState } = useContext(MyContext); //global state for searching container rendering
 
   const handleBackClick = () => {
-    router.back();
-  };
+    setMyState(false);
+    setSearchTerm("");
+  }; //handle global state for searching container rendering
+  const handleOnClick = () => {
+    setMyState(true);
+  }; //handle global state for searching container rendering
 
   const handleInputChange = (event) => {
     setSearchTerm(event.target.value);
-  };
+  }; // save input by searching in seaching field
 
-  const items = ["book1", "book2", "book3", "book4"];
+  const array = searchObjects(bookData, searchTerm);
+  console.log(array);
 
-  const filteredItems = items.filter((item) =>
-    item.toLowerCase().includes(searchTerm.toLowerCase())
-  );
   return (
-    <motion.div
-      initial={{
-        y: -2000,
-        zIndex: 1,
-      }} /* Startposition und z-Index der neuen Seite */
-      animate={{ y: 0 }} /* Endposition der neuen Seite */
-      transition={{ duration: 0.8 }} /* Animationsdauer */
-      style={{ position: "absolute" }} /* Positionierung der neuen Seite */
-    >
-      <div className={styles.search}>
-        <button onClick={handleBackClick}>
-          <BackSVG></BackSVG>
-        </button>
+    <>
+      <div
+        className={
+          myState ? styles.searchField_active : styles.searchField_passiv
+        }
+      >
+        {myState ? (
+          <button onClick={handleBackClick}>
+            <BackSVG></BackSVG>
+          </button>
+        ) : (
+          console.log("f")
+        )}
+
         <input
-          className={styles.input}
+          className={styles.searchInputField}
           type="text"
           value={searchTerm}
           onChange={handleInputChange}
+          onClick={handleOnClick}
           placeholder="  search ..."
         />
       </div>
-      <ul>
-        {filteredItems.length !== 0 ? (
-          filteredItems.map((item) => (
-            <li key={item}>
-              <h2>{item}</h2>
-            </li>
-          ))
+      <div
+        className={
+          myState ? styles.resultField_active : styles.resultField_passiv
+        }
+      >
+        {searchTerm === "" ? (
+          <h1></h1>
         ) : (
-          <h1>add {searchTerm}</h1>
+          <ul>
+            {array.length !== 0 ? (
+              array.map((item) => (
+                <li key={item.id}>
+                  <h2>
+                    {item.title} {item.subtitle}
+                  </h2>
+                  <h3>von {item.author}</h3>
+                </li>
+              ))
+            ) : (
+              <h1>no result like {searchTerm}</h1>
+            )}
+          </ul>
         )}
-      </ul>
-    </motion.div>
+      </div>
+    </>
   );
 }
