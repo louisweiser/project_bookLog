@@ -1,11 +1,9 @@
+import Background from "@/components/home/Background.js";
 import Header from "@/components/common/Heading";
 import SettingButton from "@/components/common/Button/SettingButton.js";
 import DailyQuotes from "@/components/home/DailyQuote.js";
-import HomePageButton from "@/components/common/Button/homePageButton";
+import HomeContainer from "@/components/home/HomeContainer.js";
 import Navigation from "@/components/common/Navigation";
-import Background from "@/components/home/Background.js";
-
-import styles from "@/styles/pages/home.module.css";
 
 //main page 1/4
 export default function HomePage() {
@@ -16,11 +14,7 @@ export default function HomePage() {
       <Header title="BookLog"></Header>
       <SettingButton></SettingButton>
       <DailyQuotes></DailyQuotes>
-      <div className={styles.container}>
-        <HomePageButton page={"wishlist"}></HomePageButton>
-        <HomePageButton page={"dictonary"}></HomePageButton>
-        <HomePageButton page={"current book"}></HomePageButton>
-      </div>
+      <HomeContainer></HomeContainer>
       <Navigation></Navigation>
     </>
   );

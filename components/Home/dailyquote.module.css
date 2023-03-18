@@ -1,8 +1,9 @@
 .container {
   width: auto;
-  margin: 50px 30px 70px 30px;
+  margin: 50px 20px 70px 20px;
   background-color: #03314b;
   border-radius: 10px;
+  border: #032330 solid 3px;
   height: 30vh;
   display: flex;
   justify-content: center;

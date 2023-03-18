@@ -3,6 +3,7 @@
   list-style: none;
   overflow-x: scroll;
   white-space: nowrap;
+  padding: 10px 0;
 }
 
 .padding {
