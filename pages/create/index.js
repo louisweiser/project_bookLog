@@ -1,7 +1,7 @@
 import Header from "@/components/common/Heading";
-import Form4Create from "@/components/common/Form/FormForCreate";
 import Navigation from "@/components/common/Navigation";
 import Link from "next/link";
+import RenderCollection from "@/components/common/test/testD";
 
 export default function CreatePage() {
   return (
@@ -10,6 +10,7 @@ export default function CreatePage() {
       <Link href="./create/newbook">add book</Link>
       <br />
       <Link href="./create/currentbook">choose current book</Link>
+
       <Navigation></Navigation>
     </>
   );

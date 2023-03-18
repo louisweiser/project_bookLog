@@ -1,13 +1,11 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 
-import { bookMetaData } from "@/public/data/bookmeta.js";
-
 import styles from "./bookcover.module.css";
 
-export default function BookCover({ height }) {
+export default function RenderBookCoverC({ imageName }) {
   const [dimensions, setDimensions] = useState({ width: null, height: null });
-  const imageName = "imageE.jpg";
+  const height = 220;
 
   useEffect(() => {
     async function fetchImageSize() {
@@ -17,7 +15,7 @@ export default function BookCover({ height }) {
     }
 
     fetchImageSize();
-  }, []);
+  });
 
   //Bestimmung der relativen Seitenverhältnisse des Bildes in abhängigkeit der festgelegten Höhe
   const relativFactor = dimensions.width / dimensions.height;
