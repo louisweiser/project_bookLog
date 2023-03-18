@@ -1,6 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
 
+import BookCover from "@/components/common/test/test.js";
+
 import { genreData } from "@/public/data/genre.js";
 
 import styles from "./render.module.css";
@@ -10,13 +12,7 @@ for (let i = 0; i < 5; i++) {
   content.push(
     <li className={styles.padding}>
       <Link href="">
-        <Image
-          className={styles.imgcon}
-          src="/images/image.jpg"
-          alt="cover"
-          height={220}
-          width={150}
-        ></Image>
+        <BookCover height={220}></BookCover>
       </Link>
     </li>
   );

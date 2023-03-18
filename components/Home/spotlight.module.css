@@ -1,11 +1,13 @@
 .container {
   width: auto;
-  margin: 30px 15px 15px 15px;
-  background-color: #87afdf;
+  margin: 50px 30px 70px 30px;
+  background-color: #03314b;
   border-radius: 10px;
-  height: 40vh;
+  height: 30vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: black;
+  color: #fffefb;
+  text-align: center;
+  padding: 20px;
 }

@@ -13,6 +13,7 @@ import searchObjects from "../../../utils/search.js"; //logic-function for searc
 
 export default function SearchPage() {
   const [searchTerm, setSearchTerm] = useState(""); //state for save the searching input
+  const [initialHide, setInitialHide] = useState(true); //state for hiding animation when switching to page
   const { myState, setMyState } = useContext(MyContext); //global state to render the searching container
 
   const handleBackClick = () => {
@@ -21,6 +22,7 @@ export default function SearchPage() {
   }; //handle global state for searching container rendering
   const handleOnClick = () => {
     setMyState(true);
+    setInitialHide(false);
   }; //handle global state for searching container rendering
 
   const handleInputChange = (event) => {
@@ -53,7 +55,11 @@ export default function SearchPage() {
       </div>
       <div
         className={
-          myState ? styles.resultField_active : styles.resultField_passiv
+          initialHide
+            ? styles.resultField_initial
+            : myState
+            ? styles.resultField_active
+            : styles.resultField_passiv
         }
       >
         {searchTerm !== "" && (
