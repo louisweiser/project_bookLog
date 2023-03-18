@@ -1,4 +1,4 @@
-import styles from "./table.module.css";
+import styles from "./dictonary.module.css";
 
 const dictonaryData = {
   word: "erklärung",

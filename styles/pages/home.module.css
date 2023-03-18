@@ -6,9 +6,3 @@
   position: fixed;
   bottom: 100px;
 }
-.containerbody {
-  box-sizing: content-box;
-  width: 100%;
-  position: fixed;
-  z-index: -1;
-}

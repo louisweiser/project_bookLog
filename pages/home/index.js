@@ -3,8 +3,7 @@ import SettingButton from "@/components/common/Button/SettingButton.js";
 import DailyQuotes from "@/components/home/DailyQuote.js";
 import HomePageButton from "@/components/common/Button/homePageButton";
 import Navigation from "@/components/common/Navigation";
-
-import { TestSVG } from "@/public/svgs/homeSVG.js";
+import Background from "@/components/home/Background.js";
 
 import styles from "@/styles/pages/home.module.css";
 
@@ -12,11 +11,10 @@ import styles from "@/styles/pages/home.module.css";
 export default function HomePage() {
   return (
     <>
+      <Background></Background>
+
       <Header title="BookLog"></Header>
       <SettingButton></SettingButton>
-      <div className={styles.containerbody}>
-        <TestSVG />
-      </div>
       <DailyQuotes></DailyQuotes>
       <div className={styles.container}>
         <HomePageButton page={"wishlist"}></HomePageButton>

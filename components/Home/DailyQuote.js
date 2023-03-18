@@ -1,5 +1,4 @@
-import Image from "next/image";
-import styles from "./spotlight.module.css";
+import styles from "./dailyquote.module.css";
 
 export default function DailyQuote() {
   return (
