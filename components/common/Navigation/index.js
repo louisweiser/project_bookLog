@@ -8,7 +8,7 @@ import {
   LibrarySVGActive,
   ReadingSVGActive,
   HomeSVGActive,
-} from "@/public/svgs/Navigation.js";
+} from "@/public/svgs/navigationbar.js";
 import styles from "./navigation.module.css";
 import { useRouter } from "next/router";
 

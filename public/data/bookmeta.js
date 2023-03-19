@@ -4,7 +4,7 @@ export const bookMetaData = [
     name: "imageA.jpg",
     slug: "/images/cover/imageA.jpg",
     height: 220,
-    width: 155.0210970464135,
+    width: 138.47364280094413,
   },
   {
     id: 2,

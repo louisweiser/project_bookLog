@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 
-import styles from "./bookcover.module.css";
+import styles from "./cover.module.css";
 
-export default function RenderBookCoverC({ imageName }) {
+export default function CoverFromFetch({ imageName }) {
   const [dimensions, setDimensions] = useState({ width: null, height: null });
   const height = 220;
 

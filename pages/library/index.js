@@ -1,9 +1,10 @@
 //components
+import Background from "@/components/pages/home/Background.js";
 import SearchPage from "../../components/common/Search";
-import FilterComponent from "@/components/library/Filter";
-import Library from "@/components/library/render.js";
+import FilterComponent from "@/components/pages/library/Filter";
 import Navigation from "@/components/common/Navigation";
-import Background from "@/components/home/Background.js";
+import CollectionFromFetch from "@/components/pages/library/collectionFetch.js";
+import CollectionFromData from "@/components/pages/library/collectionData.js";
 
 import styles from "@/styles/pages/library.module.css";
 
@@ -15,7 +16,8 @@ export default function LibraryPage() {
       <div className={styles.container}>
         <SearchPage></SearchPage>
         <FilterComponent></FilterComponent>
-        <Library></Library>
+        <CollectionFromData></CollectionFromData>
+        {/* <CollectionFromFetch></CollectionFromFetch> */}
       </div>
       <Navigation></Navigation>
     </>

@@ -1,7 +1,6 @@
 import Header from "@/components/common/Heading";
 import Navigation from "@/components/common/Navigation";
 import Link from "next/link";
-import RenderCollection from "@/components/common/test/testD";
 
 export default function CreatePage() {
   return (

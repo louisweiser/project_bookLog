@@ -3,7 +3,7 @@ import { useState } from "react"; // state for searching input
 import { useContext } from "react"; //global state for searching container rendering
 import { MyContext } from "@/contexts/myContext.js"; //global state for searching container rendering
 
-import { BackSVG } from "@/public/svgs/headerSVGs"; //svg for back-button in search field
+import { BackSVG } from "@/public/svgs/router"; //svg for back-button in search field
 
 import { bookData } from "@/public/data/book.js"; //data for result examples
 

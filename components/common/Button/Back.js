@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
-import { BackSVG } from "@/public/svgs/headerSVGs";
+import { BackSVG } from "@/public/svgs/router.js";
 
-import styles from "./button.module.css";
+import styles from "./back.module.css";
 
 export default function BackButton() {
   const router = useRouter();

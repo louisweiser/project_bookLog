@@ -1,9 +1,8 @@
+import Background from "@/components/pages/home/Background.js";
 import SearchPage from "../../components/common/Search";
-import FilterComponent from "@/components/library/Filter";
+import FilterComponent from "@/components/pages/library/Filter";
+import TextField from "@/components/pages/reading/Text.js";
 import Navigation from "@/components/common/Navigation";
-import Background from "@/components/home/Background.js";
-
-import TextField from "@/components/reading/Text.js";
 
 import styles from "@/styles/pages/reading.module.css";
 

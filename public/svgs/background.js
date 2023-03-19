@@ -1,4 +1,4 @@
-export const TestSVG = () => {
+export const BackgroundSVG = () => {
   return (
     <svg width="360" height="720" viewBox="0 0 101.73192 203.72913">
       <path
