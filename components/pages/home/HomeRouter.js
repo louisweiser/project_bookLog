@@ -2,9 +2,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 
-import styles from "./homecontainer.module.css";
+import styles from "./homerouter.module.css";
 
-export default function HomeContainer() {
+export default function HomeRouter() {
   const [viewportWidth, setViewportWidth] = useState(0);
 
   useEffect(() => {

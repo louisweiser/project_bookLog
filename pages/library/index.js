@@ -1,10 +1,10 @@
 //components
-import Background from "@/components/pages/home/Background.js";
+import Background from "@/components/common/Background/index.js";
 import SearchPage from "../../components/common/Search";
 import FilterComponent from "@/components/pages/library/Filter";
 import Navigation from "@/components/common/Navigation";
-import CollectionFromFetch from "@/components/pages/library/collectionFetch.js";
-import CollectionFromData from "@/components/pages/library/collectionData.js";
+import CollectionFromFetch from "@/components/pages/library/CollectionFetch.js";
+import CollectionFromData from "@/components/pages/library/CollectionData.js";
 
 import styles from "@/styles/pages/library.module.css";
 

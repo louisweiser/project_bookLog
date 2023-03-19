@@ -1,7 +1,7 @@
-import Background from "@/components/pages/home/Background.js";
+import Background from "@/components/common/Background/index.js";
 import SearchPage from "../../components/common/Search";
 import FilterComponent from "@/components/pages/library/Filter";
-import TextField from "@/components/pages/reading/Text.js";
+import TextField from "@/components/pages/reading/TextField.js";
 import Navigation from "@/components/common/Navigation";
 
 import styles from "@/styles/pages/reading.module.css";

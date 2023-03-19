@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react"; // state for searching input
 import { useContext } from "react"; //global state for searching container rendering
+
 import { MyContext } from "@/contexts/myContext.js"; //global state for searching container rendering
 
 import { BackSVG } from "@/public/svgs/router"; //svg for back-button in search field
@@ -19,11 +20,11 @@ export default function SearchPage() {
   const handleBackClick = () => {
     setMyState(false);
     setSearchTerm("");
-  }; //handle global state for searching container rendering
+  }; //wenn die Suchanzeige geschlossen wird, wird Sucheingaben und das Suchfeld zurückgesetzt
   const handleOnClick = () => {
     setMyState(true);
     setInitialHide(false);
-  }; //handle global state for searching container rendering
+  }; //wenn das Suchfeld geklickt wird, erscheint die Suchanzeige
 
   const handleInputChange = (event) => {
     setSearchTerm(event.target.value);
@@ -36,13 +37,15 @@ export default function SearchPage() {
       <div
         className={
           myState ? styles.searchField_active : styles.searchField_passiv
-        }
+        } //hier soll das Suchfeld in einer Animation erscheinen wenn das searchform geklickt wird, myState geht dann auf true
       >
-        {myState && (
-          <button onClick={handleBackClick}>
-            <BackSVG></BackSVG>
-          </button>
-        )}
+        {
+          myState && (
+            <button onClick={handleBackClick}>
+              <BackSVG></BackSVG>
+            </button>
+          ) /*wenn das Suchfeld aktiv ist soll ein Button erscheinen der es wieder schließen lässt*/
+        }
 
         <input
           className={styles.searchInputField}
@@ -51,6 +54,7 @@ export default function SearchPage() {
           onChange={handleInputChange}
           onClick={handleOnClick}
           placeholder="  search ..."
+          /*das input feld soll immer zu sehen sein um die suchfuntion darzustellen, es ändert den status wenn es geklickt wird*/
         />
       </div>
       <div
@@ -60,6 +64,7 @@ export default function SearchPage() {
             : myState
             ? styles.resultField_active
             : styles.resultField_passiv
+          /*hier ist das Feld mit den Ergebnissen das eerst erscheint wenn der searchinput geklickt wird. Es erscheint durch eine Animation. Diese soll beim ersten laden der Seite jedoch nicht ausegführt werden (deswegen initial hide)*/
         }
       >
         {searchTerm !== "" && (
@@ -76,7 +81,7 @@ export default function SearchPage() {
             ) : (
               <h1>no result like {searchTerm}</h1>
             )}
-          </ul>
+          </ul> //das ist die Liste der Suchergebnisse. Sie erscheint nur im active status der Suchkomponente
         )}
       </div>
     </>

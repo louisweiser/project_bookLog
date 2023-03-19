@@ -1,7 +1,8 @@
 import Head from "next/head";
+
 import styles from "./heading.module.css";
 
-function Header({ title }) {
+export default function Header({ title }) {
   return (
     <header>
       <Head>
@@ -13,5 +14,3 @@ function Header({ title }) {
     </header>
   );
 }
-
-export default Header;
