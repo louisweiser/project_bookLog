@@ -2,6 +2,8 @@ import React from "react";
 import { useState } from "react"; // state for searching input
 import { useContext } from "react"; //global state for searching container rendering
 
+import CoverFromData from "@/components/common/Cover/coverData.js";
+
 import { MyContext } from "@/contexts/myContext.js"; //global state for searching container rendering
 
 import { BackSVG } from "@/public/svgs/router"; //svg for back-button in search field
@@ -71,11 +73,14 @@ export default function SearchPage() {
           <ul>
             {searchResults.length !== 0 ? (
               searchResults.map((item) => (
-                <li key={item.id}>
-                  <h2>
-                    {item.title} {item.subtitle}
-                  </h2>
-                  <h3>von {item.author}</h3>
+                <li key={item.id} className={styles.row}>
+                  <CoverFromData id={item.id} height={100}></CoverFromData>
+                  <div className={styles.column}>
+                    <h4>
+                      {item.title} {item.subtitle}
+                    </h4>
+                    <h5>von {item.author}</h5>
+                  </div>
                 </li>
               ))
             ) : (

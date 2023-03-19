@@ -97,3 +97,17 @@
     margin-right: 0;
   }
 }
+
+.row {
+  display: flex;
+  flex-direction: row;
+  margin: 20px 10px 0 10px;
+}
+.column {
+  display: flex;
+  flex-direction: column;
+  white-space: nowrap; /* Verhindert das Umbruch von Text */
+  overflow: hidden; /* Blendet den überschüssigen Text aus */
+  text-overflow: ellipsis; /* Setzt "..." am Ende des abgeschnittenen Textes ein */
+  margin-left: 8px;
+}

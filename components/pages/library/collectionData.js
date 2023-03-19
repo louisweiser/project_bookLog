@@ -13,7 +13,7 @@ export default function CollectionFromData() {
   for (let i = 1; i <= 10; i++) {
     content.push(
       <li key={i} className={styles.padding}>
-        <Link href={`/library/${bookMetaData[i - 1].slugname}`}>
+        <Link href={`/library/book/${bookMetaData[i - 1].slugname}`}>
           <CoverFromData id={i} height={220}></CoverFromData>
         </Link>
       </li>

@@ -52,7 +52,7 @@ export default function HomeRouter() {
           ></Image>
         </div>
       </Link>
-      <Link href={"./home/current book"}>
+      <Link href={"./library/book/dieunendlichegeschichte"}>
         <div className={styles.container}>
           <p className={styles.right}>Current Book</p>
           <Image

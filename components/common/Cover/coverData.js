@@ -1,3 +1,5 @@
+//import CoverFromData from "@/components/common/Cover/coverData.js";
+
 import Image from "next/image";
 
 import { bookMetaData } from "@/public/data/bookmeta.js";
