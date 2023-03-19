@@ -21,6 +21,7 @@ export default function CoverFromFetch({ imageName }) {
   const relativFactor = dimensions.width / dimensions.height;
   const relativHeight = height;
   const relativWidth = relativFactor * relativHeight;
+  console.log(imageName, relativFactor);
 
   return (
     <div>

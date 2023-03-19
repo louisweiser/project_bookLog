@@ -9,10 +9,8 @@ const dictonaryData = {
   word6: "erklärung",
 };
 
-export default function DynamicTable() {
+export default function Dictonary() {
   const data = dictonaryData;
-  console.log(data);
-  console.log(dictonaryData);
   return (
     <table>
       <tbody>

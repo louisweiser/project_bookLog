@@ -4,14 +4,15 @@ import { bookMetaData } from "@/public/data/bookmeta.js";
 
 import styles from "./cover.module.css";
 
-export default function CoverFromData({ id }) {
-  const object = bookMetaData[id];
+export default function CoverFromData({ id, height }) {
+  const object = bookMetaData[id - 1];
+
   return (
     <Image
       className={styles.img}
       src={`/images/cover/${object.name}`}
-      width={object.width}
-      height={object.height}
+      width={object.relativefactor * height}
+      height={height}
       alt="Image"
     />
   );

@@ -1,6 +1,6 @@
-export const BackgroundSVG = () => {
+export default function BackgroundSVG({ width }) {
   return (
-    <svg width="360" height="720" viewBox="0 0 101.73192 203.72913">
+    <svg width={width} height={2 * width} viewBox="0 0 101.73192 203.72913">
       <path
         borderopacity="0.25"
         fill="#03314b"
@@ -8,4 +8,4 @@ export const BackgroundSVG = () => {
       />
     </svg>
   );
-};
+}
