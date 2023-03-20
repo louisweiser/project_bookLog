@@ -8,14 +8,17 @@ import styles from "./cover.module.css";
 
 export default function CoverFromData({ id, height }) {
   const object = bookMetaData[id - 1];
+  const relativewidth = object.relativefactor * height;
 
   return (
-    <Image
-      className={styles.img}
-      src={`/images/cover/${object.name}`}
-      width={object.relativefactor * height}
-      height={height}
-      alt="Image"
-    />
+    <div style={{ width: relativewidth }}>
+      <Image
+        className={styles.img}
+        src={`/images/cover/${object.name}`}
+        width={relativewidth}
+        height={height}
+        alt="Image"
+      />
+    </div>
   );
 }

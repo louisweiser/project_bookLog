@@ -3,18 +3,18 @@ import Image from "next/image";
 
 import Background from "@/components/common/Background/index.js";
 import Header from "@/components/common/Heading";
-import BackButton from "@/components/common/Button/Back";
+import BackLibraryButton from "@/components/common/Button/BackLibrary.js";
 import CoverFromData from "@/components/common/Cover/coverData.js";
 
-import { genreData } from "@/public/data/genre.js";
 import { bookMetaData } from "@/public/data/bookmeta.js";
+import { bookSummary } from "@/public/data/bookentries/booksummary.js";
+import { bookStories } from "@/public/data/bookentries/bookstory.js";
 
-import styles from "@/styles/pages/library.module.css";
+import styles from "./slug.module.css";
 
 export default function BookDetail() {
   const router = useRouter(); //für slug routing
   const { slug } = router.query; //für slug routing - aktuelle page
-  console.log(slug);
 
   function searchArray(array, searchTerm) {
     // durch jedes Objekt im Array iterieren
@@ -38,27 +38,28 @@ export default function BookDetail() {
     return null;
   }
   const result = searchArray(bookMetaData, slug);
-  console.log(result.id);
+  // !!!!!!!!!!!! bug !! beim öffnen der page über die url ist der router kurz null somit der slug auch somit result auch und das programm crasht beim aufrufen der komponente Bookcover, die ein result prop braucht
+
+  console.log(bookStories[1].length);
 
   return (
     <>
       <Background></Background>
       <Header title={"slug page"}></Header>
-      <BackButton></BackButton>
-      <div className={styles.containe}>
+      <BackLibraryButton></BackLibraryButton>
+      <div className={styles.container}>
         <div className={styles.cover}>
-          <div className={styles.position}>
-            <Image
-              src={`/images/coverdimension.png`}
-              width={300}
-              height={425}
-              alt="Image"
-            ></Image>
-          </div>
-          <CoverFromData id={result.id} height={400}></CoverFromData>
+          <CoverFromData id={result.id} height={300}></CoverFromData>
+        </div>
+        <div className={styles.summary}>
+          <h3>Summary :</h3>
+          <h4>{bookSummary[result.id - 1].summary}</h4>
+        </div>
+        <div className={styles.summary}>
+          <h3>Storie :</h3>
+          <h4>{bookStories[result.id - 1][1].title}</h4>
         </div>
       </div>
-      <h1>Title: </h1>
     </>
   );
 }

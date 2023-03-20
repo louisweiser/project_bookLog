@@ -2,24 +2,3 @@
   width: 100%;
   height: calc(100vh - 64px);
 }
-
-.cover {
-  display: flex;
-  margin-top: 30px;
-  position: relative;
-}
-.relative {
-  position: relative;
-}
-
-.position {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-}
-
-.containe {
-  display: flex;
-  margin-left: 20px;
-  margin-top: 20px;
-}

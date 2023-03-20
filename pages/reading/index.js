@@ -9,7 +9,11 @@ import styles from "@/styles/pages/reading.module.css";
 export default function ReadingPage() {
   let content = [];
   for (let i = 0; i < 5; i++) {
-    content.push(<TextField></TextField>);
+    content.push(
+      <div key={i}>
+        <TextField></TextField>
+      </div>
+    );
   }
   return (
     <>

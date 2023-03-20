@@ -1,3 +1,4 @@
+//import { bookMetaData } from "@/public/data/bookmeta.js";
 export const bookMetaData = [
   {
     id: 1,

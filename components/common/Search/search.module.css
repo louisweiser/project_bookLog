@@ -24,11 +24,6 @@
 }
 
 .searchField_active {
-  /* display: flex;
-  background-color: #03314b;
-  position: fixed;
-  height: 42px;
-  top: 0; */
   width: 100vw;
   height: 52px;
   margin-bottom: 10px;
@@ -51,7 +46,7 @@
   top: -100%;
   left: 0;
   width: 100%;
-  height: calc(100vw - 37px);
+  height: calc(100vh - 37px);
   background-color: #03314b;
   animation: slide-up 0.5s ease-in-out forwards;
 }
@@ -110,4 +105,10 @@
   overflow: hidden; /* Blendet den überschüssigen Text aus */
   text-overflow: ellipsis; /* Setzt "..." am Ende des abgeschnittenen Textes ein */
   margin-left: 8px;
+}
+.list {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 57px);
+  overflow-y: scroll;
 }

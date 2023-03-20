@@ -1,3 +1,4 @@
+//import { bookData } from "@/public/data/book.js";
 export const bookData = [
   {
     id: 1,

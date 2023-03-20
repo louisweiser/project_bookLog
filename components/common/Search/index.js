@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react"; // state for searching input
 import { useContext } from "react"; //global state for searching container rendering
+import Link from "next/link"; //zum linken der suchergebnisse
 
 import CoverFromData from "@/components/common/Cover/coverData.js";
 
@@ -9,6 +10,7 @@ import { MyContext } from "@/contexts/myContext.js"; //global state for searchin
 import { BackSVG } from "@/public/svgs/router"; //svg for back-button in search field
 
 import { bookData } from "@/public/data/book.js"; //data for result examples
+import { bookMetaData } from "@/public/data/bookmeta.js"; //zum linken der suchergebnisse
 
 import styles from "./search.module.css";
 
@@ -70,18 +72,23 @@ export default function SearchPage() {
         }
       >
         {searchTerm !== "" && (
-          <ul>
+          <ul className={styles.list}>
             {searchResults.length !== 0 ? (
               searchResults.map((item) => (
-                <li key={item.id} className={styles.row}>
-                  <CoverFromData id={item.id} height={100}></CoverFromData>
-                  <div className={styles.column}>
-                    <h4>
-                      {item.title} {item.subtitle}
-                    </h4>
-                    <h5>von {item.author}</h5>
-                  </div>
-                </li>
+                <Link
+                  href={`/library/book/${bookMetaData[item.id - 1].slugname}`}
+                  key={item.id}
+                >
+                  <li className={styles.row}>
+                    <CoverFromData id={item.id} height={100}></CoverFromData>
+                    <div className={styles.column}>
+                      <h4>
+                        {item.title} {item.subtitle}
+                      </h4>
+                      <h5>von {item.author}</h5>
+                    </div>
+                  </li>
+                </Link>
               ))
             ) : (
               <h1>no result like {searchTerm}</h1>
