@@ -1,0 +1,8 @@
+.div {
+  display: flex;
+  flex-direction: row;
+}
+
+.padding {
+  padding: 5px;
+}

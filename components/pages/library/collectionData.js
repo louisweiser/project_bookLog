@@ -2,6 +2,8 @@ import Link from "next/link";
 
 import CoverFromData from "@/components/common/Cover/coverData.js";
 
+import { ArrowRightSVG } from "@/public/svgs/router.js";
+
 import { genreData } from "@/public/data/genre.js";
 import { bookMetaData } from "@/public/data/bookmeta.js";
 
@@ -21,7 +23,12 @@ export default function CollectionFromData() {
   }
   return genreData.map((item, index) => (
     <div key={index}>
-      <h3> {item}</h3>
+      <Link href={`/library/genre/${item}`}>
+        <div className={styles.reiter}>
+          <h3 className={styles.text}> {item}</h3>
+          {/* <ArrowRightSVG></ArrowRightSVG> */}
+        </div>
+      </Link>
       <ul className={styles.div}>{content}</ul>
     </div>
   ));

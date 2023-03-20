@@ -14,3 +14,14 @@
   border-radius: 8px;
   overflow-y: hidden;
 }
+
+.reiter {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 5px 15px 0px 15px;
+  align-items: center;
+}
+.text {
+  display: inline-block;
+}
