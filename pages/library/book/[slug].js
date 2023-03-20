@@ -1,15 +1,18 @@
+//react
 import { useRouter } from "next/router";
-import Image from "next/image";
 
+//components
 import Background from "@/components/common/Background/index.js";
 import Header from "@/components/common/Heading";
 import BackLibraryButton from "@/components/common/Button/BackLibrary.js";
 import CoverFromData from "@/components/common/Cover/coverData.js";
 
+//data
 import { bookMetaData } from "@/public/data/bookmeta.js";
 import { bookSummary } from "@/public/data/bookentries/booksummary.js";
 import { bookStories } from "@/public/data/bookentries/bookstory.js";
 
+//style
 import styles from "./slug.module.css";
 
 export default function BookDetail() {
@@ -42,6 +45,18 @@ export default function BookDetail() {
 
   console.log(bookStories[1].length);
 
+  function ObjektListe({ objektArray }) {
+    const eintraege = objektArray.flatMap((objekt) => objekt.eintraege);
+
+    return (
+      <div>
+        {eintraege.map((eintrag, index) => (
+          <div key={index}>{eintrag}</div>
+        ))}
+      </div>
+    );
+  }
+
   return (
     <>
       <Background></Background>
@@ -56,8 +71,12 @@ export default function BookDetail() {
           <h4>{bookSummary[result.id - 1].summary}</h4>
         </div>
         <div className={styles.summary}>
-          <h3>Storie :</h3>
-          <h4>{bookStories[result.id - 1][1].title}</h4>
+          <h3>Storie 1: {bookStories[result.id - 1][0].title}</h3>
+          <h4>{bookStories[result.id - 1][0].text}</h4>
+        </div>
+        <div className={styles.summary}>
+          <h3>Storie 2: {bookStories[result.id - 1][1].title}</h3>
+          <h4>{bookStories[result.id - 1][1].text}</h4>
         </div>
       </div>
     </>
