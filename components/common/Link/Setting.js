@@ -1,6 +1,8 @@
 import Link from "next/link";
-import styles from "./setting.module.css";
+
 import { GearSVG } from "@/public/svgs/router.js";
+
+import styles from "./setting.module.css";
 
 export default function SettingButton() {
   return (

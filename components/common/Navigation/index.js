@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
+
 import {
   HomeSVG,
   LibrarySVG,
@@ -9,8 +11,8 @@ import {
   ReadingSVGActive,
   HomeSVGActive,
 } from "@/public/svgs/navigationbar.js";
+
 import styles from "./navigation.module.css";
-import { useRouter } from "next/router";
 
 const Navigation = () => {
   const router = useRouter();
@@ -21,8 +23,7 @@ const Navigation = () => {
         <Link href="/home">
           <li className={styles.navbarListItem}>
             {router.pathname === "/home" ? <HomeSVGActive /> : <HomeSVG />}
-
-            <h5 className={styles.h5}>Home</h5>
+            <h5 className={styles.text}>Home</h5>
           </li>
         </Link>
         <Link href="/library">
@@ -32,8 +33,7 @@ const Navigation = () => {
             ) : (
               <LibrarySVG />
             )}
-
-            <h5 className={styles.h5}>Library</h5>
+            <h5 className={styles.text}>Library</h5>
           </li>
         </Link>
         <Link href="/reading">
@@ -43,8 +43,7 @@ const Navigation = () => {
             ) : (
               <ReadingSVG />
             )}
-
-            <h5 className={styles.h5}>Read</h5>
+            <h5 className={styles.text}>Read</h5>
           </li>
         </Link>
         <Link href="/create">
@@ -54,8 +53,7 @@ const Navigation = () => {
             ) : (
               <CreateSVG />
             )}
-
-            <h5 className={styles.h5}>Create</h5>
+            <h5 className={styles.text}>Create</h5>
           </li>
         </Link>
       </ul>

@@ -1,5 +1,6 @@
-import { BackSVG } from "@/public/svgs/router.js";
 import Link from "next/link";
+
+import { BackSVG } from "@/public/svgs/router.js";
 
 import styles from "./back.module.css";
 

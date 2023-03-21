@@ -1,5 +1,3 @@
-//import CoverFromData from "@/components/common/Cover/coverData.js";
-
 import Image from "next/image";
 
 import { bookMetaData } from "@/public/data/bookmeta.js";
@@ -13,7 +11,7 @@ export default function CoverFromData({ id, height }) {
   return (
     <div style={{ width: relativewidth }}>
       <Image
-        className={styles.img}
+        className={styles.image}
         src={`/images/cover/${object.name}`}
         width={relativewidth}
         height={height}

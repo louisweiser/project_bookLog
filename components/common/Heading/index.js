@@ -1,5 +1,3 @@
-import Head from "next/head";
-
 import styles from "./heading.module.css";
 
 export default function Header({ title }) {

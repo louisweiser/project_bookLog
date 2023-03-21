@@ -21,13 +21,12 @@ export default function CoverFromFetch({ imageName }) {
   const relativFactor = dimensions.width / dimensions.height;
   const relativHeight = height;
   const relativWidth = relativFactor * relativHeight;
-  console.log(imageName, relativFactor);
 
   return (
     <div>
       {dimensions.width && dimensions.height && (
         <Image
-          className={styles.img}
+          className={styles.image}
           src={`/images/cover/${imageName}`}
           width={relativWidth}
           height={relativHeight}
