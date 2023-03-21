@@ -1,13 +1,16 @@
 .list {
-  font-size: 30px;
-  list-style: none;
+  /*dimension*/
   margin: 10px;
+  /*style*/
+  font-size: 18px;
+  list-style: none;
 }
 
 .listitem {
-  padding: 5px;
+  /*layout*/
   display: flex;
-  overflow-x: scroll;
-  white-space: nowrap;
+  /*dimension*/
+  padding: 5px;
+  /*style*/
   border-bottom: 1px solid;
 }

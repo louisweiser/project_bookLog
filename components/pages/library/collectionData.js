@@ -14,7 +14,7 @@ export default function CollectionFromData() {
 
   for (let i = 1; i <= 10; i++) {
     content.push(
-      <li key={i} className={styles.padding}>
+      <li key={i} className={styles.bookitem}>
         <Link href={`/library/book/${bookMetaData[i - 1].slugname}`}>
           <CoverFromData id={i} height={220}></CoverFromData>
         </Link>
@@ -24,12 +24,12 @@ export default function CollectionFromData() {
   return genreData.map((item, index) => (
     <div key={index}>
       <Link href={`/library/genre/${item}`}>
-        <div className={styles.reiter}>
-          <h3 className={styles.text}> {item}</h3>
+        <div className={styles.category}>
+          <h3 className={styles.categorytext}> {item}</h3>
           {/* <ArrowRightSVG></ArrowRightSVG> */}
         </div>
       </Link>
-      <ul className={styles.div}>{content}</ul>
+      <ul className={styles.collection}>{content}</ul>
     </div>
   ));
 }

@@ -12,12 +12,12 @@ const dictonaryData = {
 export default function Dictonary() {
   const data = dictonaryData;
   return (
-    <table>
+    <table className={styles.table}>
       <tbody>
         {Object.entries(data).map(([key, value]) => (
           <tr key={key}>
-            <td className={styles.table1}>{key}</td>
-            <td className={styles.table2}>{value}</td>
+            <td className={styles.line1}>{key}</td>
+            <td className={styles.line2}>{value}</td>
           </tr>
         ))}
       </tbody>

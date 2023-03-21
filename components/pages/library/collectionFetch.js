@@ -2,6 +2,8 @@ import Link from "next/link";
 
 import CoverFromFetch from "@/components/common/Cover/coverFetch.js";
 
+import { ArrowRightSVG } from "@/public/svgs/router.js";
+
 import { bookMetaData } from "@/public/data/bookmeta.js";
 import { genreData } from "@/public/data/genre.js";
 
@@ -12,7 +14,7 @@ export default function CollectionFromFetch() {
 
   content.push(
     bookMetaData.map((objekt) => (
-      <li key={objekt.name} className={styles.padding}>
+      <li key={objekt.name} className={styles.bookitem}>
         <Link href="">
           <CoverFromFetch imageName={objekt.name}></CoverFromFetch>
         </Link>
@@ -22,8 +24,13 @@ export default function CollectionFromFetch() {
 
   return genreData.map((item, index) => (
     <div key={index}>
-      <h3> {item}</h3>
-      <ul className={styles.div}>{content}</ul>
+      <Link href={`/library/genre/${item}`}>
+        <div className={styles.category}>
+          <h3 className={styles.text}> {item}</h3>
+          {/* <ArrowRightSVG></ArrowRightSVG> */}
+        </div>
+      </Link>
+      <ul className={styles.collection}>{content}</ul>
     </div>
   ));
 }

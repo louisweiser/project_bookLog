@@ -1,13 +1,17 @@
-.containermain {
+.navigation {
+  /*layout*/
   display: flex;
   justify-content: space-between;
+  /*dimension*/
   padding: 15px 10px 15px 10px;
-
+  /*style*/
   background-color: #03314b;
-  border: #032330 1px solid;
-  border-left: none;
-  border-right: none;
+  border-top: #032330 1px solid;
+  border-bottom: #032330 1px solid;
 }
+/*layout*/
+/*dimension*/
+/*style*/
 .imgcon {
   border-radius: 10px;
   overflow-y: hidden;
@@ -39,6 +43,5 @@
 }
 
 .container {
-  font-family: Arial, Helvetica, sans-serif;
   position: relative;
 }

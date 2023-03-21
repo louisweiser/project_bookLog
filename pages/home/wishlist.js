@@ -5,7 +5,7 @@ import DynamicList from "@/components/pages/home/Wishlist.js";
 export default function WishListPage() {
   return (
     <>
-      <Header title={"wish list"}></Header>
+      <Header title={"Wishlist"}></Header>
       <BackButton></BackButton>
       <DynamicList></DynamicList>
     </>

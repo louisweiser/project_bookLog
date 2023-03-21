@@ -1,27 +1,31 @@
-.div {
+.collection {
+  /*layout*/
   display: flex;
   list-style: none;
   overflow-x: scroll;
   white-space: nowrap;
-  padding: 10px 0;
-}
-
-.padding {
+  /*dimension*/
+  padding: 7px 0;
   margin-left: 10px;
 }
 
-.imgcon {
-  border-radius: 8px;
-  overflow-y: hidden;
+.bookitem {
+  /*dimension*/
+  margin-right: 10px;
 }
 
-.reiter {
+.category {
+  /*layout*/
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 5px 15px 0px 15px;
   align-items: center;
+  /*dimension*/
+  padding: 5px 15px 0px 15px;
+  /*style*/
+  font-size: 18px;
 }
-.text {
+.categorytext {
+  /*layout*/
   display: inline-block;
 }
