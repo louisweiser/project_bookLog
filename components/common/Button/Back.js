@@ -2,8 +2,6 @@ import { useRouter } from "next/router";
 
 import { BackSVG } from "@/public/svgs/router.js";
 
-import styles from "./back.module.css";
-
 export default function BackButton() {
   const router = useRouter();
 
@@ -12,7 +10,7 @@ export default function BackButton() {
   };
 
   return (
-    <button className={styles.topLeft} onClick={handleBackClick}>
+    <button onClick={handleBackClick}>
       <BackSVG></BackSVG>
     </button>
   );

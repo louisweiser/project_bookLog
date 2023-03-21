@@ -14,7 +14,6 @@ import styles from "./slug.module.css";
 export default function GenreLibrary() {
   const router = useRouter(); //für slug routing
   const { slug } = router.query; //für slug routing - aktuelle page
-  console.log(slug);
 
   const [screenWidth, setScreenWidth] = useState(0);
 

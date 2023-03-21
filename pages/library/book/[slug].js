@@ -36,21 +36,9 @@ export default function BookDetail() {
     return null;
   }
   const result = searchArray(bookMetaData, slug);
+
   // !!!!!!!!!!!! bug !! beim öffnen der page über die url ist der router kurz null somit der slug auch somit result auch und das programm crasht beim aufrufen der komponente Bookcover, die ein result prop braucht
-
-  console.log(bookStories[1].length);
-
-  /*   function ObjektListe({ objektArray }) {
-    const eintraege = objektArray.flatMap((objekt) => objekt.eintraege);
-
-    return (
-      <div>
-        {eintraege.map((eintrag, index) => (
-          <div key={index}>{eintrag}</div>
-        ))}
-      </div>
-    );
-  } */
+  //Das Problem, tritt warscheinlich auf, weil der Server die Seitendaten nicht korrekt lädt. Um dies zu beheben, könnte man "getServerSideProps" oder "getStaticProps" Funktionen von Next.js verwenden, um die Daten für Ihre Seite zu laden.
 
   return (
     <>

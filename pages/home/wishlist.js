@@ -1,12 +1,10 @@
-import Header from "@/components/common/Heading";
-import BackButton from "@/components/common/Button/Back.js";
+import Header from "@/components/common/Heading/HomeNavigation.js";
 import DynamicList from "@/components/pages/home/Wishlist.js";
 
 export default function WishListPage() {
   return (
     <>
       <Header title={"Wishlist"}></Header>
-      <BackButton></BackButton>
       <DynamicList></DynamicList>
     </>
   );
