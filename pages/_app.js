@@ -1,4 +1,5 @@
 import "@/styles/globals.css";
+import "@/assets/fonts.css";
 import { MyProvider } from "../contexts/myContext.js";
 import Head from "next/head.js";
 

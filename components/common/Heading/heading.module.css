@@ -1,16 +1,22 @@
 .header {
-  padding: 10px;
-  background-color: #03314b;
-  color: #fffefb;
+  /*layout*/
   display: flex;
   justify-content: center;
+  /*dimension*/
+  padding: 10px;
+  /*style*/
+  background-color: #03314b;
+  color: #fffefb;
 }
 
 .headerhome {
-  padding: 20px;
-  background-color: #03314b;
-  color: #fffefb;
+  /*layout*/
   display: flex;
   justify-content: center;
+  /*dimension*/
+  padding: 20px;
+  /*style*/
+  background-color: #03314b;
+  color: #fffefb;
   font-size: 50px;
 }
