@@ -4,8 +4,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 
 import Background from "@/components/common/Background/index.js";
-import Header from "@/components/common/Heading";
-import BackLibraryButton from "@/components/common/Button/BackLibrary.js";
+import Header from "@/components/common/Heading/Collection.js";
 import CoverFromData from "@/components/common/Cover/coverData.js";
 
 import { bookMetaData } from "@/public/data/bookmeta.js";
@@ -70,7 +69,6 @@ export default function GenreLibrary() {
     <>
       <Background></Background>
       <Header title={slug}></Header>
-      <BackLibraryButton></BackLibraryButton>
       <ul className={styles.div}>
         <div className={styles.padding}>
           <Link href={`/library/book/${bookMetaData[0].slugname}`}>

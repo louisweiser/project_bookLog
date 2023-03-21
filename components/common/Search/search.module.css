@@ -41,7 +41,7 @@
   border: none;
   border-radius: 5px;
   background: none;
-  outline: none;
+  outline: none; /*entfernt die visuelle fokusierung im input searchfield*/
   background-color: #03314b;
   /* width dynamisch in abhängigkeit (abzüglich des margin) setzen */
 }

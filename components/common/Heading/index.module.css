@@ -1,0 +1,9 @@
+.header {
+  /*layout*/
+  display: flex;
+  justify-content: center;
+  /*dimension*/
+  padding: 10px;
+  /*style*/
+  background-color: #03314b;
+}

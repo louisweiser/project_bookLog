@@ -1,8 +1,7 @@
 import { useRouter } from "next/router";
 
 import Background from "@/components/common/Background/index.js";
-import Header from "@/components/common/Heading";
-import BackLibraryButton from "@/components/common/Button/BackLibrary.js";
+import Header from "@/components/common/Heading/Detail.js";
 import CoverFromData from "@/components/common/Cover/coverData.js";
 
 import { bookMetaData } from "@/public/data/bookmeta.js";
@@ -56,8 +55,7 @@ export default function BookDetail() {
   return (
     <>
       <Background></Background>
-      <Header title={"slug page"}></Header>
-      <BackLibraryButton></BackLibraryButton>
+      <Header></Header>
       <div className={styles.body}>
         <div className={styles.cover}>
           <CoverFromData id={result.id} height={300}></CoverFromData>

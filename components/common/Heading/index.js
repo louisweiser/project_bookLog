@@ -1,11 +1,9 @@
-import styles from "./heading.module.css";
+import styles from "./index.module.css";
 
 export default function Header({ title }) {
   return (
     <header>
-      <h1 className={title === "BookLog" ? styles.headerhome : styles.header}>
-        {title}
-      </h1>
+      <h1 className={styles.header}>{title}</h1>
     </header>
   );
 }

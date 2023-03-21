@@ -1,6 +1,7 @@
+import Link from "next/link";
+
 import Header from "@/components/common/Heading";
 import Navigation from "@/components/common/Navigation";
-import Link from "next/link";
 
 export default function CreatePage() {
   return (
