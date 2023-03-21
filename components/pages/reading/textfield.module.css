@@ -1,14 +1,16 @@
 .container {
-  width: auto;
-  margin: 10px 10px 0 10px;
-  background-color: #03314b;
-  border-radius: 10px;
-  border: #032330 solid 3px;
-  height: 30vh;
+  /*layout*/
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #fffefb;
   text-align: center;
+  /*dimension*/
+  width: auto;
+  height: 30vh;
+  margin: 10px 10px 0 10px;
   padding: 20px;
+  /*style*/
+  background-color: #03314b;
+  border-radius: 10px;
+  border: #032330 solid 3px;
 }

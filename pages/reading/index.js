@@ -24,7 +24,6 @@ export default function ReadingPage() {
         <TextField></TextField>
         {content}
       </div>
-
       <Navigation></Navigation>
     </>
   );

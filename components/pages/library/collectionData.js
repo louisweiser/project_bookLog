@@ -2,16 +2,16 @@ import Link from "next/link";
 
 import CoverFromData from "@/components/common/Cover/coverData.js";
 
-import { ArrowRightSVG } from "@/public/svgs/router.js";
-
 import { genreData } from "@/public/data/genre.js";
 import { bookMetaData } from "@/public/data/bookmeta.js";
 
+import { ArrowRightSVG } from "@/public/svgs/router.js";
 import styles from "./collection.module.css";
 
 export default function CollectionFromData() {
   let content = [];
 
+  //hier wird die Büchersammlung in Coverfrom erzeugt. Die Dimensionen des Bildes werden dynamisch aus den vorliegenden Daten erzeugt
   for (let i = 1; i <= 10; i++) {
     content.push(
       <li key={i} className={styles.bookitem}>

@@ -9,39 +9,48 @@
   border-top: #032330 1px solid;
   border-bottom: #032330 1px solid;
 }
-/*layout*/
-/*dimension*/
-/*style*/
-.imgcon {
+
+.positionrelative {
+  /*layout*/
+  position: relative;
+}
+
+.image {
+  /*style*/
   border-radius: 10px;
   overflow-y: hidden;
   border: #032330 1px solid;
 }
-.left {
+
+.textleft {
+  /*layout*/
+  position: absolute;
+  top: 5px;
+  left: 20px;
+  /*dimension*/
   margin-left: 8px;
+  /*style*/
   font-size: small;
+}
+
+.textcenter {
+  /*layout*/
   position: absolute;
   top: 5px;
   left: 20px;
-}
-
-.center {
-  font-size: small;
   text-align: center;
-  position: absolute;
-  top: 5px;
-  left: 20px;
+  /*style*/
+  font-size: small;
 }
 
-.right {
-  font-size: small;
-  margin-right: 8px;
-  text-align: right;
+.textright {
+  /*layout*/
   position: absolute;
   top: 5px;
   left: 12px;
-}
-
-.container {
-  position: relative;
+  text-align: right;
+  /*dimension*/
+  margin-right: 8px;
+  /*style*/
+  font-size: small;
 }

@@ -1,18 +1,14 @@
-//react
 import { useRouter } from "next/router";
 
-//components
 import Background from "@/components/common/Background/index.js";
 import Header from "@/components/common/Heading";
 import BackLibraryButton from "@/components/common/Button/BackLibrary.js";
 import CoverFromData from "@/components/common/Cover/coverData.js";
 
-//data
 import { bookMetaData } from "@/public/data/bookmeta.js";
 import { bookSummary } from "@/public/data/bookentries/booksummary.js";
 import { bookStories } from "@/public/data/bookentries/bookstory.js";
 
-//style
 import styles from "./slug.module.css";
 
 export default function BookDetail() {
@@ -45,7 +41,7 @@ export default function BookDetail() {
 
   console.log(bookStories[1].length);
 
-  function ObjektListe({ objektArray }) {
+  /*   function ObjektListe({ objektArray }) {
     const eintraege = objektArray.flatMap((objekt) => objekt.eintraege);
 
     return (
@@ -55,14 +51,14 @@ export default function BookDetail() {
         ))}
       </div>
     );
-  }
+  } */
 
   return (
     <>
       <Background></Background>
       <Header title={"slug page"}></Header>
       <BackLibraryButton></BackLibraryButton>
-      <div className={styles.container}>
+      <div className={styles.body}>
         <div className={styles.cover}>
           <CoverFromData id={result.id} height={300}></CoverFromData>
         </div>

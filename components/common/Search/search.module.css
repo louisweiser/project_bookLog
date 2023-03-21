@@ -1,65 +1,88 @@
-/* input field for searching */
-.searchInputField {
+.searchField_active {
+  /*layout*/
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  /*dimension*/
+  width: 100vw;
+  height: 52px;
+  margin-bottom: 10px;
+  padding-left: 5px;
+  gap: 10px;
+  /*style*/
+  border: none;
+  background-color: #03314b;
+  border-bottom: 1px solid #fffefb;
+}
+
+.searchField_passiv {
+  /*layout*/
+  display: flex;
+  align-items: center;
+  /*dimension*/
+  width: calc(100vw - 20px);
+  height: 42px;
+  margin: 10px;
+  /*style*/
+  border: none;
+  border-radius: 5px;
+  background-color: #03314b;
   /* width dynamisch in abhängigkeit (abzüglich des margin) setzen */
+}
+
+.searchInputField {
+  /*dimension*/
   width: calc(100vw - 20px);
   height: 37px;
   margin: 5px;
+  /*style*/
   border: none;
   border-radius: 5px;
   background: none;
   outline: none;
   background-color: #03314b;
-}
-
-.searchField_passiv {
   /* width dynamisch in abhängigkeit (abzüglich des margin) setzen */
-  width: calc(100vw - 20px);
-  height: 42px;
-  margin: 10px;
-  border: none;
-  border-radius: 5px;
-  background-color: #03314b;
-  display: flex;
-  align-items: center;
 }
 
-.searchField_active {
-  width: 100vw;
-  height: 52px;
-  margin-bottom: 10px;
-
-  border: none;
-  background-color: #03314b;
-  display: flex;
-  align-items: center;
-  position: fixed;
-  z-index: 10;
-  top: 0;
-
-  padding-left: 5px;
-  gap: 10px;
-  border-bottom: 1px solid white;
-}
-
-.resultField_passiv {
+.resultField_initial {
+  /*layout*/
   position: fixed;
   top: -100%;
   left: 0;
+  /*dimension*/
   width: 100%;
   height: calc(100vh - 37px);
+  /*style*/
   background-color: #03314b;
-  animation: slide-up 0.5s ease-in-out forwards;
 }
 
 .resultField_active {
+  /*layout*/
   position: fixed;
   top: -100%;
   left: 0;
+  /*dimension*/
   width: 100%;
   height: calc(100vh - 37px);
+  /*style*/
   background-color: #03314b;
   animation: slide-down 0.6s ease-in-out forwards;
   z-index: 1;
+}
+
+.resultField_passive {
+  /*layout*/
+  position: fixed;
+  top: -100%;
+  left: 0;
+  /*dimension*/
+  width: 100%;
+  height: calc(100vh - 37px);
+  /*style*/
+  background-color: #03314b;
+  animation: slide-up 0.5s ease-in-out forwards;
 }
 
 @keyframes slide-up {
@@ -93,22 +116,28 @@
   }
 }
 
+.list {
+  /*layout*/
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  /*dimension*/
+  height: calc(100vh - 57px);
+}
 .row {
+  /*layout*/
   display: flex;
   flex-direction: row;
+  /*dimension*/
   margin: 20px 10px 0 10px;
 }
 .column {
+  /*layout*/
   display: flex;
   flex-direction: column;
   white-space: nowrap; /* Verhindert das Umbruch von Text */
   overflow: hidden; /* Blendet den überschüssigen Text aus */
   text-overflow: ellipsis; /* Setzt "..." am Ende des abgeschnittenen Textes ein */
+  /*dimension*/
   margin-left: 8px;
-}
-.list {
-  display: flex;
-  flex-direction: column;
-  height: calc(100vh - 57px);
-  overflow-y: scroll;
 }

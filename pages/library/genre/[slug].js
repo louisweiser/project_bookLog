@@ -1,10 +1,8 @@
-//react
-import { useRouter } from "next/router";
 import React from "react";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import Link from "next/link";
 
-//components
 import Background from "@/components/common/Background/index.js";
 import Header from "@/components/common/Heading";
 import BackLibraryButton from "@/components/common/Button/BackLibrary.js";

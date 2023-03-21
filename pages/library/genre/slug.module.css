@@ -1,8 +1,10 @@
 .div {
+  /*layout*/
   display: flex;
   flex-direction: row;
 }
 
 .padding {
+  /*dimension*/
   padding: 5px;
 }

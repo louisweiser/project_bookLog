@@ -3,18 +3,17 @@ import { useState } from "react"; // state for searching input
 import { useContext } from "react"; //global state for searching container rendering
 import Link from "next/link"; //zum linken der suchergebnisse
 
-import CoverFromData from "@/components/common/Cover/coverData.js";
-
 import { MyContext } from "@/contexts/myContext.js"; //global state for searching container rendering
 
-import { BackSVG } from "@/public/svgs/router"; //svg for back-button in search field
+import searchObjects from "../../../utils/search.js"; //logic-function for searching
 
+import CoverFromData from "@/components/common/Cover/coverData.js";
+
+import { BackSVG } from "@/public/svgs/router"; //svg for back-button in search field
 import { bookData } from "@/public/data/book.js"; //data for result examples
 import { bookMetaData } from "@/public/data/bookmeta.js"; //zum linken der suchergebnisse
 
 import styles from "./search.module.css";
-
-import searchObjects from "../../../utils/search.js"; //logic-function for searching
 
 export default function SearchPage() {
   const [searchTerm, setSearchTerm] = useState(""); //state for save the searching input
@@ -40,11 +39,16 @@ export default function SearchPage() {
     <>
       <div
         className={
-          myState ? styles.searchField_active : styles.searchField_passiv
-        } //hier soll das Suchfeld in einer Animation erscheinen wenn das searchform geklickt wird, myState geht dann auf true
+          initialHide
+            ? styles.searchField_passiv
+            : myState
+            ? styles.searchField_active
+            : styles.searchField_passiv
+          //hier soll das Suchfeld in einer Animation erscheinen wenn das searchform geklickt wird, myState geht dann auf true
+        }
       >
         {
-          myState && (
+          myState && !initialHide && (
             <button onClick={handleBackClick}>
               <BackSVG></BackSVG>
             </button>
@@ -67,7 +71,7 @@ export default function SearchPage() {
             ? styles.resultField_initial
             : myState
             ? styles.resultField_active
-            : styles.resultField_passiv
+            : styles.resultField_passive
           /*hier ist das Feld mit den Ergebnissen das eerst erscheint wenn der searchinput geklickt wird. Es erscheint durch eine Animation. Diese soll beim ersten laden der Seite jedoch nicht ausegführt werden (deswegen initial hide)*/
         }
       >

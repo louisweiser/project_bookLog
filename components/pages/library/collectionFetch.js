@@ -2,16 +2,16 @@ import Link from "next/link";
 
 import CoverFromFetch from "@/components/common/Cover/coverFetch.js";
 
-import { ArrowRightSVG } from "@/public/svgs/router.js";
-
 import { bookMetaData } from "@/public/data/bookmeta.js";
 import { genreData } from "@/public/data/genre.js";
 
+import { ArrowRightSVG } from "@/public/svgs/router.js";
 import styles from "./collection.module.css";
 
 export default function CollectionFromFetch() {
   let content = [];
 
+  //hier wird die Büchersammlung in Coverfrom erzeugt. Die Dimensionen des Bildes werden dyynamisch durch einen lokalen fetch ermittelt
   content.push(
     bookMetaData.map((objekt) => (
       <li key={objekt.name} className={styles.bookitem}>
@@ -26,7 +26,7 @@ export default function CollectionFromFetch() {
     <div key={index}>
       <Link href={`/library/genre/${item}`}>
         <div className={styles.category}>
-          <h3 className={styles.text}> {item}</h3>
+          <h3 className={styles.categorytext}> {item}</h3>
           {/* <ArrowRightSVG></ArrowRightSVG> */}
         </div>
       </Link>

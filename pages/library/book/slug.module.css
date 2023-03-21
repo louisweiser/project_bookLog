@@ -1,24 +1,25 @@
-.container {
+.body {
+  /*layout*/
   display: flex;
   flex-direction: column;
+  /*dimension*/
   margin: 10px 10px 0 10px;
   gap: 10px;
 }
 
 .cover {
+  /*layout*/
   display: flex;
-  margin-top: 30px;
   justify-content: center;
+  /*dimension*/
+  margin-top: 30px;
 }
 
 .summary {
+  /*dimension*/
+  padding: 5px 10px;
+  /*style*/
   background-color: #03314b;
   border-radius: 10px;
   border: #032330 solid 3px;
-  color: #fffefb;
-  /*  display: flex;
-  justify-content: center;
-  align-items: center; */
-
-  padding: 5px 10px;
 }

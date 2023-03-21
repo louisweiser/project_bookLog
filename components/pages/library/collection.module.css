@@ -1,14 +1,3 @@
-.collection {
-  /*layout*/
-  display: flex;
-  list-style: none;
-  overflow-x: scroll;
-  white-space: nowrap;
-  /*dimension*/
-  padding: 7px 0;
-  margin-left: 10px;
-}
-
 .bookitem {
   /*dimension*/
   margin-right: 10px;
@@ -28,4 +17,15 @@
 .categorytext {
   /*layout*/
   display: inline-block;
+}
+
+.collection {
+  /*layout*/
+  display: flex;
+  list-style: none;
+  overflow-x: scroll;
+  white-space: nowrap;
+  /*dimension*/
+  padding: 7px 0;
+  margin-left: 10px;
 }
