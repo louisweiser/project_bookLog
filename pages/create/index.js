@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 import Background from "@/components/common/Background/index.js";
 import Header from "@/components/common/Heading";
 import FilterComponent from "@/components/pages/create/Filter.js";
