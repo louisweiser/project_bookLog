@@ -1,0 +1,28 @@
+.list {
+  /*layout*/
+  display: flex;
+  overflow-x: scroll;
+  white-space: nowrap;
+  /*dimension*/
+  margin-left: 1px;
+  padding: 5px 0;
+  /*style*/
+  list-style: none;
+}
+.listItem {
+  /**/
+}
+.button {
+  /*layout*/
+  border: 1px solid white;
+  /*dimension*/
+  padding: 5px 10px;
+  margin: 5px;
+  /*style*/
+  border-radius: 20px;
+}
+
+.button:hover {
+  /*style*/
+  background-color: black;
+}
