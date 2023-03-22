@@ -9,6 +9,8 @@ export const MyProvider = ({ children }) => {
   const [myState, setMyState] = useState(false);
   const [screenWidth, setScreenWidth] = useState(0);
 
+  const [currentbook, setCurrentbook] = useState(1);
+  const [myStateCreate, setMyStateCreate] = useState(false);
   const [input1, setInput1] = useState("");
   const [input2, setInput2] = useState("");
   const [input3, setInput3] = useState("");
@@ -26,6 +28,10 @@ export const MyProvider = ({ children }) => {
         setInput2,
         input3,
         setInput3,
+        currentbook,
+        setCurrentbook,
+        myStateCreate,
+        setMyStateCreate,
       }}
     >
       {children}

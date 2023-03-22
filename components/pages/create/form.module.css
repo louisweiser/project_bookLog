@@ -30,6 +30,7 @@
   background-color: #03314b;
   border: none;
   outline: none;
+  resize: none;
 }
 
 .input3 {

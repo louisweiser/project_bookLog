@@ -2,12 +2,15 @@ import React, { useState } from "react";
 import { useContext } from "react"; //global state for
 import { MyContext } from "@/contexts/myContext.js"; //global state for
 
+import CoverFromData from "@/components/common/Cover/coverData.js";
+
 import styles from "./form.module.css";
 
 export default function Form() {
   const { input1, setInput1 } = useContext(MyContext); //global state for
   const { input2, setInput2 } = useContext(MyContext); //global state for
   const { input3, setInput3 } = useContext(MyContext); //global state for
+  const { currentbook, setCurrentbook } = useContext(MyContext); //global state for
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -71,7 +74,9 @@ export default function Form() {
           />
         </div>
       </div>
-      <button type="submit">Absenden</button>
+      <button type="submit">
+        <CoverFromData id={currentbook} height={120}></CoverFromData>
+      </button>
     </form>
   );
 }
