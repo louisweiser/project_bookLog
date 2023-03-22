@@ -10,7 +10,7 @@ export default function Form() {
   const { input1, setInput1 } = useContext(MyContext); //global state for
   const { input2, setInput2 } = useContext(MyContext); //global state for
   const { input3, setInput3 } = useContext(MyContext); //global state for
-  const { currentbook, setCurrentbook } = useContext(MyContext); //global state for
+  const { currentbook } = useContext(MyContext); //global state for
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -74,9 +74,11 @@ export default function Form() {
           />
         </div>
       </div>
-      <button type="submit">
-        <CoverFromData id={currentbook} height={120}></CoverFromData>
-      </button>
+      <div className={styles.submitbuttoncontainer}>
+        <button type="submit" className={styles.submitbutton}>
+          <CoverFromData id={currentbook} height={120}></CoverFromData>
+        </button>
+      </div>
     </form>
   );
 }

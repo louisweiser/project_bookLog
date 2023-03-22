@@ -23,7 +23,7 @@
   display: block;
   /*dimension*/
   width: calc(100vw - 10px);
-  height: 200px;
+  height: 250px;
   margin: 0px 5px;
   padding: 7px;
   /*style*/
@@ -45,4 +45,24 @@
   border: none;
   border-top: solid 1px #fffefb;
   outline: none;
+}
+
+.submitbutton {
+  /*layout*/
+  display: flex;
+  justify-content: center;
+  /*dimension*/
+  padding: 5px 5px 2px 5px;
+  /*style*/
+  background-color: hsl(202, 90%, 24%);
+  border-radius: 10px;
+}
+
+.submitbuttoncontainer {
+  /*layout*/
+  display: flex;
+  justify-content: center;
+  /*dimension*/
+  width: 100%;
+  margin-top: 50px;
 }
