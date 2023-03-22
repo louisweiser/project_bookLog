@@ -1,15 +1,22 @@
 import React, { useState } from "react";
+import { useContext } from "react"; //global state for
+import { MyContext } from "@/contexts/myContext.js"; //global state for
 
 import styles from "./form.module.css";
 
 export default function Form() {
-  const [input1, setInput1] = useState("");
-  const [input2, setInput2] = useState("");
+  const { input1, setInput1 } = useContext(MyContext); //global state for
+  const { input2, setInput2 } = useContext(MyContext); //global state for
+  const { input3, setInput3 } = useContext(MyContext); //global state for
 
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("Input 1:", input1);
     console.log("Input 2:", input2);
+    console.log("Input 3:", input3);
+    setInput1("");
+    setInput2("");
+    setInput3("");
   };
 
   const handleInput1Change = (event) => {
@@ -24,12 +31,19 @@ export default function Form() {
     console.log("Aktueller Input 2:", currentInput2);
   };
 
+  const handleInput3Change = (event) => {
+    const currentInput3 = event.target.value;
+    setInput3(currentInput3);
+    console.log("Aktueller Input 3:", currentInput3);
+  };
+
   return (
     <form onSubmit={handleSubmit}>
       <div className={styles.label}>
         <label htmlFor="input1"></label>
         <input
           className={styles.input1}
+          placeholder="Headline"
           type="text"
           id="input1"
           value={input1}
@@ -39,11 +53,23 @@ export default function Form() {
         <label htmlFor="input2"></label>
         <textarea
           className={styles.input2}
+          placeholder="Enter text here"
           type="text"
           id="input2"
           value={input2}
           onChange={handleInput2Change}
         />
+        <div>
+          <label htmlFor="input3"></label>
+          <input
+            className={styles.input3}
+            placeholder="Page"
+            type="number"
+            id="input3"
+            value={input3}
+            onChange={handleInput3Change}
+          />
+        </div>
       </div>
       <button type="submit">Absenden</button>
     </form>

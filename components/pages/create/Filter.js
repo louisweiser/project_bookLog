@@ -15,6 +15,9 @@ export default function FilterComponent() {
       <li className={styles.listIitem}>
         <button className={styles.button}>new Book</button>
       </li>
+      <li className={styles.listIitem}>
+        <button className={styles.button}>clear</button>
+      </li>
     </ul>
   );
 }

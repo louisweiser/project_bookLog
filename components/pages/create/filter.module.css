@@ -4,7 +4,7 @@
   overflow-x: scroll;
   white-space: nowrap;
   /*dimension*/
-  margin-left: 1px;
+  margin: 5px 0 0 1px;
   padding: 5px 0;
   /*style*/
   list-style: none;

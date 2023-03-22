@@ -9,7 +9,7 @@
   display: block;
   /*dimension*/
   width: calc(100vw - 10px);
-  margin: 0px 5px;
+  margin: 10px 5px 0px 5px;
   padding: 7px;
   /*style*/
   background-color: #03314b;
@@ -29,5 +29,19 @@
   /*style*/
   background-color: #03314b;
   border: none;
+  outline: none;
+}
+
+.input3 {
+  /*layout*/
+  display: block;
+  /*dimension*/
+  width: calc(100vw - 10px);
+  margin: 0px 5px 2px 5px;
+  padding: 7px;
+  /*style*/
+  background-color: #03314b;
+  border: none;
+  border-top: solid 1px #fffefb;
   outline: none;
 }
