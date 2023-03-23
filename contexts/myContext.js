@@ -10,6 +10,7 @@ export const MyProvider = ({ children }) => {
   const [screenWidth, setScreenWidth] = useState(0);
 
   const [currentbook, setCurrentbook] = useState(1);
+  const [theme, setTheme] = useState("quote");
   const [myStateCreate, setMyStateCreate] = useState(false);
   const [input1, setInput1] = useState("");
   const [input2, setInput2] = useState("");
@@ -30,6 +31,8 @@ export const MyProvider = ({ children }) => {
         setInput3,
         currentbook,
         setCurrentbook,
+        theme,
+        setTheme,
         myStateCreate,
         setMyStateCreate,
       }}

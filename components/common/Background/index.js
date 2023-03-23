@@ -10,7 +10,7 @@ export default function Background() {
 
   useEffect(() => {
     function handleResize() {
-      setScreenWidth(window.innerWidth);
+      setScreenWidth(Math.floor(window.innerWidth));
     }
 
     window.addEventListener("resize", handleResize); //bei Änderungen der Bildschirmgröße soll die Breit neu ermittelt werden

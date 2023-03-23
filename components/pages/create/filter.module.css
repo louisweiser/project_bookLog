@@ -18,11 +18,23 @@
   /*dimension*/
   padding: 5px 10px;
   margin: 5px;
+  font-size: 13px;
   /*style*/
   border-radius: 20px;
+  background-color: #032330;
 }
-
-.button:hover {
+.buttonactive {
+  /*layout*/
+  border: 1px solid #fffefb;
+  /*dimension*/
+  padding: 5px 10px;
+  margin: 5px;
+  font-size: 13px;
   /*style*/
-  background-color: black;
+  border-radius: 20px;
+  background-color: #075887;
 }
+/* 
+.button:hover {
+  background-color: black;
+} */

@@ -14,6 +14,11 @@ export default function Form() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    if (input1.trim() === "" && input2.trim() === "") {
+      console.log("please enter value");
+      return;
+    }
     console.log("Input 1:", input1);
     console.log("Input 2:", input2);
     console.log("Input 3:", input3);

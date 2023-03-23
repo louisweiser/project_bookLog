@@ -93,6 +93,7 @@ export default function Currentbook() {
                 searchResults.map((item) => (
                   <div key={item.id}>
                     <button
+                      className={styles.container}
                       type="button"
                       onClick={() => {
                         setCurrentbook(item.id);
