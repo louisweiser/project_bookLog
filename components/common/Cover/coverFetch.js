@@ -20,7 +20,7 @@ export default function CoverFromFetch({ imageName }) {
   //Bestimmung der relativen Seitenverhältnisse des Bildes in abhängigkeit der festgelegten Höhe
   const relativFactor = dimensions.width / dimensions.height;
   const relativHeight = height;
-  const relativWidth = relativFactor * relativHeight;
+  const relativWidth = Math.floor(relativFactor * relativHeight);
 
   return (
     <div>

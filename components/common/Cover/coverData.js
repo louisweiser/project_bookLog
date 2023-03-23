@@ -8,7 +8,7 @@ import styles from "./cover.module.css";
 
 export default function CoverFromData({ id, height }) {
   const object = bookMetaData[id - 1];
-  const relativewidth = object.relativefactor * height;
+  const relativewidth = Math.floor(object.relativefactor * height);
 
   return (
     <div style={{ width: relativewidth }}>

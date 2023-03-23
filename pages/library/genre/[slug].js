@@ -58,11 +58,11 @@ export default function GenreLibrary() {
     );
   } */
   // !!!!!!!!!!!!!!! Wieso funktioniert es nicht ???
-  const hei1 = dynHeight(bookMetaData[0], bookMetaData[1]);
-  const hei2 = dynHeight(bookMetaData[2], bookMetaData[3]);
-  const hei3 = dynHeight(bookMetaData[4], bookMetaData[5]);
-  const hei4 = dynHeight(bookMetaData[6], bookMetaData[7]);
-  const hei5 = dynHeight(bookMetaData[8], bookMetaData[9]);
+  const hei1 = Math.floor(dynHeight(bookMetaData[0], bookMetaData[1]));
+  const hei2 = Math.floor(dynHeight(bookMetaData[2], bookMetaData[3]));
+  const hei3 = Math.floor(dynHeight(bookMetaData[4], bookMetaData[5]));
+  const hei4 = Math.floor(dynHeight(bookMetaData[6], bookMetaData[7]));
+  const hei5 = Math.floor(dynHeight(bookMetaData[8], bookMetaData[9]));
 
   return (
     <>
