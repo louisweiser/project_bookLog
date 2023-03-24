@@ -38,10 +38,9 @@ export default function HomeNavigation() {
         <div className={styles.positionrelative}>
           <p className={styles.textleft}>Wishlist</p>
           <Image
-            className={styles.image}
             src="/images/wishlist.jpeg"
             alt="img"
-            width={Math.floor(0.33 * viewportWidth - 10)}
+            width={Math.floor(0.33 * viewportWidth - 0)}
             height={Math.floor(1.5027 * (0.22 * viewportWidth))}
           ></Image>
         </div>
@@ -50,10 +49,9 @@ export default function HomeNavigation() {
         <div className={styles.positionrelative}>
           <p className={styles.textcenter}>Dictonary</p>
           <Image
-            className={styles.image}
             src="/images/dictonary.jpeg"
             alt="img"
-            width={Math.floor(0.33 * viewportWidth - 10)}
+            width={Math.floor(0.33 * viewportWidth - 0)}
             height={Math.floor(1.5027 * (0.22 * viewportWidth))}
           ></Image>
         </div>
@@ -62,10 +60,9 @@ export default function HomeNavigation() {
         <div className={styles.positionrelative}>
           <p className={styles.textright}>Current Book</p>
           <Image
-            className={styles.image}
             src="/images/current.jpg"
             alt="img"
-            width={Math.floor(0.33 * viewportWidth - 10)}
+            width={Math.floor(0.33 * viewportWidth - 0)}
             height={Math.floor(1.5027 * (0.22 * viewportWidth))}
           ></Image>
         </div>

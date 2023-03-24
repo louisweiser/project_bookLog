@@ -1,11 +1,11 @@
-import Image from "next/image";
 import { useState, useEffect } from "react";
 
-import SettingButton from "@/components/common/Link/Setting.js";
+import { BackgroundSVGblue } from "@/public/svgs/background.js";
 
-import styles from "./home.module.css";
+import styles from "./background.module.css";
 
-export default function Header({ title }) {
+//hier wird der Bildschirmhintergrund dynamisch der Bildschirmbreite ermittelt und erzeugt
+export default function Background() {
   const [screenWidth, setScreenWidth] = useState(0);
 
   useEffect(() => {
@@ -23,19 +23,8 @@ export default function Header({ title }) {
   }, []);
 
   return (
-    <header className={styles.header}>
-      <div className={styles.position}>
-        <SettingButton></SettingButton>
-      </div>
-      <h1 className={styles.font}>{title}</h1>
-      <div className={styles.image}>
-        <Image
-          src="/images/crop.jpg"
-          width={screenWidth}
-          height={110}
-          alt="img"
-        ></Image>
-      </div>
-    </header>
+    <div className={styles.body}>
+      <BackgroundSVGblue width={screenWidth} />
+    </div>
   );
 }

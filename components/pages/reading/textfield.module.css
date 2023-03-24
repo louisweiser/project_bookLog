@@ -7,10 +7,10 @@
   /*dimension*/
   width: auto;
   height: 30vh;
-  margin: 10px 10px 0 10px;
-  padding: 20px;
+  margin: 10px 0px 0px 0px;
+  padding: 25px;
   /*style*/
   background-color: #03314b;
-  border-radius: 10px;
-  border: #032330 solid 3px;
+  border-top: #032330 solid 2px;
+  border-bottom: #032330 solid 2px;
 }

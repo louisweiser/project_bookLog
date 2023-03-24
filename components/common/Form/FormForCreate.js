@@ -1,60 +1,15 @@
 import { useState } from "react";
+import React, { useRef } from "react";
 
 import { genreData } from "@/public/data/genre.js";
 
 import styles from "./form.module.css";
 
-const GenreCheckbox = ({ genre, checked, onGenreChange }) => {
-  const handleCheckboxChange = (event) => {
-    onGenreChange(genre, event.target.checked);
-  };
-
-  return (
-    <label>
-      <input
-        type="checkbox"
-        value={genre}
-        checked={checked}
-        onChange={handleCheckboxChange}
-      />
-      {genre}
-    </label>
-  );
-};
-
-const GenreDropdown = ({ genres, onGenreChange }) => {
-  const [selectedGenres, setSelectedGenres] = useState([]);
-
-  const handleGenreChange = (genre, checked) => {
-    let newSelectedGenres;
-    if (checked) {
-      newSelectedGenres = [...selectedGenres, genre];
-    } else {
-      newSelectedGenres = selectedGenres.filter((g) => g !== genre);
-    }
-    setSelectedGenres(newSelectedGenres);
-    onGenreChange(newSelectedGenres);
-  };
-
-  return (
-    <div>
-      {genres.map((genre) => (
-        <GenreCheckbox
-          key={genre}
-          genre={genre}
-          checked={selectedGenres.includes(genre)}
-          onGenreChange={handleGenreChange}
-        />
-      ))}
-    </div>
-  );
-};
-
 export default function FormForCreate() {
   const [title, setTitle] = useState("");
   const [subtitle, setSubtitle] = useState("");
 
-  const [image, setImage] = useState("");
+  const [cover, setCover] = useState(null);
   const [genre, setGenre] = useState([]);
   const [author, setAuthor] = useState("");
 
@@ -63,8 +18,10 @@ export default function FormForCreate() {
     // Hier können Sie die Daten des Eintrags an den Server senden oder lokal speichern
   };
 
+  const fileInputRef = useRef();
+
   return (
-    <form onSubmit={handleSubmit}>
+    <form className={styles.form} onSubmit={handleSubmit}>
       <label htmlFor="title">
         <input
           className={styles.input1}
@@ -98,13 +55,13 @@ export default function FormForCreate() {
           onChange={(e) => setAuthor(e.target.value)}
         />
       </label>
-      <GenreDropdown genres={genreData} onGenreChange={setGenre} />
       <label htmlFor="genre">
         <select
+          className={styles.input1}
           value={genre}
           onChange={(e) => setGenre(e.target.value)}
-          multiple
         >
+          <option value="">Choose Genre</option>
           {genreData.map((genre) => (
             <option key={genre} value={genre}>
               {genre}
@@ -112,19 +69,36 @@ export default function FormForCreate() {
           ))}
         </select>
       </label>
-      {/*       <label>
-        genre:
-        <select value={genre} onChange={(e) => setGenre(e.target.value)}>
-          <option value="">Genre Auswählen</option>
-          <option value="Romance">Romance</option>
-          <option value="Mystery">Mystery</option>
-          <option value="Fantasy">Fantasy</option>
-        </select>
-      </label> */}
+      <label htmlFor="cover">
+        <div className={styles.input1}>
+          <input
+            className={styles.inputfile}
+            type="file"
+            ref={fileInputRef}
+            onChange={(event) => {
+              console.log(event);
+              const file = event.target.files[0];
+              if (setCover(file)) {
+                setCover(file);
+                console.log(cover);
+              }
+            }}
+          />
+          <button
+            type="button"
+            className={styles.fileButton}
+            onClick={() => {
+              fileInputRef.current.click();
+            }}
+          >
+            {cover ? cover.name : "Import Cover"}
+          </button>
+        </div>
+      </label>
 
-      <input type="file" onChange={(e) => setImage(e.target.files[0])} />
-
-      <button type="submit">add book</button>
+      <button className={styles.submitButton} type="submit">
+        add book
+      </button>
     </form>
   );
 }

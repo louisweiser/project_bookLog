@@ -3,10 +3,13 @@
   display: block;
   border-radius: 20px;
 }
+.form {
+}
 
 .input1 {
   /*layout*/
   display: block;
+  text-align: center;
   /*dimension*/
   width: calc(100vw - 10px);
   margin: 10px 5px 0px 5px;
@@ -18,31 +21,39 @@
   outline: none;
 }
 
-.input2 {
-  /*layout*/
-  display: block;
-  /*dimension*/
-  width: calc(100vw - 10px);
-  height: 250px;
-  margin: 0px 5px;
-  padding: 7px;
-  /*style*/
-  background-color: #03314b;
-  border: none;
-  outline: none;
-  resize: none;
+.inputfile {
+  display: none;
 }
 
-.input3 {
+.fileButton {
+  width: 100%;
+}
+
+.submitButton {
   /*layout*/
   display: block;
+  text-align: center;
   /*dimension*/
   width: calc(100vw - 10px);
-  margin: 0px 5px 2px 5px;
+  margin: 30px 5px 0px 5px;
   padding: 7px;
   /*style*/
   background-color: #03314b;
   border: none;
-  border-top: solid 1px #fffefb;
+  border: solid 1px #fffefb;
+  outline: none;
+}
+.submitButton:hover {
+  /*layout*/
+  display: block;
+  text-align: center;
+  /*dimension*/
+  width: calc(100vw - 10px);
+  margin: 30px 5px 0px 5px;
+  padding: 7px;
+  /*style*/
+  background-color: black;
+  border: none;
+  border: solid 1px #fffefb;
   outline: none;
 }
