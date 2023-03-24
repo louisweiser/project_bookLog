@@ -16,7 +16,9 @@
 }
 .button {
   /*layout*/
+  display: flex;
   border: 1px solid #fffefb;
+  gap: 5px;
   /*dimension*/
   padding: 5px 10px;
   margin: 5px;
@@ -27,16 +29,14 @@
 }
 .buttonactive {
   /*layout*/
+  display: flex;
   border: 1px solid #fffefb;
+  gap: 5px;
   /*dimension*/
   padding: 5px 10px;
   margin: 5px;
   font-size: 13px;
   /*style*/
   border-radius: 20px;
-  background-color: #075887;
-}
-.button:hover {
-  /*style*/
   background-color: #075887;
 }

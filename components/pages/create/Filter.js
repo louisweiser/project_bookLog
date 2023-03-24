@@ -1,6 +1,17 @@
 import { useContext } from "react"; //global state for
 import Link from "next/link";
+
 import { MyContext } from "@/contexts/myContext.js"; //global state for
+
+import {
+  Quote,
+  Story,
+  Summary,
+  NewBook,
+  CurrentBook,
+  Clear,
+  LinkTo,
+} from "@/public/icons";
 
 import styles from "./filter.module.css";
 
@@ -30,9 +41,11 @@ export default function FilterComponent() {
             setTheme("quote");
           }}
         >
-          Zitat
+          <Quote />
+          Quote
         </button>
       </li>
+
       <li className={styles.listItem}>
         <button
           className={theme === "story" ? styles.buttonactive : styles.button}
@@ -40,6 +53,7 @@ export default function FilterComponent() {
             setTheme("story");
           }}
         >
+          <Story />
           Story
         </button>
       </li>
@@ -50,22 +64,30 @@ export default function FilterComponent() {
             setTheme("summary");
           }}
         >
+          <Summary />
           Summary
         </button>
       </li>
       <li className={styles.listIitem}>
         <Link href={"/create/newbook"}>
-          <div className={styles.button}>new Book</div>
+          <div className={styles.button}>
+            <NewBook />
+            New Book
+            <LinkTo />
+          </div>
         </Link>
       </li>
       <li className={styles.listIitem}>
         <button className={styles.button} onClick={handleOnClick}>
-          current Book
+          <CurrentBook />
+          Current Book
+          <LinkTo />
         </button>
       </li>
       <li className={styles.listIitem}>
         <button className={styles.button} onClick={handleOnClear}>
-          clear
+          <Clear />
+          Reset
         </button>
       </li>
     </ul>
