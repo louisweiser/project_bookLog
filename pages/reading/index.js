@@ -1,6 +1,6 @@
 import Background from "@/components/common/Background/index.js";
 import SearchPage from "../../components/common/Search";
-import FilterComponent from "@/components/pages/library/Filter";
+import FilterComponent from "@/components/pages/reading/Filter.js";
 import TextField from "@/components/pages/reading/TextField.js";
 import Navigation from "@/components/common/Navigation";
 
@@ -19,8 +19,8 @@ export default function ReadingPage() {
     <>
       <Background></Background>
       <div className={styles.container}>
-        <SearchPage></SearchPage>
         <FilterComponent></FilterComponent>
+        <SearchPage></SearchPage>
         <TextField></TextField>
         {content}
       </div>

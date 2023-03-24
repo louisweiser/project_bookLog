@@ -4,10 +4,12 @@
   overflow-x: scroll;
   white-space: nowrap;
   /*dimension*/
-  margin: 5px 0 0 1px;
-  padding: 5px 0;
+  margin-left: 1px;
+  padding-top: 4px;
+  padding-bottom: 9px;
   /*style*/
   list-style: none;
+  background-color: #03314b;
 }
 .listItem {
   /**/
@@ -34,7 +36,7 @@
   border-radius: 20px;
   background-color: #075887;
 }
-/* 
 .button:hover {
-  background-color: black;
-} */
+  /*style*/
+  background-color: #075887;
+}

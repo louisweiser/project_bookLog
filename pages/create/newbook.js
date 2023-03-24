@@ -1,13 +1,11 @@
-import Header from "@/components/common/Heading";
+import Header from "@/components/common/Heading/Newbook.js";
 import Form4Create from "@/components/common/Form/FormForCreate";
 import Navigation from "@/components/common/Navigation";
-import BackButton from "@/components/common/Button/Back.js";
 
 export default function CreateNewBookPage() {
   return (
     <>
-      <Header title="Create"></Header>
-      <BackButton></BackButton>
+      <Header></Header>
       <Form4Create></Form4Create>
       <Navigation></Navigation>
     </>

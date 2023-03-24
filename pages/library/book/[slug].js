@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 
-import Background from "@/components/common/Background/index.js";
+import Background from "@/components/common/Background/blue.js";
 import Header from "@/components/common/Heading/Detail.js";
 import CoverFromData from "@/components/common/Cover/coverData.js";
 

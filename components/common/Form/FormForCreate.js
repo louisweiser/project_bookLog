@@ -10,7 +10,7 @@ export default function FormForCreate() {
   const [subtitle, setSubtitle] = useState("");
 
   const [cover, setCover] = useState(null);
-  const [genre, setGenre] = useState([]);
+  const [genre, setGenre] = useState("");
   const [author, setAuthor] = useState("");
 
   const handleSubmit = (event) => {

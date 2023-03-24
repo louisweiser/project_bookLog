@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 
-import Background from "@/components/common/Background/index.js";
+import Background from "@/components/common/Background/blue.js";
 import Header from "@/components/common/Heading/Collection.js";
 import CoverFromData from "@/components/common/Cover/coverData.js";
 

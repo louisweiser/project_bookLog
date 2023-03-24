@@ -5,9 +5,11 @@
   white-space: nowrap;
   /*dimension*/
   margin-left: 1px;
+  padding-top: 4px;
   padding-bottom: 9px;
   /*style*/
   list-style: none;
+  background-color: #03314b;
 }
 .listItem {
   /**/

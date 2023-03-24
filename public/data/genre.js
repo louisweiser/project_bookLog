@@ -1,3 +1,3 @@
 //import { genreData } from "@/public/data/genre.js";
 
-export const genreData = ["Action", "Adventure", "Comedy"];
+export const genreData = ["Fantasy", "Non-Fiction", "Philosophy", "Comedy"];

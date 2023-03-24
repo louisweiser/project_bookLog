@@ -9,7 +9,6 @@ export default function CreatePage() {
   return (
     <>
       <Background></Background>
-      <Header title="Create"></Header>
       <FilterComponent></FilterComponent>
       <Form></Form>
       <Currentbook></Currentbook>
