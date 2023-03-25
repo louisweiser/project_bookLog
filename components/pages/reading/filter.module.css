@@ -17,6 +17,8 @@
 .button {
   /*layout*/
   border: 1px solid #fffefb;
+  display: flex;
+  gap: 5px;
   /*dimension*/
   padding: 5px 10px;
   margin: 5px;

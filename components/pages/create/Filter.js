@@ -4,14 +4,14 @@ import Link from "next/link";
 import { MyContext } from "@/contexts/myContext.js"; //global state for
 
 import {
-  Quote,
-  Story,
-  Summary,
-  NewBook,
-  CurrentBook,
-  Clear,
-  LinkTo,
-} from "@/public/icons";
+  QuoteSVG,
+  StorySVG,
+  SummarySVG,
+  AddBookSVG,
+  CurrentBookSVG,
+  ArrowRightSVG,
+  ResetSVG,
+} from "@/public/svgs/filter.js";
 
 import styles from "./filter.module.css";
 
@@ -41,7 +41,7 @@ export default function FilterComponent() {
             setTheme("quote");
           }}
         >
-          <Quote />
+          <QuoteSVG></QuoteSVG>
           Quote
         </button>
       </li>
@@ -53,7 +53,7 @@ export default function FilterComponent() {
             setTheme("story");
           }}
         >
-          <Story />
+          <StorySVG></StorySVG>
           Story
         </button>
       </li>
@@ -64,29 +64,29 @@ export default function FilterComponent() {
             setTheme("summary");
           }}
         >
-          <Summary />
+          <SummarySVG></SummarySVG>
           Summary
         </button>
       </li>
       <li className={styles.listIitem}>
         <Link href={"/create/newbook"}>
           <div className={styles.button}>
-            <NewBook />
+            <AddBookSVG></AddBookSVG>
             New Book
-            <LinkTo />
+            <ArrowRightSVG></ArrowRightSVG>
           </div>
         </Link>
       </li>
       <li className={styles.listIitem}>
         <button className={styles.button} onClick={handleOnClick}>
-          <CurrentBook />
+          <CurrentBookSVG></CurrentBookSVG>
           Current Book
-          <LinkTo />
+          <ArrowRightSVG></ArrowRightSVG>
         </button>
       </li>
       <li className={styles.listIitem}>
         <button className={styles.button} onClick={handleOnClear}>
-          <Clear />
+          <ResetSVG></ResetSVG>
           Reset
         </button>
       </li>

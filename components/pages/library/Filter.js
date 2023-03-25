@@ -1,11 +1,11 @@
 import {
-  Shelf,
-  Collection,
-  ZoomOut,
-  Recent,
-  All,
-  Clear,
-} from "@/public/icons/library.js";
+  ShelfSVG,
+  CollectionSVG,
+  ZoomOutSVG,
+  RecentSVG,
+  FilterSVG,
+  ResetSVG,
+} from "@/public/svgs/filter.js";
 
 import styles from "./filter.module.css";
 
@@ -14,37 +14,37 @@ export default function FilterComponent() {
     <ul className={styles.list}>
       <li className={styles.listItem}>
         <button className={styles.button}>
-          <Shelf />
+          <ShelfSVG></ShelfSVG>
           Shelf
         </button>
       </li>
       <li className={styles.listItem}>
         <button className={styles.button}>
-          <Collection />
+          <CollectionSVG></CollectionSVG>
           Genre
         </button>
       </li>
       <li className={styles.listItem}>
         <button className={styles.button}>
-          <ZoomOut />
+          <ZoomOutSVG></ZoomOutSVG>
           Overview
         </button>
       </li>
       <li className={styles.listIitem}>
         <button className={styles.button}>
-          <Recent />
+          <RecentSVG></RecentSVG>
           Recent
         </button>
       </li>
       <li className={styles.listIitem}>
         <button className={styles.button}>
-          <All />
-          All
+          <FilterSVG></FilterSVG>
+          Filter: All
         </button>
       </li>
       <li className={styles.listIitem}>
         <button className={styles.button}>
-          <Clear />
+          <ResetSVG></ResetSVG>
           Reset
         </button>
       </li>

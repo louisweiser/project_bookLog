@@ -1,7 +1,7 @@
 const Schema = mongoose.Schema;
 import mongoose from "mongoose";
 
-const TestSchema = new mongoose.Schema({
+const BookSchema = new mongoose.Schema({
   book: {
     title: String,
     subtitle: String,
@@ -10,5 +10,5 @@ const TestSchema = new mongoose.Schema({
 });
 
 const Books =
-  mongoose.models.Books || new mongoose.model("Books", TestSchema, "books");
+  mongoose.models.Books || new mongoose.model("Books", BookSchema, "books");
 export default Books;
