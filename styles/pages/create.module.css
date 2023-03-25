@@ -1,0 +1,8 @@
+.background {
+  width: calc(100vw - 10px);
+  height: calc(100vh - 115px);
+  margin: 5px;
+  background-color: #03314b;
+  border-top: #032330 solid 2px;
+  border-bottom: #032330 solid 2px;
+}

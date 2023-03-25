@@ -3,6 +3,8 @@
 
 import { createContext, useState } from "react";
 
+import { bookStories } from "@/public/data/bookentries/bookstory.js";
+
 export const MyContext = createContext();
 
 export const MyProvider = ({ children }) => {
@@ -15,6 +17,8 @@ export const MyProvider = ({ children }) => {
   const [input1, setInput1] = useState("");
   const [input2, setInput2] = useState("");
   const [input3, setInput3] = useState("");
+
+  const [renderReading, setRenderReading] = useState(bookStories);
 
   return (
     <MyContext.Provider
@@ -35,6 +39,8 @@ export const MyProvider = ({ children }) => {
         setTheme,
         myStateCreate,
         setMyStateCreate,
+        renderReading,
+        setRenderReading,
       }}
     >
       {children}

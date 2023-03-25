@@ -37,33 +37,35 @@ export default function SearchPage() {
 
   return (
     <>
-      <div
-        className={
-          initialHide
-            ? styles.searchField_passiv
-            : myState
-            ? styles.searchField_active
-            : styles.searchField_passiv
-          //hier soll das Suchfeld in einer Animation erscheinen wenn das searchform geklickt wird, myState geht dann auf true
-        }
-      >
-        {
-          myState && !initialHide && (
-            <button onClick={handleBackClick}>
-              <BackSVG></BackSVG>
-            </button>
-          ) /*wenn das Suchfeld aktiv ist soll ein Button erscheinen der es wieder schließen lässt*/
-        }
+      <div className={styles.background}>
+        <div
+          className={
+            initialHide
+              ? styles.searchField_passiv
+              : myState
+              ? styles.searchField_active
+              : styles.searchField_passiv
+            //hier soll das Suchfeld in einer Animation erscheinen wenn das searchform geklickt wird, myState geht dann auf true
+          }
+        >
+          {
+            myState && !initialHide && (
+              <button onClick={handleBackClick}>
+                <BackSVG></BackSVG>
+              </button>
+            ) /*wenn das Suchfeld aktiv ist soll ein Button erscheinen der es wieder schließen lässt*/
+          }
 
-        <input
-          className={styles.searchInputField}
-          type="text"
-          value={searchTerm}
-          onChange={handleInputChange}
-          onClick={handleOnClick}
-          placeholder="  search ..."
-          /*das input feld soll immer zu sehen sein um die suchfuntion darzustellen, es ändert den status wenn es geklickt wird*/
-        />
+          <input
+            className={styles.searchInputField}
+            type="text"
+            value={searchTerm}
+            onChange={handleInputChange}
+            onClick={handleOnClick}
+            placeholder="  search ..."
+            /*das input feld soll immer zu sehen sein um die suchfuntion darzustellen, es ändert den status wenn es geklickt wird*/
+          />
+        </div>
       </div>
       <div
         className={

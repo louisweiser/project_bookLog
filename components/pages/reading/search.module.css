@@ -7,14 +7,14 @@
   z-index: 10;
   /*dimension*/
   width: 100vw;
-  height: 62px;
+  height: 52px;
   margin-bottom: 10px;
   padding-left: 5px;
   gap: 10px;
   /*style*/
   border: none;
   background-color: #03314b;
-  border-bottom: 5px solid #032330;
+  border-bottom: 1px solid #fffefb;
 }
 
 .searchField_passiv {
@@ -24,7 +24,7 @@
   /*dimension*/
   width: calc(100vw - 20px);
   height: 42px;
-  margin: 10px;
+
   /*style*/
   border: none;
   border-radius: 5px;
@@ -149,6 +149,4 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative; /*ermöglicht den z-index*/
-  z-index: 5;
 }

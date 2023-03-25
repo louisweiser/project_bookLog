@@ -36,7 +36,6 @@ export default function HomeNavigation() {
     <div className={styles.navigation}>
       <Link href={"./home/wishlist"}>
         <div className={styles.positionrelative}>
-          <p className={styles.textleft}>Wishlist</p>
           <Image
             src="/images/wishlist.jpeg"
             alt="img"
@@ -47,7 +46,6 @@ export default function HomeNavigation() {
       </Link>
       <Link href={"./home/dictonary"}>
         <div className={styles.positionrelative}>
-          <p className={styles.textcenter}>Dictonary</p>
           <Image
             src="/images/dictonary.jpeg"
             alt="img"
@@ -58,7 +56,6 @@ export default function HomeNavigation() {
       </Link>
       <Link href={`./library/book/${bookMetaData[currentbook - 1].slugname}`}>
         <div className={styles.positionrelative}>
-          <p className={styles.textright}>Current Book</p>
           <Image
             src="/images/current.jpg"
             alt="img"

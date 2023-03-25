@@ -10,9 +10,9 @@
 .cover {
   /*layout*/
   display: flex;
-  justify-content: center;
   /*dimension*/
-  margin-top: 30px;
+  margin-top: 20px;
+  margin-left: 10px;
 }
 
 .summary {

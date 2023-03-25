@@ -10,35 +10,16 @@ import { bookStories } from "@/public/data/bookentries/bookstory.js";
 
 import styles from "./slug.module.css";
 
-export default function BookDetail() {
-  const router = useRouter(); //für slug routing
-  const { slug } = router.query; //für slug routing - aktuelle page
+function BookDetail({ result }) {
+  const router = useRouter();
 
-  function searchArray(array, searchTerm) {
-    // durch jedes Objekt im Array iterieren
-    for (let i = 0; i < array.length; i++) {
-      const object = array[i];
-
-      // durch jedes Schlüssel-Wert-Paar im Objekt iterieren
-      for (const key in object) {
-        if (object.hasOwnProperty(key)) {
-          const value = object[key];
-
-          // Überprüfen, ob der Suchbegriff mit dem aktuellen Schlüsselwert übereinstimmt
-          if (value === searchTerm) {
-            return object; // Objekt zurückgeben, wenn der Suchbegriff gefunden wurde
-          }
-        }
-      }
-    }
-
-    // Objekt nicht gefunden, wenn die Funktion hier angekommen ist
-    return null;
+  if (router.isFallback || !result) {
+    return <div>Loading...</div>;
   }
-  const result = searchArray(bookMetaData, slug);
 
-  // !!!!!!!!!!!! bug !! beim öffnen der page über die url ist der router kurz null somit der slug auch somit result auch und das programm crasht beim aufrufen der komponente Bookcover, die ein result prop braucht
-  //Das Problem, tritt warscheinlich auf, weil der Server die Seitendaten nicht korrekt lädt. Um dies zu beheben, könnte man "getServerSideProps" oder "getStaticProps" Funktionen von Next.js verwenden, um die Daten für Ihre Seite zu laden.
+  const summary = bookSummary[result.id - 1];
+  const story1 = bookStories[result.id - 1]?.[0];
+  const story2 = bookStories[result.id - 1]?.[1];
 
   return (
     <>
@@ -48,19 +29,57 @@ export default function BookDetail() {
         <div className={styles.cover}>
           <CoverFromData id={result.id} height={300}></CoverFromData>
         </div>
-        <div className={styles.summary}>
-          <h3>Summary :</h3>
-          <h4>{bookSummary[result.id - 1].summary}</h4>
-        </div>
-        <div className={styles.summary}>
-          <h3>Storie 1: {bookStories[result.id - 1][0].title}</h3>
-          <h4>{bookStories[result.id - 1][0].text}</h4>
-        </div>
-        <div className={styles.summary}>
-          <h3>Storie 2: {bookStories[result.id - 1][1].title}</h3>
-          <h4>{bookStories[result.id - 1][1].text}</h4>
-        </div>
+        {summary && (
+          <div className={styles.summary}>
+            <h3>Summary :</h3>
+            <h4>{summary.summary}</h4>
+          </div>
+        )}
+        {story1 && (
+          <div className={styles.summary}>
+            <h3>Storie 1: {story1.title}</h3>
+            <h4>{story1.text}</h4>
+          </div>
+        )}
+        {story2 && (
+          <div className={styles.summary}>
+            <h3>Storie 2: {story2.title}</h3>
+            <h4>{story2.text}</h4>
+          </div>
+        )}
       </div>
     </>
   );
 }
+
+export async function getServerSideProps(context) {
+  const { slug } = context.params;
+
+  function searchArray(array, searchTerm) {
+    for (let i = 0; i < array.length; i++) {
+      const object = array[i];
+
+      for (const key in object) {
+        if (object.hasOwnProperty(key)) {
+          const value = object[key];
+
+          if (value === searchTerm) {
+            return object;
+          }
+        }
+      }
+    }
+
+    return null;
+  }
+
+  const result = searchArray(bookMetaData, slug);
+
+  return {
+    props: {
+      result,
+    },
+  };
+}
+
+export default BookDetail;
