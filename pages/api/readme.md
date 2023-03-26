@@ -1,0 +1,9 @@
+Es gibt zwei Hauptansätze, um die Bücher in Ihrer App zu filtern: serverseitig (über die API) oder clientseitig (direkt in der JavaScript-Anwendung). Beide haben ihre Vor- und Nachteile:
+
+Serverseitige Suche (über die API): Diese Methode nutzt die von Ihnen erstellte Datenbankabfrage, um die Suche auf dem Server auszuführen. Der Vorteil dieser Methode besteht darin, dass sie bei großen Datenmengen effizienter ist, da nur die gefilterten Ergebnisse an den Client gesendet werden. Der Nachteil ist, dass bei jeder Suchanfrage ein neuer API-Aufruf erforderlich ist, was die Serverlast erhöhen und zu Latenzproblemen führen kann.
+
+Clientseitige Suche (in der JavaScript-Anwendung): Bei dieser Methode werden alle Bücher beim Laden der App abgerufen und in einer Variable gespeichert. Die Suche wird direkt in der Anwendung ausgeführt, indem die Liste der Bücher nach dem Suchbegriff gefiltert wird. Der Vorteil dieser Methode ist, dass sie schnell ist und keine zusätzlichen API-Aufrufe erfordert. Der Nachteil ist, dass sie möglicherweise nicht gut skaliert, wenn die Menge an Büchern sehr groß ist, da alle Bücher auf einmal geladen und im Speicher gehalten werden müssen.
+
+Die beste Vorgehensweise hängt von der Größe Ihrer Datenbank und der erwarteten Nutzung Ihrer App ab. Wenn Sie eine kleinere Datenbank haben oder erwarten, dass Ihre Nutzer häufig suchen, ist die clientseitige Suche möglicherweise besser geeignet. Wenn Sie jedoch eine große Datenbank haben oder erwarten, dass Ihre Nutzer seltener suchen, kann die serverseitige Suche effizienter sein.
+
+Wenn Sie sich für die clientseitige Suche entscheiden, sollten Sie einmal alle Bücher abrufen und sie in einer Variable speichern. Wenn der Benutzer eine Suchanfrage stellt, filtern Sie die Liste der Bücher direkt in Ihrer JavaScript-Anwendung basierend auf dem Suchbegriff.

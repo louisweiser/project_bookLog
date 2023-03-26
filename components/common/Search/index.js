@@ -1,16 +1,18 @@
 import React from "react";
 import { useState } from "react"; // state for searching input
 import { useContext } from "react"; //global state for searching container rendering
+
 import Link from "next/link"; //zum linken der suchergebnisse
 
 import { MyContext } from "@/contexts/myContext.js"; //global state for searching container rendering
+import { DataContext } from "@/contexts/dataContext.js"; //global state for
 
 import searchObjects from "../../../utils/search.js"; //logic-function for searching
 
 import CoverFromData from "@/components/common/Cover/coverData.js";
 
 import { BackSVG } from "@/public/svgs/router"; //svg for back-button in search field
-import { bookData } from "@/public/data/book.js"; //data for result examples
+//import { bookData } from "@/public/data/book.js"; //data for result examples
 import { bookMetaData } from "@/public/data/bookmeta.js"; //zum linken der suchergebnisse
 
 import styles from "./search.module.css";
@@ -19,6 +21,7 @@ export default function SearchPage() {
   const [searchTerm, setSearchTerm] = useState(""); //state for save the searching input
   const [initialHide, setInitialHide] = useState(true); //state for hiding animation when switching to page
   const { myState, setMyState } = useContext(MyContext); //global state to render the searching container
+  const { bookData, setBookData } = useContext(DataContext); //global state for
 
   const handleBackClick = () => {
     setMyState(false);
