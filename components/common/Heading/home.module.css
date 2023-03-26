@@ -2,14 +2,15 @@
   /*layout*/
   display: flex;
   justify-content: center;
-  position: relative;
+  position: fixed;
+  top: 0;
   /*dimension*/
   width: 100%;
   padding: 0 20px;
   /*style*/
   background: none;
   font-size: 30px;
-  border-bottom: 2px solid #03314b;
+  border-bottom: 4px solid #03314b;
 }
 
 .position {

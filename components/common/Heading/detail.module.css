@@ -1,6 +1,7 @@
 .header {
   /*layout*/
-  position: relative;
+  position: fixed;
+  top: 0;
   /*dimension*/
   width: 100%;
   height: 36px;
