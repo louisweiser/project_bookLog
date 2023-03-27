@@ -1,20 +1,26 @@
-//import CoverFromData from "@/components/common/Cover/coverData.js";
-
 import Image from "next/image";
 
-import { bookMetaData } from "@/public/data/bookmeta.js";
+import { useContext } from "react";
+import { DataContext } from "@/contexts/dataContext.js";
 
 import styles from "./cover.module.css";
 
-export default function CoverFromData({ id, height }) {
-  const object = bookMetaData[id - 1];
-  const relativewidth = Math.floor(object.relativefactor * height);
+export default function CoverFromData({ slug, height }) {
+  const { bookData } = useContext(DataContext);
+
+  const FilterData = (array, key, value) => {
+    return array.filter((item) => item[key] === value);
+  };
+
+  const image = FilterData(bookData, "slug", slug);
+
+  const relativewidth = Math.floor(image[0].relativefactor * height);
 
   return (
     <div style={{ width: relativewidth }}>
       <Image
         className={styles.image}
-        src={`/images/cover/${object.name}`}
+        src={`/images/cover/${image[0].cover}`}
         width={relativewidth}
         height={height}
         alt="Image"

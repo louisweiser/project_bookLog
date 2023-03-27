@@ -1,28 +1,25 @@
 import dbConnect from "@/db/connect";
-import getBooks from "@/db/models/books.js";
 import getBooksMeta from "@/db/models/booksmeta.js";
 
-export default async function handler(req, res) {
-  if (req.method === "GET") {
-    try {
-      const books = await getBooks();
+export default async function handler(request, response) {
+  if (request.method !== "GET") {
+    return response.status(405).json({ error: "Method not allowed. Use GET." });
+  }
 
-      // Bücher mit Metadaten anreichern
-      const booksWithMetadata = await Promise.all(
-        books.map(async (book) => {
-          const metadata = await getBooksMeta(book._id);
-          return {
-            ...book,
-            metadata, // Fügen Sie die Metadaten hinzu
-          };
-        })
-      );
+  try {
+    await dbConnect();
+  } catch (error) {
+    return response
+      .status(500)
+      .json({ error: "Error connecting to the database." });
+  }
 
-      res.status(200).json(booksWithMetadata);
-    } catch (error) {
-      res.status(500).json({ message: "Server error", error });
-    }
-  } else {
-    res.status(405).json({ message: "Method not allowed" });
+  try {
+    const books = await getBooksMeta.find();
+    return response.status(200).json(books);
+  } catch (error) {
+    return response
+      .status(500)
+      .json({ error: "Error fetching books from the database." });
   }
 }

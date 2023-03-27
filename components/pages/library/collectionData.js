@@ -1,35 +1,57 @@
+import { useState, useEffect, useContext } from "react";
 import Link from "next/link";
 
 import CoverFromData from "@/components/common/Cover/coverData.js";
 
 import { genreData } from "@/public/data/genre.js";
-import { bookMetaData } from "@/public/data/bookmeta.js";
 
-import { ArrowRightSVG } from "@/public/svgs/router.js";
+import { DataContext } from "@/contexts/dataContext.js";
+
 import styles from "./collection.module.css";
 
 export default function CollectionFromData() {
-  let content = [];
+  const { bookData } = useContext(DataContext); //Metadaten
+  const [isLoading, setIsLoading] = useState(true); //Fehlerbehandlung
 
-  //hier wird die Büchersammlung in Coverfrom erzeugt. Die Dimensionen des Bildes werden dynamisch aus den vorliegenden Daten erzeugt
-  for (let i = 1; i <= 10; i++) {
-    content.push(
-      <li key={i} className={styles.bookitem}>
-        <Link href={`/library/book/${bookMetaData[i - 1].slugname}`}>
-          <CoverFromData id={i} height={220}></CoverFromData>
-        </Link>
-      </li>
-    );
+  const FilterData = (array, key, value) => {
+    return array.filter((item) => item[key] === value);
+  };
+
+  useEffect(() => {
+    if (bookData && bookData.length > 0) {
+      setIsLoading(false);
+    }
+  }, [bookData]); //Fehlerbehandlung: sicherstellen dass die daten vorhanden sind beim laden durch die url
+
+  function render(filter) {
+    const filteredArray = FilterData(bookData, "genre", filter);
+    let content = [];
+    for (let i = 0; i < filteredArray.length; i++) {
+      content.push(
+        <li key={i} className={styles.bookitem}>
+          <Link href={`/library/book/${filteredArray[i].slug}`}>
+            <CoverFromData
+              slug={filteredArray[i].slug}
+              height={220}
+            ></CoverFromData>
+          </Link>
+        </li>
+      );
+    }
+
+    return content;
   }
+
   return genreData.map((item, index) => (
     <div key={index}>
       <Link href={`/library/genre/${item}`}>
         <div className={styles.category}>
           <h3 className={styles.categorytext}> {item}</h3>
-          {/* <ArrowRightSVG></ArrowRightSVG> */}
         </div>
       </Link>
-      <ul className={styles.collection}>{content}</ul>
+      <ul className={styles.collection}>
+        {isLoading ? <div></div> : render(item)}
+      </ul>
     </div>
   ));
 }

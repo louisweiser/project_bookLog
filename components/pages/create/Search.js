@@ -3,13 +3,12 @@ import { useState } from "react"; // state for searching input
 import { useContext } from "react"; //global state for
 import { MyContext } from "@/contexts/myContext.js"; //global state for
 
-import searchObjects from "../../../utils/search.js"; //logic-function for searching
-
 import CoverFromData from "@/components/common/Cover/coverData.js";
 
 import { BackSVG } from "@/public/svgs/router"; //svg for back-button in search field
 import { bookData } from "@/public/data/book.js"; //data for result examples
-import { bookMetaData } from "@/public/data/bookmeta.js"; //zum linken der suchergebnisse
+
+import searchBooks from "@/components/common/Search";
 
 import styles from "./search.module.css";
 
@@ -44,7 +43,7 @@ export default function Currentbook() {
     setSearchTerm(event.target.value);
   }; // save input if searching
 
-  const searchResults = searchObjects(bookData, searchTerm); // logic results by searching in seaching field
+  const searchResults = searchBooks(bookData, searchTerm); // logic results by searching in seaching field
 
   return (
     <>

@@ -1,4 +1,4 @@
-import Background from "@/components/common/Background/index.js";
+import Background from "@/components/common/Background/beige.js";
 import FilterComponent from "@/components/pages/create/Filter.js";
 import Form from "@/components/pages/create/Form.js";
 import Currentbook from "@/components/pages/create/Search.js";

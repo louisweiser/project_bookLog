@@ -1,5 +1,8 @@
 import { useRouter } from "next/router";
 
+import { useContext } from "react";
+import { DataContext } from "@/contexts/dataContext.js";
+
 import Background from "@/components/common/Background/blue.js";
 import Header from "@/components/common/Heading/Detail.js";
 import CoverFromData from "@/components/common/Cover/coverData.js";
@@ -10,16 +13,16 @@ import { bookStories } from "@/public/data/bookentries/bookstory.js";
 
 import styles from "./slug.module.css";
 
-function BookDetail({ result }) {
+function BookDetail() {
   const router = useRouter();
 
-  if (router.isFallback || !result) {
-    return <div>Loading...</div>;
-  }
+  const { bookData } = useContext(DataContext);
 
-  const summary = bookSummary[result.id - 1];
-  const story1 = bookStories[result.id - 1]?.[0];
-  const story2 = bookStories[result.id - 1]?.[1];
+  const index = bookData.findIndex((book) => book.slug === router.query.slug);
+
+  //const summary = bookSummary[result.id - 1];
+  //const story1 = bookStories[result.id - 1]?.[0];
+  //const story2 = bookStories[result.id - 1]?.[1];
 
   return (
     <>
@@ -27,9 +30,12 @@ function BookDetail({ result }) {
       <Header></Header>
       <div className={styles.body}>
         <div className={styles.cover}>
-          <CoverFromData id={result.id} height={300}></CoverFromData>
+          <CoverFromData
+            slug={bookData[index].slug}
+            height={300}
+          ></CoverFromData>
         </div>
-        {summary && (
+        {/* {summary && (
           <div className={styles.summary}>
             <h3>Summary :</h3>
             <h4>{summary.summary}</h4>
@@ -46,7 +52,7 @@ function BookDetail({ result }) {
             <h3>Storie 2: {story2.title}</h3>
             <h4>{story2.text}</h4>
           </div>
-        )}
+        )} */}
       </div>
     </>
   );

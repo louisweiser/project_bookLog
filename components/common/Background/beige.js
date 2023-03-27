@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import { BackgroundSVG, BackgroundSVGblue } from "@/public/svgs/background.js";
+import { BackgroundSVG } from "@/public/svgs/background.js";
 
 import styles from "./background.module.css";
 

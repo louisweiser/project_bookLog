@@ -1,0 +1,1 @@
+Um Buchcover-Bilder in Ihrer Anwendung zu speichern und darauf zuzugreifen, können Sie diese Bilder in einem Cloud-Speicherdienst wie AWS S3, Google Cloud Storage oder Cloudinary speichern. Dies hat den Vorteil, dass Ihre Bilder separat von Ihrer Datenbank gespeichert werden und Sie von den Leistungsvorteilen der Cloud-Speicherdienste profitieren können.

@@ -1,4 +1,4 @@
-import Background from "@/components/common/Background/index.js";
+import Background from "@/components/common/Background/beige.js";
 import SearchPage from "@/components/pages/reading/Search.js";
 import FilterComponent from "@/components/pages/reading/Filter.js";
 import TextField from "@/components/pages/reading/TextField.js";

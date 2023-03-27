@@ -5,10 +5,13 @@ const BooksSchema = new mongoose.Schema({
   id: Number,
   title: String,
   subtitle: String,
-  cover: String,
   author: String,
-  genre: [String],
-  tag: String,
+  genre: String,
+  tag: [String],
+  cover: String,
+  coverpath: String,
+  slug: String,
+  relativefactor: Number,
 });
 
 //In diesen Zeilen wird ein Mongoose-Modell namens Books erstellt oder abgerufen. Das Modell basiert auf dem zuvor definierten BookSchema. Wenn das Modell bereits existiert (z. B. wenn der Code mehrmals ausgeführt wird), wird die vorhandene Instanz aus mongoose.models verwendet, um mehrfache Modelldefinitionen zu vermeiden. Andernfalls wird ein neues Modell erstellt. Der dritte Parameter, "books", gibt den Namen der zugrunde liegenden MongoDB-Sammlung an.

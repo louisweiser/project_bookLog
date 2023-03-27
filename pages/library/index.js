@@ -1,6 +1,6 @@
 //components
 import Background from "@/components/common/Background/blue.js";
-import SearchPage from "../../components/common/Search";
+import SearchPage from "@/components/pages/library/Search.js";
 import FilterComponent from "@/components/pages/library/Filter";
 import CollectionFromFetch from "@/components/pages/library/CollectionFetch.js";
 import CollectionFromData from "@/components/pages/library/CollectionData.js";
