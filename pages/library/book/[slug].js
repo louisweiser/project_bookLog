@@ -1,12 +1,27 @@
 import { useRouter } from "next/router";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
+import { DataContext } from "@/contexts/dataContext.js";
 import Background from "@/components/common/Background/blue.js";
 import Header from "@/components/common/Heading/Detail.js";
 import CoverFromData from "@/components/common/Cover/coverData.js";
-import { DataContext } from "@/contexts/dataContext.js";
 import styles from "./slug.module.css";
 
-function BookDetail({ book }) {
+function BookDetail({ serverBook }) {
+  const router = useRouter();
+  const { bookData } = useContext(DataContext);
+  const [book, setBook] = useState(serverBook);
+
+  useEffect(() => {
+    if (!serverBook) {
+      const index = bookData.findIndex((b) => b.slug === router.query.slug);
+      setBook(bookData[index]);
+    }
+  }, [bookData, router.query.slug, serverBook]);
+
+  if (!book) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <>
       <Background></Background>
@@ -24,10 +39,13 @@ export default BookDetail;
 
 // getServerSideProps
 export async function getServerSideProps(context) {
-  const slug = context.params.slug;
+  if (!context.req) {
+    // Wenn es eine clientseitige Anfrage ist, wird kein Buch übergeben
+    return { props: { serverBook: null } };
+  }
 
-  // Lade Buchdaten über die API
-  const response = await fetch("http://localhost:3000/api/books");
+  const slug = context.params.slug;
+  const response = await fetch(`http://localhost:3000/api/books`);
   const bookData = await response.json();
 
   const index = bookData.findIndex((book) => book.slug === slug);
@@ -40,7 +58,7 @@ export async function getServerSideProps(context) {
 
   return {
     props: {
-      book: bookData[index],
+      serverBook: bookData[index],
     },
   };
 }
