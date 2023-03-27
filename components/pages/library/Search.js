@@ -86,7 +86,7 @@ export default function SearchPage() {
                     <CoverFromData
                       slug={item.slug}
                       height={100}
-                    ></CoverFromData>{" "}
+                    ></CoverFromData>
                     <div className={styles.column}>
                       <h4>
                         {item.title} {item.subtitle}

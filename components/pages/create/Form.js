@@ -81,7 +81,7 @@ export default function Form() {
       </div>
       <div className={styles.submitbuttoncontainer}>
         <button type="submit" className={styles.submitbutton}>
-          <CoverFromData id={currentbook} height={120}></CoverFromData>
+          <CoverFromData slug={currentbook} height={120}></CoverFromData>
         </button>
       </div>
     </form>

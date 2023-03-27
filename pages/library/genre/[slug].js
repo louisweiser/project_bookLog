@@ -7,13 +7,16 @@ import Background from "@/components/common/Background/blue.js";
 import Header from "@/components/common/Heading/Collection.js";
 import CoverFromData from "@/components/common/Cover/coverData.js";
 
-import { bookMetaData } from "@/public/data/bookmeta.js";
+import { useContext } from "react";
+import { DataContext } from "@/contexts/dataContext.js";
 
 import styles from "./slug.module.css";
 
 export default function GenreLibrary() {
   const router = useRouter(); //für slug routing
   const { slug } = router.query; //für slug routing - aktuelle page
+
+  const { bookData } = useContext(DataContext);
 
   const [screenWidth, setScreenWidth] = useState(0);
 
@@ -58,11 +61,11 @@ export default function GenreLibrary() {
     );
   } */
   // !!!!!!!!!!!!!!! Wieso funktioniert es nicht ???
-  const hei1 = Math.floor(dynHeight(bookMetaData[0], bookMetaData[1]));
-  const hei2 = Math.floor(dynHeight(bookMetaData[2], bookMetaData[3]));
-  const hei3 = Math.floor(dynHeight(bookMetaData[4], bookMetaData[5]));
-  const hei4 = Math.floor(dynHeight(bookMetaData[6], bookMetaData[7]));
-  const hei5 = Math.floor(dynHeight(bookMetaData[8], bookMetaData[9]));
+  const hei1 = Math.floor(dynHeight(bookData[0], bookData[1]));
+  const hei2 = Math.floor(dynHeight(bookData[2], bookData[3]));
+  const hei3 = Math.floor(dynHeight(bookData[4], bookData[5]));
+  const hei4 = Math.floor(dynHeight(bookData[6], bookData[7]));
+  const hei5 = Math.floor(dynHeight(bookData[8], bookData[9]));
 
   return (
     <>
@@ -70,61 +73,91 @@ export default function GenreLibrary() {
       <Header title={slug}></Header>
       <ul className={styles.div}>
         <div className={styles.padding}>
-          <Link href={`/library/book/${bookMetaData[0].slugname}`}>
-            <CoverFromData id={1} height={hei1}></CoverFromData>
+          <Link href={`/library`}>
+            <CoverFromData
+              slug={bookData[0].slug}
+              height={hei1}
+            ></CoverFromData>
           </Link>
         </div>
         <div className={styles.padding}>
-          <Link href={`/library/book/${bookMetaData[1].slugname}`}>
-            <CoverFromData id={2} height={hei1}></CoverFromData>
-          </Link>
-        </div>
-      </ul>
-      <ul className={styles.div}>
-        <div className={styles.padding}>
-          <Link href={`/library/book/${bookMetaData[2].slugname}`}>
-            <CoverFromData id={3} height={hei2}></CoverFromData>
-          </Link>
-        </div>
-        <div className={styles.padding}>
-          <Link href={`/library/book/${bookMetaData[3].slugname}`}>
-            <CoverFromData id={4} height={hei2}></CoverFromData>
+          <Link href={`/library`}>
+            <CoverFromData
+              slug={bookData[1].slug}
+              height={hei1}
+            ></CoverFromData>
           </Link>
         </div>
       </ul>
       <ul className={styles.div}>
         <div className={styles.padding}>
-          <Link href={`/library/book/${bookMetaData[4].slugname}`}>
-            <CoverFromData id={5} height={hei3}></CoverFromData>
+          <Link href={`/library`}>
+            <CoverFromData
+              slug={bookData[2].slug}
+              height={hei2}
+            ></CoverFromData>
           </Link>
         </div>
         <div className={styles.padding}>
-          <Link href={`/library/book/${bookMetaData[5].slugname}`}>
-            <CoverFromData id={6} height={hei3}></CoverFromData>
-          </Link>
-        </div>
-      </ul>
-      <ul className={styles.div}>
-        <div className={styles.padding}>
-          <Link href={`/library/book/${bookMetaData[6].slugname}`}>
-            <CoverFromData id={7} height={hei4}></CoverFromData>
-          </Link>
-        </div>
-        <div className={styles.padding}>
-          <Link href={`/library/book/${bookMetaData[7].slugname}`}>
-            <CoverFromData id={8} height={hei4}></CoverFromData>
+          <Link href={`/library`}>
+            <CoverFromData
+              slug={bookData[3].slug}
+              height={hei2}
+            ></CoverFromData>
           </Link>
         </div>
       </ul>
       <ul className={styles.div}>
         <div className={styles.padding}>
-          <Link href={`/library/book/${bookMetaData[8].slugname}`}>
-            <CoverFromData id={9} height={hei5}></CoverFromData>
+          <Link href={`/library`}>
+            <CoverFromData
+              slug={bookData[4].slug}
+              height={hei3}
+            ></CoverFromData>
           </Link>
         </div>
         <div className={styles.padding}>
-          <Link href={`/library/book/${bookMetaData[9].slugname}`}>
-            <CoverFromData id={10} height={hei5}></CoverFromData>
+          <Link href={`/library`}>
+            <CoverFromData
+              slug={bookData[5].slug}
+              height={hei3}
+            ></CoverFromData>
+          </Link>
+        </div>
+      </ul>
+      <ul className={styles.div}>
+        <div className={styles.padding}>
+          <Link href={`/library`}>
+            <CoverFromData
+              slug={bookData[6].slug}
+              height={hei4}
+            ></CoverFromData>
+          </Link>
+        </div>
+        <div className={styles.padding}>
+          <Link href={`/library`}>
+            <CoverFromData
+              slug={bookData[7].slug}
+              height={hei4}
+            ></CoverFromData>
+          </Link>
+        </div>
+      </ul>
+      <ul className={styles.div}>
+        <div className={styles.padding}>
+          <Link href={`/library`}>
+            <CoverFromData
+              slug={bookData[8].slug}
+              height={hei5}
+            ></CoverFromData>
+          </Link>
+        </div>
+        <div className={styles.padding}>
+          <Link href={`/library`}>
+            <CoverFromData
+              slug={bookData[9].slug}
+              height={hei5}
+            ></CoverFromData>
           </Link>
         </div>
       </ul>

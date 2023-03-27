@@ -6,17 +6,21 @@ import { MyContext } from "@/contexts/myContext.js"; //global state for
 import CoverFromData from "@/components/common/Cover/coverData.js";
 
 import { BackSVG } from "@/public/svgs/router"; //svg for back-button in search field
-import { bookData } from "@/public/data/book.js"; //data for result examples
+import { DataContext } from "@/contexts/dataContext.js"; //global state for
 
 import searchBooks from "@/components/common/Search";
 
 import styles from "./search.module.css";
+import { bookData } from "@/public/data/book";
 
 export default function Currentbook() {
   const [searchTerm, setSearchTerm] = useState(""); //state for save the searching input
   const [initialHide, setInitialHide] = useState(true); //state for hiding animation when switching to page
-  const { setCurrentbook } = useContext(MyContext); //global state for
+  const { currentbook, setCurrentbook } = useContext(MyContext); //global state for
   const { myStateCreate, setMyStateCreate } = useContext(MyContext); //global state for
+  const { bookData } = useContext(DataContext);
+
+  const searchResults = searchBooks(searchTerm, bookData); // logic results by searching in seaching field
 
   useEffect(() => {
     if (myStateCreate) {
@@ -42,8 +46,6 @@ export default function Currentbook() {
   const handleInputChange = (event) => {
     setSearchTerm(event.target.value);
   }; // save input if searching
-
-  const searchResults = searchBooks(bookData, searchTerm); // logic results by searching in seaching field
 
   return (
     <>
@@ -90,19 +92,19 @@ export default function Currentbook() {
             <ul className={styles.list}>
               {searchResults.length !== 0 ? (
                 searchResults.map((item) => (
-                  <div key={item.id}>
+                  <div key={item.slug}>
                     <button
                       className={styles.container}
                       type="button"
                       onClick={() => {
-                        setCurrentbook(item.id);
+                        setCurrentbook(item.slug);
                         setMyStateCreate(false);
                         setSearchTerm("");
                       }}
                     >
                       <li className={styles.row}>
                         <CoverFromData
-                          id={item.id}
+                          slug={item.slug}
                           height={100}
                         ></CoverFromData>
                         <div className={styles.column}>

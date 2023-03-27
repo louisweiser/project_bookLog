@@ -4,8 +4,6 @@ import Image from "next/image";
 import { useContext } from "react"; //global state for
 import { MyContext } from "@/contexts/myContext.js"; //global state for
 
-import { bookMetaData } from "@/public/data/bookmeta.js";
-
 import styles from "./homenavigation.module.css";
 
 export default function HomeNavigation() {
@@ -54,7 +52,7 @@ export default function HomeNavigation() {
           ></Image>
         </div>
       </Link>
-      <Link href={`./library/book/${bookMetaData[currentbook - 1].slugname}`}>
+      <Link href={`./library/book/${currentbook.slug}`}>
         <div className={styles.positionrelative}>
           <Image
             src="/images/current.jpg"
