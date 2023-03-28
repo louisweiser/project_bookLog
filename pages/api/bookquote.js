@@ -20,6 +20,6 @@ export default async function handler(request, response) {
   } catch (error) {
     return response
       .status(500)
-      .json({ error: "Error fetching books from the database." });
+      .json({ error: "Error fetching quotes from the database." });
   }
 }

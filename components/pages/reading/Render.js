@@ -5,8 +5,9 @@ import { DataContext } from "@/contexts/dataContext.js";
 import styles from "./render.module.css";
 
 export default function Render() {
-  const { storyData } = useContext(DataContext);
+  const { storyData, quoteData } = useContext(DataContext);
 
+  console.log("sories", storyData);
   const renderStories = () => {
     const allStories = [];
 
@@ -19,7 +20,7 @@ export default function Render() {
           <div key={`${storyItem._id}-${key}`} className={styles.container}>
             <h3>{story.title}</h3>
             <p>{story.text}</p>
-            <p>{story.page}</p>
+            {story.page && <p>{story.page}</p>}
           </div>
         );
       }
@@ -29,9 +30,9 @@ export default function Render() {
 
   const renderQuotes = () => {
     const allQuotes = [];
-
-    storyData.forEach((quoteItem) => {
-      //rendern aller stories
+    console.log(quoteData);
+    quoteData.forEach((quoteItem) => {
+      //rendern aller quotes
       for (const key in quoteItem) {
         if (key === "_id" || key === "bookID") continue; //_id und bookID sollen übersprungen und nicht gerendert werden
         const quote = quoteItem[key];
