@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from "react"; // state for searching input
 import { useContext } from "react"; //global state for searching container rendering
 
 import { MyContext } from "@/contexts/myContext.js"; //global state for searching container rendering
@@ -7,24 +6,10 @@ import { MyContext } from "@/contexts/myContext.js"; //global state for searchin
 import styles from "./search.module.css";
 
 export default function SearchPage() {
-  const { renderReading, setRenderReading } = useContext(MyContext);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [originalArray] = useState([...renderReading]);
+  const { searchTerm, setSearchTerm } = useContext(MyContext);
 
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
-    if (e.target.value) {
-      const searchResults = originalArray.filter((obj) =>
-        Object.values(obj).some(
-          (val) =>
-            typeof val === "string" &&
-            val.toLowerCase().includes(e.target.value.toLowerCase())
-        )
-      );
-      setRenderReading(searchResults);
-    } else {
-      setRenderReading(originalArray);
-    }
   };
   return (
     <>

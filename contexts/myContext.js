@@ -18,7 +18,7 @@ export const MyProvider = ({ children }) => {
   const [input2, setInput2] = useState("");
   const [input3, setInput3] = useState("");
 
-  const [renderReading, setRenderReading] = useState(bookStories);
+  const [searchTerm, setSearchTerm] = useState("");
 
   return (
     <MyContext.Provider
@@ -39,8 +39,8 @@ export const MyProvider = ({ children }) => {
         setTheme,
         myStateCreate,
         setMyStateCreate,
-        renderReading,
-        setRenderReading,
+        searchTerm,
+        setSearchTerm,
       }}
     >
       {children}

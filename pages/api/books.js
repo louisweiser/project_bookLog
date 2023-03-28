@@ -15,8 +15,8 @@ export default async function handler(request, response) {
   }
 
   try {
-    const books = await getBooks.find();
-    return response.status(200).json(books);
+    const stories = await getBooks.find();
+    return response.status(200).json(stories);
   } catch (error) {
     return response
       .status(500)

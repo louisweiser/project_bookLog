@@ -12,6 +12,7 @@ export const useBooks = () => {
 
 export const DataProvider = ({ children }) => {
   const [bookData, setBookData] = useState([]);
+  const [storyData, setStoryData] = useState([]);
 
   useEffect(() => {
     async function fetchBookData() {
@@ -19,11 +20,20 @@ export const DataProvider = ({ children }) => {
       const data = await response.json();
       setBookData(data);
     }
+    async function fetchStoryData() {
+      const response = await fetch("/api/bookstory");
+      const data = await response.json();
+      setStoryData(data);
+    }
+
     fetchBookData();
+    fetchStoryData();
   }, []);
 
   return (
-    <DataContext.Provider value={{ bookData, setBookData }}>
+    <DataContext.Provider
+      value={{ bookData, setBookData, storyData, setStoryData }}
+    >
       {children}
     </DataContext.Provider>
   );
@@ -33,6 +43,6 @@ export const DataProvider = ({ children }) => {
 import { useContext } from "react";
 import { DataContext } from "@/contexts/dataContext.js";
 
-const { bookData } = useContext(DataContext);
+const { storyData } = useContext(DataContext);
 
 */

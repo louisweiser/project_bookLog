@@ -1,21 +1,33 @@
 import { useContext } from "react"; //global state for searching container rendering
 
-import { MyContext } from "@/contexts/myContext";
+import { DataContext } from "@/contexts/dataContext.js";
 
 import styles from "./render.module.css";
 
 export default function Render() {
-  const { renderReading } = useContext(MyContext);
+  const { storyData } = useContext(DataContext);
+  console.log(storyData);
 
-  return (
-    <div>
-      {renderReading.map((item, index) => (
-        <div key={index} className={styles.container}>
-          <h3>{item.title}</h3>
-          <p>{item.text}</p>
-          <p>{item.page}</p>
-        </div>
-      ))}
-    </div>
-  );
+  const renderStories = () => {
+    const allStories = [];
+
+    storyData.forEach((storyItem) => {
+      //rendern aller stories
+      for (const key in storyItem) {
+        if (key === "_id" || key === "bookID") continue; //_id und bookID sollen übersprungen und nicht gerendert werden
+        const story = storyItem[key];
+        allStories.push(
+          <div key={`${storyItem._id}-${key}`} className={styles.container}>
+            <h3>{story.title}</h3>
+            <p>{story.text}</p>
+            <p>{story.page}</p>
+          </div>
+        );
+      }
+    });
+
+    return allStories;
+  };
+
+  return <div>{renderStories()}</div>;
 }
