@@ -53,9 +53,7 @@ export async function getServerSideProps(context) {
 
   // Bei einer serverseitigen Anfrage holen wir das Buch anhand des Slugs aus den Buchdaten
   const slug = context.params.slug;
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/books`
-  );
+  const response = await fetch(`http://localhost:3000//api/books`);
   const bookData = await response.json();
   const index = bookData.findIndex((book) => book.slug === slug);
 

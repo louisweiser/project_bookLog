@@ -8,7 +8,7 @@ import styles from "./homenavigation.module.css";
 
 export default function HomeNavigation() {
   const [viewportWidth, setViewportWidth] = useState(0);
-  const { currentbook, setCurrentbook } = useContext(MyContext); //global state for
+  const { currentbook } = useContext(MyContext); //global state for
 
   //useEffect soll die Bildschirmbreite ermitteln und in den state viewportWidth speichern und aktuellisieren
   useEffect(() => {
@@ -52,7 +52,7 @@ export default function HomeNavigation() {
           ></Image>
         </div>
       </Link>
-      <Link href={`./library/book/${currentbook.slug}`}>
+      <Link href={`./library/book/${currentbook}`}>
         <div className={styles.positionrelative}>
           <Image
             src="/images/current.jpg"
