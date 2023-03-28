@@ -7,7 +7,6 @@ import styles from "./render.module.css";
 export default function Render() {
   const { storyData, quoteData } = useContext(DataContext);
 
-  console.log("sories", storyData);
   const renderStories = () => {
     const allStories = [];
 
@@ -30,7 +29,6 @@ export default function Render() {
 
   const renderQuotes = () => {
     const allQuotes = [];
-    console.log(quoteData);
     quoteData.forEach((quoteItem) => {
       //rendern aller quotes
       for (const key in quoteItem) {
