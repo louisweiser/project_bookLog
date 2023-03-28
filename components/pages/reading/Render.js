@@ -6,7 +6,6 @@ import styles from "./render.module.css";
 
 export default function Render() {
   const { storyData } = useContext(DataContext);
-  console.log(storyData);
 
   const renderStories = () => {
     const allStories = [];
@@ -25,9 +24,32 @@ export default function Render() {
         );
       }
     });
-
     return allStories;
   };
 
-  return <div>{renderStories()}</div>;
+  const renderQuotes = () => {
+    const allQuotes = [];
+
+    storyData.forEach((quoteItem) => {
+      //rendern aller stories
+      for (const key in quoteItem) {
+        if (key === "_id" || key === "bookID") continue; //_id und bookID sollen übersprungen und nicht gerendert werden
+        const quote = quoteItem[key];
+        allQuotes.push(
+          <div key={`${quoteItem._id}-${key}`} className={styles.container}>
+            <p>{quote.text}</p>
+            {quote.page && <p>{quote.page}</p>}
+          </div>
+        );
+      }
+    });
+    return allQuotes;
+  };
+
+  return (
+    <>
+      <div>{renderStories()}</div>
+      <div>{renderQuotes()}</div>
+    </>
+  );
 }

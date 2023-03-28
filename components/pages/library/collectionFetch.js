@@ -2,10 +2,6 @@ import Link from "next/link";
 
 import CoverFromFetch from "@/components/common/Cover/coverFetch.js";
 
-import { bookMetaData } from "@/public/data/bookmeta.js";
-import { genreData } from "@/public/data/genre.js";
-
-import { ArrowRightSVG } from "@/public/svgs/router.js";
 import styles from "./collection.module.css";
 
 export default function CollectionFromFetch() {

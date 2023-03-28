@@ -11,12 +11,11 @@ import { DataContext } from "@/contexts/dataContext.js"; //global state for
 import searchBooks from "@/components/common/Search";
 
 import styles from "./search.module.css";
-import { bookData } from "@/public/data/book";
 
 export default function Currentbook() {
   const [searchTerm, setSearchTerm] = useState(""); //state for save the searching input
   const [initialHide, setInitialHide] = useState(true); //state for hiding animation when switching to page
-  const { currentbook, setCurrentbook } = useContext(MyContext); //global state for
+  const { setCurrentbook } = useContext(MyContext); //global state for
   const { myStateCreate, setMyStateCreate } = useContext(MyContext); //global state for
   const { bookData } = useContext(DataContext);
 

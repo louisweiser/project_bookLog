@@ -3,8 +3,6 @@
 
 import { createContext, useState } from "react";
 
-import { bookStories } from "@/public/data/bookentries/bookstory.js";
-
 export const MyContext = createContext();
 
 export const MyProvider = ({ children }) => {
