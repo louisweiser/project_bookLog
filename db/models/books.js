@@ -16,8 +16,7 @@ const BooksSchema = new mongoose.Schema({
 });
 
 //In diesen Zeilen wird ein Mongoose-Modell namens Books erstellt oder abgerufen. Das Modell basiert auf dem zuvor definierten BookSchema. Wenn das Modell bereits existiert (z. B. wenn der Code mehrmals ausgeführt wird), wird die vorhandene Instanz aus mongoose.models verwendet, um mehrfache Modelldefinitionen zu vermeiden. Andernfalls wird ein neues Modell erstellt. Der dritte Parameter, "books", gibt den Namen der zugrunde liegenden MongoDB-Sammlung an.
-const getBooks =
-  mongoose.models.getBooks ||
-  new mongoose.model("getBooks", BooksSchema, "books");
+const Books =
+  mongoose.models.Books || new mongoose.model("Books", BooksSchema, "books");
 
-export default getBooks;
+export default Books;

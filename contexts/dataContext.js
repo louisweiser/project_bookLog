@@ -13,6 +13,7 @@ export const useBooks = () => {
 export const DataProvider = ({ children }) => {
   const [bookData, setBookData] = useState([]);
   const [storyData, setStoryData] = useState([]);
+  const [summaryData, setSummaryData] = useState([]);
 
   useEffect(() => {
     async function fetchBookData() {
@@ -25,14 +26,27 @@ export const DataProvider = ({ children }) => {
       const data = await response.json();
       setStoryData(data);
     }
+    async function fetchSummaryData() {
+      const response = await fetch("/api/booksummary");
+      const data = await response.json();
+      setSummaryData(data);
+    }
 
     fetchBookData();
     fetchStoryData();
+    fetchSummaryData();
   }, []);
 
   return (
     <DataContext.Provider
-      value={{ bookData, setBookData, storyData, setStoryData }}
+      value={{
+        bookData,
+        setBookData,
+        storyData,
+        setStoryData,
+        summaryData,
+        setSummaryData,
+      }}
     >
       {children}
     </DataContext.Provider>

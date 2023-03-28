@@ -48,9 +48,9 @@ export const MyProvider = ({ children }) => {
   );
 };
 /* ---------------- implementation ----------------
-import { useContext } from "react"; //global state for
-import { MyContext } from "@/contexts/myContext.js"; //global state for
+import { useContext } from "react";
+import { MyContext } from "@/contexts/myContext.js";
 
-const { var, setVar } = useContext(MyContext); //global state for
+const { searchTerm, setSearchTerm } = useContext(MyContext);
 
 */

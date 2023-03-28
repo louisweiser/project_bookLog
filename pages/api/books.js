@@ -1,5 +1,5 @@
 import dbConnect from "@/db/connect";
-import getBooks from "@/db/models/books.js";
+import Books from "@/db/models/books.js";
 
 export default async function handler(request, response) {
   if (request.method !== "GET") {
@@ -15,8 +15,8 @@ export default async function handler(request, response) {
   }
 
   try {
-    const stories = await getBooks.find();
-    return response.status(200).json(stories);
+    const books = await Books.find();
+    return response.status(200).json(books);
   } catch (error) {
     return response
       .status(500)
