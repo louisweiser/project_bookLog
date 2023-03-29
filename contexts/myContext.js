@@ -10,7 +10,7 @@ export const MyProvider = ({ children }) => {
   const [screenWidth, setScreenWidth] = useState(0);
 
   const [currentbook, setCurrentbook] = useState("dieunendlichegeschichte");
-  const [theme, setTheme] = useState("quote");
+  const [theme, setTheme] = useState("quotes");
   const [myStateCreate, setMyStateCreate] = useState(false);
   const [input1, setInput1] = useState("");
   const [input2, setInput2] = useState("");

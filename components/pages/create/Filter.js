@@ -36,21 +36,20 @@ export default function FilterComponent() {
     <ul className={styles.list}>
       <li className={styles.listItem}>
         <button
-          className={theme === "quote" ? styles.buttonactive : styles.button}
+          className={theme === "quotes" ? styles.buttonactive : styles.button}
           onClick={() => {
-            setTheme("quote");
+            setTheme("quotes");
           }}
         >
           <QuoteSVG></QuoteSVG>
           Quote
         </button>
       </li>
-
       <li className={styles.listItem}>
         <button
-          className={theme === "story" ? styles.buttonactive : styles.button}
+          className={theme === "stories" ? styles.buttonactive : styles.button}
           onClick={() => {
-            setTheme("story");
+            setTheme("stories");
           }}
         >
           <StorySVG></StorySVG>

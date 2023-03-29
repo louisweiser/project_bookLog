@@ -9,7 +9,6 @@ import styles from "@/styles/pages/create.module.css";
 export default function CreatePage() {
   return (
     <>
-      <Background></Background>
       <FilterComponent></FilterComponent>
       <div className={styles.background}>
         <Form></Form>

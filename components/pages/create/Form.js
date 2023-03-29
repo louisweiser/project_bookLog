@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { useContext } from "react"; //global state for
 import { MyContext } from "@/contexts/myContext.js"; //global state for
+import { DataContext } from "@/contexts/dataContext.js";
+
+import addBookContent from "@/components/common/Daten/addContent.js";
 
 import CoverFromData from "@/components/common/Cover/coverData.js";
 
@@ -11,6 +14,8 @@ export default function Form() {
   const { input2, setInput2 } = useContext(MyContext); //global state for
   const { input3, setInput3 } = useContext(MyContext); //global state for
   const { currentbook } = useContext(MyContext); //global state for
+  const { theme } = useContext(MyContext);
+  const { bookData } = useContext(DataContext);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -19,9 +24,19 @@ export default function Form() {
       console.log("please enter value");
       return;
     }
-    console.log("Input 1:", input1);
-    console.log("Input 2:", input2);
-    console.log("Input 3:", input3);
+
+    const contentDataObject = {
+      title: input1,
+      text: input2,
+      page: input3,
+    };
+    function findBookBySlug(slug) {
+      return bookData.find((book) => book.slug === slug);
+    }
+    const currentbookObject = findBookBySlug(currentbook);
+
+    addBookContent(currentbookObject.bookID, theme, contentDataObject);
+
     setInput1("");
     setInput2("");
     setInput3("");
@@ -30,19 +45,16 @@ export default function Form() {
   const handleInput1Change = (event) => {
     const currentInput1 = event.target.value;
     setInput1(currentInput1);
-    console.log("Aktueller Input 1:", currentInput1);
   };
 
   const handleInput2Change = (event) => {
     const currentInput2 = event.target.value;
     setInput2(currentInput2);
-    console.log("Aktueller Input 2:", currentInput2);
   };
 
   const handleInput3Change = (event) => {
     const currentInput3 = event.target.value;
     setInput3(currentInput3);
-    console.log("Aktueller Input 3:", currentInput3);
   };
 
   return (

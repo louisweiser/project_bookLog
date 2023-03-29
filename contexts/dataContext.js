@@ -75,6 +75,6 @@ export const DataProvider = ({ children }) => {
 import { useContext } from "react";
 import { DataContext } from "@/contexts/dataContext.js";
 
-const { contentData } = useContext(DataContext);
+const { bookData } = useContext(DataContext);
 
 */
