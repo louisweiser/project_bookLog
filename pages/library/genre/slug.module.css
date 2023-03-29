@@ -1,7 +1,12 @@
 .div {
   /*layout*/
   display: flex;
-  flex-direction: row;
+  padding: 7.5px;
+  width: 100vw;
+  flex-wrap: wrap;
+  gap: 5px;
+
+  justify-content: space-between;
 }
 
 .padding {

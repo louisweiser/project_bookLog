@@ -9,7 +9,7 @@ export default function CoverFromData({ slug, height }) {
   const { bookData } = useContext(DataContext);
 
   if (!slug || slug === "") {
-    return <div>error</div>;
+    return <div>error by slug: {slug}</div>;
   }
 
   const FilterData = (array, key, value) => {

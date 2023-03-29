@@ -33,135 +33,73 @@ export default function GenreLibrary() {
       window.removeEventListener("resize", handleResize);
     }; // Entferne den Event-Listener, wenn die Komponente unmountet wird
   }, []);
+  //const height = (screenWidth - 20) / (factor1 + factor2);
 
-  function dynHeight(object1, object2) {
-    return (
-      (screenWidth - 20) / (object1.relativefactor + object2.relativefactor)
-    );
+  function filterBooksByGenre(genre) {
+    const bookbygenre = bookData.filter((book) => book.genre === genre);
+    console.log(bookbygenre);
+
+    return bookbygenre;
   }
 
-  /*  let content = [];
+  function calculatedHeight(booksArray) {
+    if (!booksArray) {
+      return [];
+    }
 
-  for (let i = 1; i <= 3; i + 2) {
-    let index = i;
-    let heig = dynHeight(bookMetaData[index - 1], bookMetaData[index]);
-    content.push(
-      <ul key={i} className={styles.div}>
-        <Link href="">
-          <div className={styles.padding}>
-            <CoverFromData id={i} height={heig}></CoverFromData>
-          </div>
-        </Link>
-        <Link href="">
-          <div className={styles.padding}>
-            <CoverFromData id={index + 1} height={heig}></CoverFromData>
-          </div>
-        </Link>
-      </ul>
-    );
-  } */
-  // !!!!!!!!!!!!!!! Wieso funktioniert es nicht ???
-  const hei1 = Math.floor(dynHeight(bookData[0], bookData[1]));
-  const hei2 = Math.floor(dynHeight(bookData[2], bookData[3]));
-  const hei3 = Math.floor(dynHeight(bookData[4], bookData[5]));
-  const hei4 = Math.floor(dynHeight(bookData[6], bookData[7]));
-  const hei5 = Math.floor(dynHeight(bookData[8], bookData[9]));
+    const relativeFactors = booksArray.map((book) => book.relativefactor);
+
+    const array = [];
+    console.log(relativeFactors.length);
+
+    for (let i = 0; i < relativeFactors.length; i += 2) {
+      if (i + 1 < relativeFactors.length) {
+        let height = Math.floor(
+          (screenWidth - 20) / (relativeFactors[i] + relativeFactors[i + 1])
+        );
+        if (height < 0) {
+          height = 0;
+        } //error handling
+        console.log("schleife", height);
+        array.push(height);
+        array.push(height);
+      } else {
+        let height = Math.floor((screenWidth - 20) / 2 / relativeFactors[i]);
+        if (height < 0) {
+          height = 0;
+        } //error handling
+        array.push(height);
+      }
+    }
+    return array;
+  }
+
+  const booksbygenre = filterBooksByGenre(slug);
+  const heights = calculatedHeight(booksbygenre);
+  console.log(heights);
+
+  function renderCover() {
+    const render = Object.values(booksbygenre).map((book, index) => {
+      console.log("index", index);
+      return (
+        <div key={index}>
+          <Link href={`/library/book/${book.slug}`}>
+            <CoverFromData
+              slug={book.slug}
+              height={heights[index]}
+            ></CoverFromData>
+          </Link>
+        </div>
+      );
+    });
+    return <>{render}</>;
+  }
 
   return (
     <>
       <Background></Background>
       <Header title={slug}></Header>
-      <ul className={styles.div}>
-        <div className={styles.padding}>
-          <Link href={`/library`}>
-            <CoverFromData
-              slug={bookData[0].slug}
-              height={hei1}
-            ></CoverFromData>
-          </Link>
-        </div>
-        <div className={styles.padding}>
-          <Link href={`/library`}>
-            <CoverFromData
-              slug={bookData[1].slug}
-              height={hei1}
-            ></CoverFromData>
-          </Link>
-        </div>
-      </ul>
-      <ul className={styles.div}>
-        <div className={styles.padding}>
-          <Link href={`/library`}>
-            <CoverFromData
-              slug={bookData[2].slug}
-              height={hei2}
-            ></CoverFromData>
-          </Link>
-        </div>
-        <div className={styles.padding}>
-          <Link href={`/library`}>
-            <CoverFromData
-              slug={bookData[3].slug}
-              height={hei2}
-            ></CoverFromData>
-          </Link>
-        </div>
-      </ul>
-      <ul className={styles.div}>
-        <div className={styles.padding}>
-          <Link href={`/library`}>
-            <CoverFromData
-              slug={bookData[4].slug}
-              height={hei3}
-            ></CoverFromData>
-          </Link>
-        </div>
-        <div className={styles.padding}>
-          <Link href={`/library`}>
-            <CoverFromData
-              slug={bookData[5].slug}
-              height={hei3}
-            ></CoverFromData>
-          </Link>
-        </div>
-      </ul>
-      <ul className={styles.div}>
-        <div className={styles.padding}>
-          <Link href={`/library`}>
-            <CoverFromData
-              slug={bookData[6].slug}
-              height={hei4}
-            ></CoverFromData>
-          </Link>
-        </div>
-        <div className={styles.padding}>
-          <Link href={`/library`}>
-            <CoverFromData
-              slug={bookData[7].slug}
-              height={hei4}
-            ></CoverFromData>
-          </Link>
-        </div>
-      </ul>
-      <ul className={styles.div}>
-        <div className={styles.padding}>
-          <Link href={`/library`}>
-            <CoverFromData
-              slug={bookData[8].slug}
-              height={hei5}
-            ></CoverFromData>
-          </Link>
-        </div>
-        <div className={styles.padding}>
-          <Link href={`/library`}>
-            <CoverFromData
-              slug={bookData[9].slug}
-              height={hei5}
-            ></CoverFromData>
-          </Link>
-        </div>
-      </ul>
-      {/*  <ul className={styles.div}>{content}</ul> */}
+      <ul className={styles.div}>{renderCover()}</ul>
     </>
   );
 }

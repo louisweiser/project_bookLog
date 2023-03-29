@@ -9,14 +9,12 @@ import styles from "./slug.module.css";
 // Die BookDetail-Komponente erhält das serverseitig gefetchte Buch als Prop namens "serverBook"
 function BookDetail({ serverBook }) {
   const router = useRouter();
-  console.log(router.query.slug);
 
   // DataContext verwenden, um auf die Buchdaten zuzugreifen
   const { bookData, storyData, summaryData, quoteData } =
     useContext(DataContext);
   // Lokaler State für das aktuelle Buch
   const [book, setBook] = useState(serverBook);
-  console.log(bookData, quoteData);
   // Der useEffect-Hook wird ausgeführt, wenn sich bookData oder router.query.slug ändern
   useEffect(() => {
     // Wenn kein serverseitig gefetchtes Buch vorhanden ist, suchen wir das Buch in den Buchdaten aus dem DataContext
@@ -34,7 +32,6 @@ function BookDetail({ serverBook }) {
   function getSummaryBySlug(slug) {
     // Suche das Buch in der Buchliste anhand des Slugs
     const book = bookData.find((book) => book.slug === slug);
-    console.log("book", book);
 
     if (!book) {
       // Buch wurde nicht gefunden
@@ -58,37 +55,50 @@ function BookDetail({ serverBook }) {
     );
   }
 
-  /* function getQuotesBySlug(slug) {
+  function getStoryBySlug(slug) {
     // Suche das Buch in der Buchliste anhand des Slugs
     const book = bookData.find((book) => book.slug === slug);
-    console.log("book", book);
 
     if (!book) {
       // Buch wurde nicht gefunden
       return null;
     }
+    const stories = storyData.find((content) => content.bookID === book.bookID);
 
-    // Suche den Text in der Textliste anhand der bookID
-    const textEntry = quoteData.find((text) => text.bookID === book.bookID);
-
-    if (!textEntry) {
-      // Text wurde nicht gefunden
+    if (!stories) {
+      // Story wurde nicht gefunden
       return null;
     }
 
-    // Gebe den Text zurück
+    const renderedStories = Object.values(stories).map((story, index) => {
+      if (
+        typeof story === "object" &&
+        story.title &&
+        story.text &&
+        story.page !== undefined
+      ) {
+        return (
+          <div key={index}>
+            <p>Headline: {story.title}</p>
+            <p>Text: {story.text}</p>
+            <p>Seite: {story.page !== null ? story.page : "Nicht verfügbar"}</p>
+            <hr />
+          </div>
+        );
+      }
+      return null;
+    });
+
     return (
       <div>
-        <h3>Quotes:</h3>
-        {textEntry.text}
+        <h3>Stories:</h3>
+        <hr />
+        <div>{renderedStories}</div>
       </div>
     );
   }
 
-  const text = getQuotesBySlug(router.query.slug);
-  console.log(text); */
-
-  function findBookBySlug(slug) {
+  function findQuoteBySlug(slug) {
     // Find the matching book in object 1 using the provided slug
     const book = bookData.find((book) => book.slug === slug);
 
@@ -120,14 +130,18 @@ function BookDetail({ serverBook }) {
           return null;
         });
 
-        return <div>{renderedQuotes}</div>;
+        return (
+          <div>
+            <h3>Quotes:</h3>
+            <div>{renderedQuotes}</div>
+          </div>
+        );
       }
     }
 
     // Return null if no matching book is found
     return null;
   }
-  console.log("hier", findBookBySlug(router.query.slug));
 
   // Die Buchdetails anzeigen
   return (
@@ -139,7 +153,8 @@ function BookDetail({ serverBook }) {
           <CoverFromData slug={book.slug} height={300}></CoverFromData>
         </div>
         <div>{getSummaryBySlug(router.query.slug)}</div>
-        <div>{findBookBySlug(router.query.slug)}</div>
+        <div>{findQuoteBySlug(router.query.slug)}</div>
+        <div>{getStoryBySlug(router.query.slug)}</div>
       </div>
     </>
   );
