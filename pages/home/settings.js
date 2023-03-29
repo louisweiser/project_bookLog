@@ -1,27 +1,17 @@
 import Header from "@/components/common/Heading/HomeNavigation.js";
 import TestA from "@/components/test/testA.js";
 
-export default function SettingPage() {
-  const addBook = async (bookData) => {
-    try {
-      const response = await fetch("/api/addbook", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(bookData),
-      });
+import addBook from "@/components/common/Daten/addBook.js";
+import addBookContent from "@/components/common/Daten/addContent.js";
+import deleteContent from "@/components/common/Daten/deleteContent.js";
+import updateContent from "@/components/common/Daten/updateContent.js";
 
-      const data = await response.json();
-      if (response.ok) {
-        console.log("Buch erfolgreich hinzugefügt:", data.newBook);
-      } else {
-        console.error("Fehler beim Hinzufügen des Buches:", data.message);
-      }
-    } catch (error) {
-      console.error("Netzwerkfehler beim Hinzufügen des Buches:", error);
-    }
-  };
+import { useContext } from "react";
+import { DataContext } from "@/contexts/dataContext.js";
+
+export default function SettingPage() {
+  const { contentData } = useContext(DataContext);
+  console.log(contentData);
 
   // Beispiel für die Verwendung der addBook-Funktion
   const newBookData = {
@@ -37,69 +27,22 @@ export default function SettingPage() {
     bookID: "6422af07d825c4d705a5dcf1",
   };
 
-  async function addNewQuote() {
-    const bookID = "6422af07d825c4d705a5dce8";
-    const newQuote = {
-      text: "Neuer Text",
-      page: null,
-    };
-
-    try {
-      const response = await fetch("/api/addbookquote", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ bookID, newQuote }),
-      });
-
-      const data = await response.json();
-
-      if (data.success) {
-        console.log("Neues Zitat hinzugefügt:", data.data);
-      } else {
-        console.error("Fehler beim Hinzufügen des Zitats:", data.message);
-      }
-    } catch (error) {
-      console.error("Fehler beim Senden der Anfrage:", error);
-    }
-  }
-
-  async function addBookContent(bookID, contentType, contentData) {
-    try {
-      const response = await fetch("/api/addContent", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          bookID,
-          contentType,
-          contentData,
-        }),
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(
-          errorData.message || "An error occurred while adding content."
-        );
-      }
-
-      const data = await response.json();
-      console.log("Content added successfully:", data);
-    } catch (error) {
-      console.error("Error adding content:", error.message);
-    }
-  }
-
+  // Beispiel für die Verwendung der addContentBook-Funktion
   const bookID = "6422af07d825c4d705a5dce8";
   const contentType = "stories";
-  const contentData = {
+  const contentDataTest = {
     title: "Neue Geschichte",
     text: "Dies ist eine neue Geschichte.",
     page: null,
   };
+
+  // Beispiel für die Verwendung der DeleteContentBook-Funktion
+  const contentKey = "4";
+
+  // Beispiel für die Verwendung der UpdateContentBook-Funktion
+
+  const contentKeyUp = "1";
+  const contentDataNew = { title: "New Title", text: "New Text", page: 10 };
 
   return (
     <>
@@ -118,10 +61,36 @@ export default function SettingPage() {
       <br />
       <button
         onClick={() => {
-          addBookContent(bookID, contentType, contentData);
+          addBookContent(bookID, contentType, contentDataTest);
         }}
       >
         ADDDDD
+      </button>
+      <button
+        onClick={() => {
+          deleteContent(bookID, contentType, contentKey)
+            .then((bookContent) => {
+              console.log("Content deleted:", bookContent);
+            })
+            .catch((error) => {
+              console.error(error);
+            });
+        }}
+      >
+        DELETE
+      </button>
+      <button
+        onClick={() => {
+          updateContent(bookID, contentType, contentKeyUp, contentDataNew)
+            .then((bookContent) => {
+              console.log("Content updated:", bookContent);
+            })
+            .catch((error) => {
+              console.error(error);
+            });
+        }}
+      >
+        UPDATE
       </button>
       ;
     </>

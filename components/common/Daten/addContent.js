@@ -27,11 +27,3 @@ async function addBookContent(bookID, contentType, contentData) {
 }
 
 export default addBookContent;
-
-const bookID = "6422af07d825c4d705a5dce8";
-const contentType = "stories";
-const contentData = {
-  title: "Neue Geschichte",
-  text: "Dies ist eine neue Geschichte.",
-  page: null,
-};
