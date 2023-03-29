@@ -15,6 +15,7 @@ export const DataProvider = ({ children }) => {
   const [storyData, setStoryData] = useState([]);
   const [summaryData, setSummaryData] = useState([]);
   const [quoteData, setQuoteData] = useState([]);
+  const [contentData, setContentData] = useState([]);
 
   useEffect(() => {
     async function fetchBookData() {
@@ -37,11 +38,17 @@ export const DataProvider = ({ children }) => {
       const data = await response.json();
       setQuoteData(data);
     }
+    async function fetchContentData() {
+      const response = await fetch("/api/bookcontent");
+      const data = await response.json();
+      setContentData(data);
+    }
 
     fetchBookData();
     fetchStoryData();
     fetchSummaryData();
     fetchQuoteData();
+    fetchContentData();
   }, []);
 
   return (
@@ -55,6 +62,8 @@ export const DataProvider = ({ children }) => {
         setSummaryData,
         quoteData,
         setQuoteData,
+        contentData,
+        setContentData,
       }}
     >
       {children}

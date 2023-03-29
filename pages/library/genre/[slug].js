@@ -33,16 +33,14 @@ export default function GenreLibrary() {
       window.removeEventListener("resize", handleResize);
     }; // Entferne den Event-Listener, wenn die Komponente unmountet wird
   }, []);
-  //const height = (screenWidth - 20) / (factor1 + factor2);
 
   function filterBooksByGenre(genre) {
     const bookbygenre = bookData.filter((book) => book.genre === genre);
-    console.log(bookbygenre);
 
     return bookbygenre;
   }
 
-  function calculatedHeight(booksArray) {
+  function calculateHeights(booksArray) {
     if (!booksArray) {
       return [];
     }
@@ -50,7 +48,6 @@ export default function GenreLibrary() {
     const relativeFactors = booksArray.map((book) => book.relativefactor);
 
     const array = [];
-    console.log(relativeFactors.length);
 
     for (let i = 0; i < relativeFactors.length; i += 2) {
       if (i + 1 < relativeFactors.length) {
@@ -60,7 +57,6 @@ export default function GenreLibrary() {
         if (height < 0) {
           height = 0;
         } //error handling
-        console.log("schleife", height);
         array.push(height);
         array.push(height);
       } else {
@@ -75,18 +71,16 @@ export default function GenreLibrary() {
   }
 
   const booksbygenre = filterBooksByGenre(slug);
-  const heights = calculatedHeight(booksbygenre);
-  console.log(heights);
+  const heightArray = calculateHeights(booksbygenre);
 
   function renderCover() {
     const render = Object.values(booksbygenre).map((book, index) => {
-      console.log("index", index);
       return (
         <div key={index}>
           <Link href={`/library/book/${book.slug}`}>
             <CoverFromData
               slug={book.slug}
-              height={heights[index]}
+              height={heightArray[index]}
             ></CoverFromData>
           </Link>
         </div>

@@ -1,0 +1,30 @@
+{
+  "stories": {
+    "0": {
+      "title": "Lorem unendliche Geschichte",
+      "text": "lorem ipsum Die unendliche Geschichte dolor sit amet",
+      "page": null
+    },
+    "1": {
+      "title": "Alias unendliche Geschichte",
+      "text": "Repellendus expedita unendliche Geschichte magni officia tempora doloremque voluptatibus iste ipsam? Quae reiciendis porro sequi, provident accusamus laborum minus iure repellat, culpa itaque voluptates!",
+      "page": null
+    }
+  },
+  "quotes": {
+    "0": {
+      "text": "lorem ipsum Die unendliche Geschichte dolor sit amet",
+      "page": null
+    },
+    "1": {
+      "text": "Repellendus expedita unendliche Geschichte magni officia tempora doloremque voluptatibus iste ipsam? Quae reiciendis porro sequi, provident accusamus laborum minus iure repellat, culpa itaque voluptates!",
+      "page": null
+    }
+  },
+  "bookID": {
+    "$oid": "6422af07d825c4d705a5dce8"
+  },
+  "summary": {
+    "0": "Repellendus expedita unendliche Geschichte magni officia tempora doloremque voluptatibus iste ipsam? Quae reiciendis porro sequi, provident accusamus laborum minus iure repellat, culpa itaque voluptates!"
+  }
+}
