@@ -128,7 +128,7 @@ export default function BookDetails({ serverBook, serverContent }) {
       </div>
     );
   }
-
+  console.log(book);
   return (
     <>
       <div className={styles.body}>

@@ -1,5 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import React, { useRef } from "react";
+
+import addBook from "@/components/common/Daten/addBook.js";
+import createBookContent from "@/components/common/Daten/addBookContent.js";
 
 import { genreData } from "@/public/data/genre.js";
 
@@ -13,12 +16,63 @@ export default function FormForCreate() {
   const [genre, setGenre] = useState("");
   const [author, setAuthor] = useState("");
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Hier können Sie die Daten des Eintrags an den Server senden oder lokal speichern
-  };
-
+  const [fileValid, setFileValid] = useState(true);
   const fileInputRef = useRef();
+  const [dimensions, setDimensions] = useState({ width: null, height: null });
+
+  useEffect(() => {
+    async function fetchImageSize() {
+      const res = await fetch(`/api/image-size?id=${cover.name}`);
+      const data = await res.json();
+      setDimensions(data);
+    }
+    if (cover) {
+      fetchImageSize();
+    }
+  }, [cover]);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    if (fileValid && cover) {
+      const reader = new FileReader();
+      reader.readAsDataURL(cover);
+      reader.onloadend = async () => {
+        const base64Data = reader.result;
+        const response = await fetch("/api/upload", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ cover: base64Data, fileName: cover.name }),
+        });
+
+        if (response.ok) {
+          console.log("Bilddatei erfolgreich gespeichert.");
+        } else {
+          console.error("Fehler beim Speichern der Bilddatei.");
+        }
+      };
+    }
+    const relativFactor = dimensions.width / dimensions.height;
+
+    const slug =
+      title.replace(/\s+/g, "").toLowerCase() +
+      subtitle.replace(/\s+/g, "").toLowerCase();
+
+    const newBookData = {
+      title: title,
+      subtitle: subtitle,
+      author: author,
+      genre: genre,
+      tag: [],
+      cover: cover.name,
+      coverpath: `/images/cover/${cover.name}}`,
+      slug: slug,
+      relativefactor: relativFactor,
+    };
+
+    addBook(newBookData);
+    createBookContent("6425da0e09e0aa463dd2713d");
+  };
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
@@ -76,14 +130,27 @@ export default function FormForCreate() {
             type="file"
             ref={fileInputRef}
             onChange={(event) => {
-              console.log(event);
               const file = event.target.files[0];
-              if (setCover(file)) {
+              const allowedTypes = ["image/jpeg", "image/png", "image/webp"];
+
+              if (
+                file &&
+                file.size <= 3000000 &&
+                allowedTypes.includes(file.type)
+              ) {
                 setCover(file);
-                console.log(cover);
+                setFileValid(true);
+              } else {
+                setFileValid(false);
               }
             }}
           />
+          {!fileValid && (
+            <p>
+              Die Datei ist ungültig. Bitte wählen Sie eine Bilddatei (jpg, png,
+              webp) mit einer Größe von maximal 3 MB aus.
+            </p>
+          )}
           <button
             type="button"
             className={styles.fileButton}

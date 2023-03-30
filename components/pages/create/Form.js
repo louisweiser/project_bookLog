@@ -61,36 +61,50 @@ export default function Form() {
   return (
     <form onSubmit={handleSubmit}>
       <div className={styles.label}>
-        <label htmlFor="input1"></label>
-        <input
-          className={styles.input1}
-          placeholder="Headline"
-          type="text"
-          id="input1"
-          value={input1}
-          onChange={handleInput1Change}
-          maxLength="50"
-        />
+        {theme !== "summary" && (
+          <>
+            <label htmlFor="input1"></label>
+            <input
+              className={styles.input1}
+              placeholder="Headline"
+              type="text"
+              id="input1"
+              value={input1}
+              onChange={handleInput1Change}
+              maxLength="50"
+            />
+          </>
+        )}
         <label htmlFor="input2"></label>
         <textarea
           className={styles.input2}
-          placeholder="Enter text here"
+          placeholder={
+            theme === "summary"
+              ? "Enter summary here"
+              : theme === "quotes"
+              ? "Enter quote here"
+              : theme === "stories"
+              ? "Enter story here"
+              : "Enter content here"
+          }
           type="text"
           id="input2"
           value={input2}
           onChange={handleInput2Change}
         />
-        <div>
-          <label htmlFor="input3"></label>
-          <input
-            className={styles.input3}
-            placeholder="Page"
-            type="number"
-            id="input3"
-            value={input3}
-            onChange={handleInput3Change}
-          />
-        </div>
+        {theme !== "summary" && (
+          <>
+            <label htmlFor="input3"></label>
+            <input
+              className={styles.input3}
+              placeholder="Page"
+              type="number"
+              id="input3"
+              value={input3}
+              onChange={handleInput3Change}
+            />
+          </>
+        )}
       </div>
       <div className={styles.submitbuttoncontainer}>
         <button type="submit" className={styles.submitbutton}>

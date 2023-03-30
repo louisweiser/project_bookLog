@@ -7,6 +7,7 @@ export default async function handler(req, res) {
     const newBook = new Books({
       ...bookData,
       _id: new mongoose.Types.ObjectId(),
+      bookID: new mongoose.Types.ObjectId(),
     });
 
     try {
