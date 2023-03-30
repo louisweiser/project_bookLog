@@ -1,0 +1,336 @@
+[
+  {
+    "stories": [
+      {
+        "_id": "1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed",
+        "title": "Lorem unendliche Geschichte",
+        "text": "lorem ipsum Die unendliche Geschichte dolor sit amet",
+        "page": null
+      },
+      {
+        "_id": "2c8bb8f1-407a-41cc-b677-cc527d8460bb",
+        "title": "Alias unendliche Geschichte",
+        "text": "Repellendus expedita unendliche Geschichte magni officia tempora doloremque voluptatibus iste ipsam? Quae reiciendis porro sequi, provident accusamus laborum minus iure repellat, culpa itaque voluptates!",
+        "page": null
+      },
+      {
+        "_id": "f1d2d2f4-1d4b-4784-a4f9-9aa801b5c42f",
+        "title": "Neue Geschichte",
+        "text": "Dies ist eine neue Geschichte.",
+        "page": null
+      },
+      {
+        "title": "",
+        "text": "neu heute story",
+        "page": ""
+      }
+    ],
+    "quotes": [
+      {
+        "text": "lorem ipsum Die unendliche Geschichte dolor sit amet",
+        "page": null
+      },
+      {
+        "text": "Repellendus expedita unendliche Geschichte magni officia tempora doloremque voluptatibus iste ipsam? Quae reiciendis porro sequi, provident accusamus laborum minus iure repellat, culpa itaque voluptates!",
+        "page": null
+      }
+    ],
+    "bookID": {
+      "$oid": "6422af07d825c4d705a5dce8"
+    },
+    "summary": [
+      {
+        "_id": "cd2eae1b-05c2-413d-b102-d8d39b89e0f1",
+        "text": "Repellendus expedita unendliche Geschichte magni officia tempora doloremque voluptatibus iste ipsam? Quae reiciendis porro sequi, provident accusamus laborum minus iure repellat, culpa itaque voluptates!"
+      }
+    ]
+  },
+  {
+    "stories": [
+      {
+        "title": "Lorem kurze Geschichte der Menschheit",
+        "text": "lorem ipsum kurze Geschichte der Menschheit dolor sit amet",
+        "page": null
+      },
+      {
+        "title": "Alias kurze Geschichte der Menschheit",
+        "text": "Repellendus expedita magni kurze Geschichte der Menschheit officia tempora doloremque voluptatibus iste ipsam? Quae reiciendis porro sequi, provident accusamus laborum minus iure repellat, culpa itaque voluptates!",
+        "page": null
+      }
+    ],
+    "quotes": [
+      {
+        "text": "lorem ipsum kurze Geschichte der Menschheit dolor sit amet",
+        "page": null
+      },
+      {
+        "text": "Repellendus expedita magni kurze Geschichte der Menschheit officia tempora doloremque voluptatibus iste ipsam? Quae reiciendis porro sequi, provident accusamus laborum minus iure repellat, culpa itaque voluptates!",
+        "page": null
+      }
+    ],
+    "bookID": {
+      "$oid": "6422af07d825c4d705a5dce9"
+    },
+    "summary": [
+      {
+        "text": "Repellendus expedita magni kurze Geschichte der Menschheit officia tempora doloremque voluptatibus iste ipsam? Quae reiciendis porro sequi, provident accusamus laborum minus iure repellat, culpa itaque voluptates!"
+      }
+    ]
+  },
+  {
+    "stories": [
+      {
+        "title": "Lorem Weisheit ungesicherten Lebens",
+        "text": "lorem ipsum Weisheit ungesicherten Lebens dolor sit amet",
+        "page": null
+      },
+      {
+        "title": "Alias Weisheit ungesicherten Lebens",
+        "text": "Repellendus expedita magni Weisheit ungesicherten Lebens officia tempora doloremque voluptatibus iste ipsam? Quae reiciendis porro sequi, provident accusamus laborum minus iure repellat, culpa itaque voluptates!",
+        "page": null
+      }
+    ],
+    "quotes": [
+      {
+        "text": "lorem ipsum Weisheit ungesicherten Lebens dolor sit amet",
+        "page": null
+      },
+      {
+        "text": "Repellendus expedita magni Weisheit ungesicherten Lebens officia tempora doloremque voluptatibus iste ipsam? Quae reiciendis porro sequi, provident accusamus laborum minus iure repellat, culpa itaque voluptates!",
+        "page": null
+      }
+    ],
+    "bookID": {
+      "$oid": "6422af07d825c4d705a5dcea"
+    },
+    "summary": [
+      {
+        "text": "Repellendus expedita magni Weisheit ungesicherten Lebens officia tempora doloremque voluptatibus iste ipsam? Quae reiciendis porro sequi, provident accusamus laborum minus iure repellat, culpa itaque voluptates!"
+      }
+    ]
+  },
+  {
+    "stories": [
+      {
+        "title": "Lorem Unten am Fluss",
+        "text": "lorem ipsum Unten am Fluss dolor sit amet",
+        "page": null
+      },
+      {
+        "title": "Alias Unten am Fluss",
+        "text": "Repellendus expedita Unten am Fluss magni officia tempora doloremque voluptatibus iste ipsam? Quae reiciendis porro sequi, provident accusamus laborum minus iure repellat, culpa itaque voluptates!",
+        "page": null
+      }
+    ],
+    "quotes": [
+      {
+        "text": "lorem ipsum Unten am Fluss dolor sit amet",
+        "page": null
+      },
+      {
+        "text": "Repellendus expedita Unten am Fluss magni officia tempora doloremque voluptatibus iste ipsam? Quae reiciendis porro sequi, provident accusamus laborum minus iure repellat, culpa itaque voluptates!",
+        "page": null
+      }
+    ],
+    "bookID": {
+      "$oid": "6422af07d825c4d705a5dceb"
+    },
+    "summary": [
+      {
+        "text": "Repellendus expedita Unten am Fluss magni officia tempora doloremque voluptatibus iste ipsam? Quae reiciendis porro sequi, provident accusamus laborum minus iure repellat, culpa itaque voluptates!"
+      }
+    ]
+  },
+  {
+    "stories": [
+      {
+        "title": "Lorem Per Anhalter durch die Galaxis",
+        "text": "lorem ipsum Per Anhalter durch die Galaxisdolor sit amet",
+        "page": null
+      },
+      {
+        "title": "Alias Per Anhalter durch die Galaxis",
+        "text": "Repellendus expedita Per Anhalter durch die Galaxis magni officia tempora doloremque voluptatibus iste ipsam? Quae reiciendis porro sequi, provident accusamus laborum minus iure repellat, culpa itaque voluptates!",
+        "page": null
+      }
+    ],
+    "quotes": [
+      {
+        "text": "lorem ipsum Per Anhalter durch die Galaxisdolor sit amet",
+        "page": null
+      },
+      {
+        "text": "Repellendus expedita Per Anhalter durch die Galaxis magni officia tempora doloremque voluptatibus iste ipsam? Quae reiciendis porro sequi, provident accusamus laborum minus iure repellat, culpa itaque voluptates!",
+        "page": null
+      }
+    ],
+    "bookID": {
+      "$oid": "6422af07d825c4d705a5dcec"
+    },
+    "summary": [
+      {
+        "text": "Repellendus expedita Per Anhalter durch die Galaxis magni officia tempora doloremque voluptatibus iste ipsam? Quae reiciendis porro sequi, provident accusamus laborum minus iure repellat, culpa itaque voluptates!"
+      }
+    ]
+  },
+  {
+    "stories": [
+      {
+        "title": "Jenseits von Gut und Böse",
+        "text": "lorem ipsum Jenseits von Gut und Böse dolor sit amet",
+        "page": null
+      },
+      {
+        "title": "Alias Jenseits von Gut und Böse",
+        "text": "Repellendus expedita Jenseits von Gut und Böse magni officia tempora doloremque voluptatibus iste ipsam? Quae reiciendis porro sequi, provident accusamus laborum minus iure repellat, culpa itaque voluptates!",
+        "page": null
+      }
+    ],
+    "quotes": [
+      {
+        "text": "lorem ipsum Jenseits von Gut und Böse dolor sit amet",
+        "page": null
+      },
+      {
+        "text": "Repellendus expedita Jenseits von Gut und Böse magni officia tempora doloremque voluptatibus iste ipsam? Quae reiciendis porro sequi, provident accusamus laborum minus iure repellat, culpa itaque voluptates!",
+        "page": null
+      }
+    ],
+    "bookID": {
+      "$oid": "6422af07d825c4d705a5dced"
+    },
+    "summary": [
+      {
+        "text": "Repellendus expedita Jenseits von Gut und Böse magni officia tempora doloremque voluptatibus iste ipsam? Quae reiciendis porro sequi, provident accusamus laborum minus iure repellat, culpa itaque voluptates!"
+      }
+    ]
+  },
+  {
+    "stories": [
+      {
+        "title": "Lorem Der Hundertjährige",
+        "text": "lorem ipsum Der Hundertjährige dolor sit amet",
+        "page": null
+      },
+      {
+        "title": "Alias Der Hundertjährige",
+        "text": "Repellendus expedita Der Hundertjährige magni officia tempora doloremque voluptatibus iste ipsam? Quae reiciendis porro sequi, provident accusamus laborum minus iure repellat, culpa itaque voluptates!",
+        "page": null
+      }
+    ],
+    "quotes": [
+      {
+        "text": "lorem ipsum Der Hundertjährige dolor sit amet",
+        "page": null
+      },
+      {
+        "text": "Repellendus expedita Der Hundertjährige magni officia tempora doloremque voluptatibus iste ipsam? Quae reiciendis porro sequi, provident accusamus laborum minus iure repellat, culpa itaque voluptates!",
+        "page": null
+      }
+    ],
+    "bookID": {
+      "$oid": "6422af07d825c4d705a5dcee"
+    },
+    "summary": [
+      {
+        "text": "Repellendus expedita Der Hundertjährige magni officia tempora doloremque voluptatibus iste ipsam? Quae reiciendis porro sequi, provident accusamus laborum minus iure repellat, culpa itaque voluptates!"
+      }
+    ]
+  },
+  {
+    "stories": [
+      {
+        "title": "Lorem Star Wars Ahsoka",
+        "text": "lorem ipsum Die Star Wars Ahsoka dolor sit amet",
+        "page": null
+      },
+      {
+        "title": "Alias Star Wars Ahsoka",
+        "text": "Repellendus expedita Star Wars Ahsoka magni officia tempora doloremque voluptatibus iste ipsam? Quae reiciendis porro sequi, provident accusamus laborum minus iure repellat, culpa itaque voluptates!",
+        "page": null
+      }
+    ],
+    "quotes": [
+      {
+        "text": "lorem ipsum Die Star Wars Ahsoka dolor sit amet",
+        "page": null
+      },
+      {
+        "text": "Repellendus expedita Star Wars Ahsoka magni officia tempora doloremque voluptatibus iste ipsam? Quae reiciendis porro sequi, provident accusamus laborum minus iure repellat, culpa itaque voluptates!",
+        "page": null
+      }
+    ],
+    "bookID": {
+      "$oid": "6422af07d825c4d705a5dcef"
+    },
+    "summary": [
+      {
+        "text": "Repellendus expedita Star Wars Ahsoka magni officia tempora doloremque voluptatibus iste ipsam? Quae reiciendis porro sequi, provident accusamus laborum minus iure repellat, culpa itaque voluptates!"
+      }
+    ]
+  },
+  {
+    "stories": [
+      {
+        "title": "Lorem Harry Potter - Der Stein",
+        "text": "lorem ipsum Harry Potter - Der Stein dolor sit amet",
+        "page": null
+      },
+      {
+        "title": "Alias Harry Potter - Der Stein",
+        "text": "Repellendus expedita Harry Potter - Der Stein magni officia tempora doloremque voluptatibus iste ipsam? Quae reiciendis porro sequi, provident accusamus laborum minus iure repellat, culpa itaque voluptates!",
+        "page": null
+      }
+    ],
+    "quotes": [
+      {
+        "text": "lorem ipsum Harry Potter - Der Stein dolor sit amet",
+        "page": null
+      },
+      {
+        "text": "Repellendus expedita Harry Potter - Der Stein magni officia tempora doloremque voluptatibus iste ipsam? Quae reiciendis porro sequi, provident accusamus laborum minus iure repellat, culpa itaque voluptates!",
+        "page": null
+      }
+    ],
+    "bookID": {
+      "$oid": "6422af07d825c4d705a5dcf0"
+    },
+    "summary": [
+      {
+        "text": "Repellendus expedita Harry Potter - Der Stein magni officia tempora doloremque voluptatibus iste ipsam? Quae reiciendis porro sequi, provident accusamus laborum minus iure repellat, culpa itaque voluptates!"
+      }
+    ]
+  },
+  {
+    "stories": [
+      {
+        "title": "Lorem Harry Potter - Die Kammer",
+        "text": "lorem ipsum Harry Potter - Die Kammer dolor sit amet",
+        "page": null
+      },
+      {
+        "title": "Alias Harry Potter - Die Kammer",
+        "text": "Repellendus expedita Harry Potter - Die Kammer magni officia tempora doloremque voluptatibus iste ipsam? Quae reiciendis porro sequi, provident accusamus laborum minus iure repellat, culpa itaque voluptates!",
+        "page": null
+      }
+    ],
+    "quotes": [
+      {
+        "text": "lorem ipsum Harry Potter - Die Kammer dolor sit amet",
+        "page": null
+      },
+      {
+        "text": "Repellendus expedita Harry Potter - Die Kammer magni officia tempora doloremque voluptatibus iste ipsam? Quae reiciendis porro sequi, provident accusamus laborum minus iure repellat, culpa itaque voluptates!",
+        "page": null
+      }
+    ],
+    "bookID": {
+      "$oid": "6422af07d825c4d705a5dcf1"
+    },
+    "summary": [
+      {
+        "text": "Repellendus expedita Harry Potter - Die Kammer magni officia tempora doloremque voluptatibus iste ipsam? Quae reiciendis porro sequi, provident accusamus laborum minus iure repellat, culpa itaque voluptates!"
+      }
+    ]
+  }
+]
