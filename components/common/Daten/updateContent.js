@@ -1,6 +1,6 @@
 async function updateContent(bookID, contentType, contentKey, contentData) {
   try {
-    const response = await fetch("/api/updateContent", {
+    const response = await fetch("/api/update/updateContent", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

@@ -1,6 +1,6 @@
 async function deleteContent(bookID, contentType, contentKey) {
   try {
-    const response = await fetch("/api/deleteContent", {
+    const response = await fetch("/api/delete/deleteContent", {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

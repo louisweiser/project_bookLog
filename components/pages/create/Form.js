@@ -4,7 +4,7 @@ import { MyContext } from "@/contexts/myContext.js"; //global state for
 import { DataContext } from "@/contexts/dataContext.js";
 
 import addBookContent from "@/components/common/Daten/addContent.js";
-import addBookContentUUID from "@/components/common/DatenUUID/addContent.js";
+import addBookContentUUID from "@/components/test/DatenUUID/addContent.js";
 
 import CoverFromData from "@/components/common/Cover/coverData.js";
 
