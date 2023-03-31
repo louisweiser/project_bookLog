@@ -91,6 +91,7 @@ export default function Form() {
           id="input2"
           value={input2}
           onChange={handleInput2Change}
+          required
         />
         {theme !== "summary" && (
           <>

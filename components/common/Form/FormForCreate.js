@@ -96,6 +96,7 @@ export default function FormForCreate() {
           maxLength="50"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
+          required
         />
       </label>
       <label htmlFor="subtitle">
@@ -118,6 +119,7 @@ export default function FormForCreate() {
           maxLength="50"
           value={author}
           onChange={(e) => setAuthor(e.target.value)}
+          required
         />
       </label>
       <label htmlFor="genre">
@@ -125,6 +127,7 @@ export default function FormForCreate() {
           className={styles.input1}
           value={genre}
           onChange={(e) => setGenre(e.target.value)}
+          required
         >
           <option value="">Choose Genre</option>
           {genreData.map((genre) => (
@@ -140,6 +143,7 @@ export default function FormForCreate() {
             className={styles.inputfile}
             type="file"
             ref={fileInputRef}
+            required
             onChange={(event) => {
               const file = event.target.files[0];
               const allowedTypes = ["image/jpeg", "image/png", "image/webp"];

@@ -5,7 +5,7 @@ import { DataContext } from "@/contexts/dataContext.js";
 import styles from "./render.module.css";
 
 export default function Render() {
-  const { bookData, contentData } = useContext(DataContext);
+  const { contentData } = useContext(DataContext);
 
   const getAllStories = contentData.reduce((accumulator, current) => {
     return accumulator.concat(current.stories);
