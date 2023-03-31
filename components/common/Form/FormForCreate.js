@@ -8,7 +8,12 @@ import { genreData } from "@/public/data/genre.js";
 
 import styles from "./form.module.css";
 
+import { useContext } from "react";
+import { DataContext } from "@/contexts/dataContext.js";
+
 export default function FormForCreate() {
+  const { bookData, setBookData } = useContext(DataContext);
+
   const [title, setTitle] = useState("");
   const [subtitle, setSubtitle] = useState("");
 
@@ -71,7 +76,13 @@ export default function FormForCreate() {
     };
 
     addBook(newBookData);
-    createBookContent("6425da0e09e0aa463dd2713d");
+    //createBookContent("6422af07d825c4d705a5dcf1");
+
+    async function fetchBookData() {
+      const response = await fetch("/api/get/books");
+    }
+
+    fetchBookData();
   };
 
   return (

@@ -1,3 +1,5 @@
+import createBookContent from "@/components/common/Daten/addBookContent.js";
+
 async function addBook(bookData) {
   try {
     const response = await fetch("/api/add/addbook", {
@@ -11,6 +13,8 @@ async function addBook(bookData) {
     const data = await response.json();
     if (response.ok) {
       console.log("Buch erfolgreich hinzugefügt:", data.newBook);
+      console.log("bookIIIDDD", data.newBook.bookID);
+      createBookContent(data.newBook.bookID);
     } else {
       console.error("Fehler beim Hinzufügen des Buches:", data.message);
     }

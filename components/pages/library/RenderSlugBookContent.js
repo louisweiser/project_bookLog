@@ -50,7 +50,7 @@ export default function BookDetails({ serverBook, serverContent }) {
         if (typeof summary === "object" && summary.text) {
           return (
             <div key={index}>
-              <p>Text: {summary.text}</p>
+              <p>{summary.text}</p>
               <hr />
             </div>
           );
@@ -75,16 +75,11 @@ export default function BookDetails({ serverBook, serverContent }) {
     }
 
     const renderedStories = Object.values(storiesArray).map((story, index) => {
-      if (
-        typeof story === "object" &&
-        story.title &&
-        story.text &&
-        story.page !== undefined
-      ) {
+      if (typeof story === "object") {
         return (
           <div key={index}>
-            <p>Headline: {story.title}</p>
-            <p>Text: {story.text}</p>
+            <h3>{story.title}</h3>
+            <p>{story.text}</p>
             <p>Seite: {story.page !== null ? story.page : "Nicht verfügbar"}</p>
             <hr />
           </div>
@@ -109,10 +104,10 @@ export default function BookDetails({ serverBook, serverContent }) {
       return null;
     }
     const renderedQuotes = Object.values(quotesArray).map((quote, index) => {
-      if (typeof quote === "object" && quote.text && quote.page !== undefined) {
+      if (typeof quote === "object" && quote.text) {
         return (
           <div key={index}>
-            <p>Text: {quote.text}</p>
+            <p>{quote.text}</p>
             <p>Seite: {quote.page !== null ? quote.page : "Nicht verfügbar"}</p>
             <hr />
           </div>
@@ -128,7 +123,6 @@ export default function BookDetails({ serverBook, serverContent }) {
       </div>
     );
   }
-  console.log(book);
   return (
     <>
       <div className={styles.body}>
