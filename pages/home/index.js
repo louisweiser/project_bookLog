@@ -11,7 +11,7 @@ export default function HomePage() {
       <Background></Background>
       <Header title="BookLog"></Header>
       <DailyQuotes></DailyQuotes>
-      <HomeNavigation></HomeNavigation>
+      {/* <HomeNavigation></HomeNavigation> */}
       <Navigation></Navigation>
     </>
   );

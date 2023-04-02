@@ -22,17 +22,19 @@ export default function Header({ title }) {
     }; // Entferne den Event-Listener, wenn die Komponente unmountet wird
   }, []);
 
+  const height = Math.floor(screenWidth * 0.40357142857);
+
   return (
     <header className={styles.header}>
       <div className={styles.position}>
-        <SettingButton></SettingButton>
+        {/* <SettingButton></SettingButton> */}
       </div>
       <h1 className={styles.font}>{title}</h1>
       <div className={styles.image}>
         <Image
           src="/images/crop.jpg"
           width={screenWidth}
-          height={110}
+          height={height}
           alt="img"
         ></Image>
       </div>

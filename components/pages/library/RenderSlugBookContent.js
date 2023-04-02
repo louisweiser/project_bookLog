@@ -62,7 +62,7 @@ export default function BookDetails({ serverBook, serverContent }) {
     return (
       <div>
         <h3>Summary:</h3>
-        <hr />
+
         <div>{renderedSummary}</div>
       </div>
     );
@@ -124,16 +124,22 @@ export default function BookDetails({ serverBook, serverContent }) {
     );
   }
   return (
-    <>
-      <div className={styles.body}>
-        <div className={styles.cover}>
-          <CoverFromData slug={book.slug} height={300}></CoverFromData>
-        </div>
+    <div className={styles.body}>
+      <div className={styles.cover}>
+        <CoverFromData slug={book.slug} height={300}></CoverFromData>
+      </div>
+      <hr />
+      <div className={styles.container}>
+        <button className={styles.button}>Story</button>
+        <button className={styles.button}>Quote</button>
+      </div>
+      <hr />
+      <div className={styles.content}>
         <div>{renderSummary()}</div>
         <div>{renderQuotes()}</div>
         <div>{renderStories()}</div>
       </div>
-    </>
+    </div>
   );
 }
 
