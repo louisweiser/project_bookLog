@@ -12,7 +12,7 @@ export default function ReadingPage() {
       <Background></Background>
       <div className={styles.container}>
         <SearchPage></SearchPage>
-        <FilterComponent></FilterComponent>
+        {/* <FilterComponent></FilterComponent> */}
         <Render></Render>
       </div>
       <Navigation></Navigation>
