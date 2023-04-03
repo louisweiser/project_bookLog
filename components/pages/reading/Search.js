@@ -1,9 +1,36 @@
-import React from "react";
-import { useContext } from "react"; //global state for searching container rendering
+import React, { useContext } from "react";
+import styled from "styled-components";
+import { MyContext } from "@/contexts/myContext.js";
 
-import { MyContext } from "@/contexts/myContext.js"; //global state for searching container rendering
+const Background = styled.div`
+  background-color: #032330;
+  height: 62px;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
-import styles from "./search.module.css";
+const SearchFieldPassive = styled.div`
+  display: flex;
+  align-items: center;
+  width: calc(100vw - 20px);
+  height: 42px;
+  border: none;
+  border-radius: 5px;
+  background-color: #03314b;
+`;
+
+const SearchInputField = styled.input`
+  width: calc(100vw - 20px);
+  height: 37px;
+  margin: 5px;
+  border: none;
+  border-radius: 5px;
+  background: none;
+  outline: none;
+  background-color: #03314b;
+`;
 
 export default function SearchPage() {
   const { searchTerm, setSearchTerm } = useContext(MyContext);
@@ -13,18 +40,16 @@ export default function SearchPage() {
   };
   return (
     <>
-      <div className={styles.background}>
-        <div className={styles.searchField_passiv}>
-          <input
-            className={styles.searchInputField}
+      <Background>
+        <SearchFieldPassive>
+          <SearchInputField
             type="text"
             value={searchTerm}
             onChange={handleSearch}
             placeholder="  search ..."
-            /*das input feld soll immer zu sehen sein um die suchfuntion darzustellen, es ändert den status wenn es geklickt wird*/
           />
-        </div>
-      </div>
+        </SearchFieldPassive>
+      </Background>
     </>
   );
 }

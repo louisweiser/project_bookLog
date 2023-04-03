@@ -2,7 +2,7 @@
 /* in der _app.js wird die componente implementiert */
 
 import { createContext, useState } from "react";
-
+import { useEffect } from "react";
 export const MyContext = createContext();
 
 export const MyProvider = ({ children }) => {
@@ -17,6 +17,20 @@ export const MyProvider = ({ children }) => {
   const [input3, setInput3] = useState("");
 
   const [searchTerm, setSearchTerm] = useState("");
+
+  useEffect(() => {
+    function handleResize() {
+      setScreenWidth(Math.floor(window.innerWidth));
+    }
+
+    window.addEventListener("resize", handleResize); //bei Änderungen der Bildschirmgröße soll die Breite neu ermittelt werden
+
+    setScreenWidth(window.innerWidth); // Initialisiere die aktuelle Bildschirmgröße
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    }; // Entferne den Event-Listener, wenn die Komponente unmountet wird
+  }, []);
 
   return (
     <MyContext.Provider

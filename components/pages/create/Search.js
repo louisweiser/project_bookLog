@@ -3,7 +3,7 @@ import { useState } from "react"; // state for searching input
 import { useContext } from "react"; //global state for
 import { MyContext } from "@/contexts/myContext.js"; //global state for
 
-import CoverFromData from "@/components/common/Cover/coverData.js";
+import CoverFromData from "@/components/common/Cover/BookCover.js";
 
 import { BackSVG } from "@/public/svgs/router"; //svg for back-button in search field
 import { DataContext } from "@/contexts/dataContext.js"; //global state for
@@ -27,9 +27,6 @@ export default function Currentbook() {
     }
     // Wichtig: Wenn die Komponente unmountet wird oder sich ändert, solltest du deine Effekte
     // wieder aufräumen, indem du eine "cleanup"-Funktion zurückgibst.
-    return () => {
-      console.log("Cleanup!");
-    };
   }, [myStateCreate]);
 
   const handleBackClick = () => {

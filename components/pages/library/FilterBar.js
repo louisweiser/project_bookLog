@@ -21,7 +21,7 @@ const List = styled.ul`
 
 const ListItem = styled.li``;
 
-const Button = styled.button`
+const StyledButton = styled.button`
   border: 1px solid #fffefb;
   display: flex;
   gap: 5px;
@@ -39,40 +39,40 @@ export default function FilterComponent() {
   return (
     <List>
       <ListItem>
-        <Button>
+        <StyledButton>
           <ShelfSVG></ShelfSVG>
           Shelf
-        </Button>
+        </StyledButton>
       </ListItem>
       <ListItem>
-        <Button>
+        <StyledButton>
           <CollectionSVG></CollectionSVG>
           Genre
-        </Button>
+        </StyledButton>
       </ListItem>
       <ListItem>
-        <Button>
+        <StyledButton>
           <ZoomOutSVG></ZoomOutSVG>
           Overview
-        </Button>
+        </StyledButton>
       </ListItem>
       <ListItem>
-        <Button>
+        <StyledButton>
           <RecentSVG></RecentSVG>
           Recent
-        </Button>
+        </StyledButton>
       </ListItem>
       <ListItem>
-        <Button>
+        <StyledButton>
           <FilterSVG></FilterSVG>
           Filter: All
-        </Button>
+        </StyledButton>
       </ListItem>
       <ListItem>
-        <Button>
+        <StyledButton>
           <ResetSVG></ResetSVG>
           Reset
-        </Button>
+        </StyledButton>
       </ListItem>
     </List>
   );

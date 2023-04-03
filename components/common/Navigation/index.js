@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-
+import styled from "styled-components";
 import {
   HomeSVG,
   LibrarySVG,
@@ -12,52 +12,100 @@ import {
   HomeSVGActive,
 } from "@/public/svgs/navigationbar.js";
 
-import styles from "./navigation.module.css";
+const Navbar = styled.nav`
+  /*layout*/
+  position: fixed;
+  bottom: 0;
+  /*dimension*/
+  width: 100%;
+  height: 53px;
+  /*style*/
+  background-color: #03314b;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+`;
+
+const NavbarList = styled.ul`
+  /*layout*/
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /*dimension*/
+  margin: 0 30px;
+  padding: 0;
+  height: 100%;
+  /*style*/
+  list-style: none;
+`;
+
+const NavbarListItem = styled.li`
+  /*layout*/
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /*dimension*/
+  margin-top: 5px;
+  width: 45px;
+  height: 40px;
+  /*style*/
+  cursor: pointer;
+
+  &:active {
+    /*style*/
+    transform: scale(0.9);
+  }
+`;
+
+const Text = styled.h5`
+  /*layout*/
+  text-align: center;
+`;
 
 const Navigation = () => {
   const router = useRouter();
 
   return (
-    <nav className={styles.navbar}>
-      <ul className={styles.navbarList}>
+    <Navbar>
+      <NavbarList>
         <Link href="/home">
-          <li className={styles.navbarListItem}>
+          <NavbarListItem>
             {router.pathname === "/home" ? <HomeSVGActive /> : <HomeSVG />}
-            <h5 className={styles.text}>Home</h5>
-          </li>
+            <Text>Home</Text>
+          </NavbarListItem>
         </Link>
         <Link href="/library">
-          <li className={styles.navbarListItem}>
+          <NavbarListItem>
             {router.pathname === "/library" ? (
               <LibrarySVGActive />
             ) : (
               <LibrarySVG />
             )}
-            <h5 className={styles.text}>Library</h5>
-          </li>
+            <Text>Library</Text>
+          </NavbarListItem>
         </Link>
         <Link href="/reading">
-          <li className={styles.navbarListItem}>
+          <NavbarListItem>
             {router.pathname === "/reading" ? (
               <ReadingSVGActive />
             ) : (
               <ReadingSVG />
             )}
-            <h5 className={styles.text}>Read</h5>
-          </li>
+            <Text>Read</Text>
+          </NavbarListItem>
         </Link>
         <Link href="/create">
-          <li className={styles.navbarListItem}>
+          <NavbarListItem>
             {router.pathname === "/create" ? (
               <CreateSVGActive />
             ) : (
               <CreateSVG />
             )}
-            <h5 className={styles.text}>Create</h5>
-          </li>
+            <Text>Create</Text>
+          </NavbarListItem>
         </Link>
-      </ul>
-    </nav>
+      </NavbarList>
+    </Navbar>
   );
 };
 

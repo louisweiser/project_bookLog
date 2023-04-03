@@ -1,17 +1,14 @@
-import Background from "@/components/common/Background/beige.js";
-import Header from "@/components/common/Heading/Home.js";
+import Background from "@/components/common/Background/Illustration.js";
+import Header from "@/components/common/Heading/HomePage.js";
 import DailyQuotes from "@/components/pages/home/DailyQuote.js";
-import HomeNavigation from "@/components/pages/home/HomeNavigation.js";
 import Navigation from "@/components/common/Navigation";
 
-//main page 1/4
 export default function HomePage() {
   return (
     <>
-      <Background></Background>
+      <Background color={"#03314b"}></Background>
       <Header title="BookLog"></Header>
       <DailyQuotes></DailyQuotes>
-      {/* <HomeNavigation></HomeNavigation> */}
       <Navigation></Navigation>
     </>
   );

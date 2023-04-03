@@ -1,15 +1,14 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import { useContext } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import styled from "styled-components";
 
-import CoverFromData from "@/components/common/Cover/coverData.js";
+import CoverFromData from "@/components/common/Cover/BookCover.js";
 
-import { useContext } from "react";
 import { DataContext } from "@/contexts/dataContext.js";
+import { MyContext } from "@/contexts/myContext.js";
 
-const StyledDiv = styled.ul`
+const StyledList = styled.ul`
   display: flex;
   padding: 7.5px;
   width: 100vw;
@@ -18,31 +17,12 @@ const StyledDiv = styled.ul`
   justify-content: space-between;
 `;
 
-const StyledPadding = styled.div`
-  padding: 5px;
-`;
-
-export default function RenderGenreCover() {
-  const router = useRouter(); //für slug routing
-  const { slug } = router.query; //für slug routing - aktuelle page
+export default function GenreCoverLibrary() {
+  const router = useRouter();
+  const { slug } = router.query;
 
   const { bookData } = useContext(DataContext);
-
-  const [screenWidth, setScreenWidth] = useState(0);
-
-  useEffect(() => {
-    function handleResize() {
-      setScreenWidth(window.innerWidth);
-    }
-
-    window.addEventListener("resize", handleResize); //bei Änderungen der Bildschirmgröße soll die Breit neu ermittelt werden
-
-    setScreenWidth(window.innerWidth); // Initialisiere die aktuelle Bildschirmgröße
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    }; // Entferne den Event-Listener, wenn die Komponente unmountet wird
-  }, []);
+  const { screenWidth } = useContext(MyContext);
 
   function filterBooksByGenre(genre) {
     const bookbygenre = bookData.filter((book) => book.genre === genre);
@@ -52,12 +32,12 @@ export default function RenderGenreCover() {
 
   function calculateHeights(booksArray) {
     if (!booksArray) {
-      return [];
+      return;
     }
 
     const relativeFactors = booksArray.map((book) => book.relativefactor);
 
-    const array = [];
+    const heightArray = [];
 
     for (let i = 0; i < relativeFactors.length; i += 2) {
       if (i + 1 < relativeFactors.length) {
@@ -67,37 +47,37 @@ export default function RenderGenreCover() {
         if (height < 0) {
           height = 0;
         } //error handling
-        array.push(height);
-        array.push(height);
+        heightArray.push(height);
+        heightArray.push(height);
       } else {
         let height = Math.floor((screenWidth - 20) / 2 / relativeFactors[i]);
         if (height < 0) {
           height = 0;
         } //error handling
-        array.push(height);
+        heightArray.push(height);
       }
     }
-    return array;
+    return heightArray;
   }
 
-  const booksbygenre = filterBooksByGenre(slug);
-  const heightArray = calculateHeights(booksbygenre);
-
   function renderCover() {
-    const render = Object.values(booksbygenre).map((book, index) => {
+    const renderedCover = Object.values(allBooksByGenre).map((book, index) => {
       return (
-        <StyledPadding key={index}>
+        <div key={index}>
           <Link href={`/library/book/${book.slug}`}>
             <CoverFromData
               slug={book.slug}
               height={heightArray[index]}
             ></CoverFromData>
           </Link>
-        </StyledPadding>
+        </div>
       );
     });
-    return <>{render}</>;
+    return renderedCover;
   }
 
-  return <StyledDiv>{renderCover()}</StyledDiv>;
+  const allBooksByGenre = filterBooksByGenre(slug);
+  const heightArray = calculateHeights(allBooksByGenre);
+
+  return <StyledList>{renderCover()}</StyledList>;
 }

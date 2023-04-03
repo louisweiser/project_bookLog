@@ -2,11 +2,11 @@ import styled from "styled-components";
 import { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
-import CoverFromData from "@/components/common/Cover/coverData.js";
+import CoverFromData from "@/components/common/Cover/BookCover.js";
 
 import { DataContext } from "@/contexts/dataContext.js";
 
-const Body = styled.div`
+const StyledContainer = styled.div`
   /*layout*/
   display: flex;
   flex-direction: column;
@@ -19,7 +19,7 @@ const Body = styled.div`
   position: relative;
 `;
 
-const Cover = styled.div`
+const StyledCover = styled.div`
   /*layout*/
   display: flex;
   align-items: center;
@@ -32,13 +32,13 @@ const Cover = styled.div`
   top: -250px;
 `;
 
-const Button = styled.button`
+const StyledButton = styled.button`
   background: none;
   border: white solid 2px;
   padding: 10px;
 `;
 
-const Container = styled.div`
+const StyledButtonContainer = styled.div`
   display: flex;
   width: calc(100vw - 20px);
   padding: 5px;
@@ -46,7 +46,7 @@ const Container = styled.div`
   gap: 10px;
 `;
 
-const Content = styled.div`
+const StyledContent = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -170,22 +170,22 @@ export default function BookDetails({ serverBook, serverContent }) {
   }
 
   return (
-    <Body>
-      <Cover>
+    <StyledContainer>
+      <StyledCover>
         <CoverFromData slug={book.slug} height={300} />
-      </Cover>
+      </StyledCover>
       <hr />
-      <Container>
-        <Button>Story</Button>
-        <Button>Quote</Button>
-      </Container>
+      <StyledButtonContainer>
+        <StyledButton>Story</StyledButton>
+        <StyledButton>Quote</StyledButton>
+      </StyledButtonContainer>
       <hr />
-      <Content>
+      <StyledContent>
         <div>{renderSummary()}</div>
         <div>{renderQuotes()}</div>
         <div>{renderStories()}</div>
-      </Content>
-    </Body>
+      </StyledContent>
+    </StyledContainer>
   );
 }
 

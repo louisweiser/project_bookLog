@@ -2,15 +2,16 @@ import { useState, useEffect, useContext } from "react";
 import Link from "next/link";
 import styled from "styled-components";
 
-import CoverFromData from "@/components/common/Cover/coverData.js";
+import CoverFromData from "@/components/common/Cover/BookCover.js";
+
 import { genreData } from "@/public/data/genre.js";
 import { DataContext } from "@/contexts/dataContext.js";
 
-const BookItem = styled.li`
+const StyledListItem = styled.li`
   margin-right: 10px;
 `;
 
-const Category = styled.div`
+const StyledContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -19,11 +20,11 @@ const Category = styled.div`
   font-size: 18px;
 `;
 
-const CategoryText = styled.h3`
+const StyledHeadline = styled.h3`
   display: inline-block;
 `;
 
-const Collection = styled.ul`
+const StyledList = styled.ul`
   display: flex;
   list-style: none;
   overflow-x: scroll;
@@ -51,14 +52,14 @@ export default function BookLibrary() {
     let content = [];
     for (let i = 0; i < filteredArray.length; i++) {
       content.push(
-        <BookItem key={i}>
+        <StyledListItem key={i}>
           <Link href={`/library/book/${filteredArray[i].slug}`}>
             <CoverFromData
               slug={filteredArray[i].slug}
               height={220}
             ></CoverFromData>
           </Link>
-        </BookItem>
+        </StyledListItem>
       );
     }
 
@@ -68,11 +69,11 @@ export default function BookLibrary() {
   return genreData.map((item, index) => (
     <div key={index}>
       <Link href={`/library/genre/${item}`}>
-        <Category>
-          <CategoryText>{item}</CategoryText>
-        </Category>
+        <StyledContainer>
+          <StyledHeadline>{item}</StyledHeadline>
+        </StyledContainer>
       </Link>
-      <Collection>{isLoading ? <div></div> : render(item)}</Collection>
+      <StyledList>{isLoading ? <div></div> : render(item)}</StyledList>
     </div>
   ));
 }

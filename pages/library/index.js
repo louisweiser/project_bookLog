@@ -1,5 +1,5 @@
 //components
-import Background from "@/components/common/Background/blue.js";
+import Background from "@/components/common/Background/Illustration.js";
 import SearchPage from "@/components/pages/library/SearchBar.js";
 import FilterComponent from "@/components/pages/library/FilterBar";
 import BookLibrary from "@/components/pages/library/BookLibrary.js";
@@ -12,7 +12,7 @@ import styles from "@/styles/pages/library.module.css";
 export default function LibraryPage() {
   return (
     <>
-      <Background></Background>
+      <Background color={"#03314b"}></Background>
       <div className={styles.container}>
         <SearchPage></SearchPage>
         {/* <FilterComponent></FilterComponent> */}

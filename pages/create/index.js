@@ -1,5 +1,5 @@
-import FilterComponent from "@/components/pages/create/Filter.js";
-import Form from "@/components/pages/create/Form.js";
+import FilterComponent from "@/components/pages/create/ToolBar.js";
+import Form from "@/components/pages/create/FormForNote.js";
 import Currentbook from "@/components/pages/create/Search.js";
 import Navigation from "@/components/common/Navigation";
 
