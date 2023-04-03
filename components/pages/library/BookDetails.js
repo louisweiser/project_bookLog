@@ -1,3 +1,4 @@
+import styled from "styled-components";
 import { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
@@ -5,7 +6,51 @@ import CoverFromData from "@/components/common/Cover/coverData.js";
 
 import { DataContext } from "@/contexts/dataContext.js";
 
-import styles from "./renderslugbookcontent.module.css";
+const Body = styled.div`
+  /*layout*/
+  display: flex;
+  flex-direction: column;
+  /*dimension*/
+  margin-top: 290px;
+  padding: 100px 10px 10px 10px;
+  gap: 10px;
+  background-color: #03314b;
+  border-radius: 50px;
+  position: relative;
+`;
+
+const Cover = styled.div`
+  /*layout*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /*dimension*/
+  width: calc(100vw - 40px);
+  margin-top: 20px;
+  margin-left: 10px;
+  position: absolute;
+  top: -250px;
+`;
+
+const Button = styled.button`
+  background: none;
+  border: white solid 2px;
+  padding: 10px;
+`;
+
+const Container = styled.div`
+  display: flex;
+  width: calc(100vw - 20px);
+  padding: 5px;
+  justify-content: center;
+  gap: 10px;
+`;
+
+const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+`;
 
 export default function BookDetails({ serverBook, serverContent }) {
   const router = useRouter();
@@ -123,23 +168,24 @@ export default function BookDetails({ serverBook, serverContent }) {
       </div>
     );
   }
+
   return (
-    <div className={styles.body}>
-      <div className={styles.cover}>
-        <CoverFromData slug={book.slug} height={300}></CoverFromData>
-      </div>
+    <Body>
+      <Cover>
+        <CoverFromData slug={book.slug} height={300} />
+      </Cover>
       <hr />
-      <div className={styles.container}>
-        <button className={styles.button}>Story</button>
-        <button className={styles.button}>Quote</button>
-      </div>
+      <Container>
+        <Button>Story</Button>
+        <Button>Quote</Button>
+      </Container>
       <hr />
-      <div className={styles.content}>
+      <Content>
         <div>{renderSummary()}</div>
         <div>{renderQuotes()}</div>
         <div>{renderStories()}</div>
-      </div>
-    </div>
+      </Content>
+    </Body>
   );
 }
 

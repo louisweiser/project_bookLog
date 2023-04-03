@@ -1,9 +1,8 @@
 //components
 import Background from "@/components/common/Background/blue.js";
-import SearchPage from "@/components/pages/library/Search.js";
-import FilterComponent from "@/components/pages/library/Filter";
-import CollectionFromFetch from "@/components/pages/library/CollectionFetch.js";
-import CollectionFromData from "@/components/pages/library/CollectionData.js";
+import SearchPage from "@/components/pages/library/SearchBar.js";
+import FilterComponent from "@/components/pages/library/FilterBar";
+import BookLibrary from "@/components/pages/library/BookLibrary.js";
 import Navigation from "@/components/common/Navigation";
 
 import styles from "@/styles/pages/library.module.css";
@@ -16,9 +15,8 @@ export default function LibraryPage() {
       <Background></Background>
       <div className={styles.container}>
         <SearchPage></SearchPage>
-        <FilterComponent></FilterComponent>
-        <CollectionFromData></CollectionFromData>
-        {/* <CollectionFromFetch></CollectionFromFetch> */}
+        {/* <FilterComponent></FilterComponent> */}
+        <BookLibrary></BookLibrary>
       </div>
       <Navigation></Navigation>
     </>

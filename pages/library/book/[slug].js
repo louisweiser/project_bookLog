@@ -1,7 +1,7 @@
 import Background from "@/components/common/Background/blue.js";
 import Header from "@/components/common/Heading/Detail.js";
 
-import BookDetails from "@/components/pages/library/RenderSlugBookContent.js";
+import BookDetails from "@/components/pages/library/BookDetails.js";
 
 export default function BookDetailPage() {
   return (

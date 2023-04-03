@@ -2,13 +2,25 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import styled from "styled-components";
 
 import CoverFromData from "@/components/common/Cover/coverData.js";
 
 import { useContext } from "react";
 import { DataContext } from "@/contexts/dataContext.js";
 
-import styles from "./rendersluggenrecontent.module.css";
+const StyledDiv = styled.ul`
+  display: flex;
+  padding: 7.5px;
+  width: 100vw;
+  flex-wrap: wrap;
+  gap: 5px;
+  justify-content: space-between;
+`;
+
+const StyledPadding = styled.div`
+  padding: 5px;
+`;
 
 export default function RenderGenreCover() {
   const router = useRouter(); //für slug routing
@@ -74,18 +86,18 @@ export default function RenderGenreCover() {
   function renderCover() {
     const render = Object.values(booksbygenre).map((book, index) => {
       return (
-        <div key={index}>
+        <StyledPadding key={index}>
           <Link href={`/library/book/${book.slug}`}>
             <CoverFromData
               slug={book.slug}
               height={heightArray[index]}
             ></CoverFromData>
           </Link>
-        </div>
+        </StyledPadding>
       );
     });
     return <>{render}</>;
   }
 
-  return <ul className={styles.div}>{renderCover()}</ul>;
+  return <StyledDiv>{renderCover()}</StyledDiv>;
 }

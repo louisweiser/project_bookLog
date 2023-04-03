@@ -1,15 +1,38 @@
 import { useState, useEffect, useContext } from "react";
 import Link from "next/link";
+import styled from "styled-components";
 
 import CoverFromData from "@/components/common/Cover/coverData.js";
-
 import { genreData } from "@/public/data/genre.js";
-
 import { DataContext } from "@/contexts/dataContext.js";
 
-import styles from "./collection.module.css";
+const BookItem = styled.li`
+  margin-right: 10px;
+`;
 
-export default function CollectionFromData() {
+const Category = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 15px 0px 15px;
+  font-size: 18px;
+`;
+
+const CategoryText = styled.h3`
+  display: inline-block;
+`;
+
+const Collection = styled.ul`
+  display: flex;
+  list-style: none;
+  overflow-x: scroll;
+  white-space: nowrap;
+  padding: 7px 0;
+  margin-left: 10px;
+`;
+
+export default function BookLibrary() {
   const { bookData } = useContext(DataContext); //Metadaten
   const [isLoading, setIsLoading] = useState(true); //Fehlerbehandlung
 
@@ -28,14 +51,14 @@ export default function CollectionFromData() {
     let content = [];
     for (let i = 0; i < filteredArray.length; i++) {
       content.push(
-        <li key={i} className={styles.bookitem}>
+        <BookItem key={i}>
           <Link href={`/library/book/${filteredArray[i].slug}`}>
             <CoverFromData
               slug={filteredArray[i].slug}
               height={220}
             ></CoverFromData>
           </Link>
-        </li>
+        </BookItem>
       );
     }
 
@@ -45,13 +68,11 @@ export default function CollectionFromData() {
   return genreData.map((item, index) => (
     <div key={index}>
       <Link href={`/library/genre/${item}`}>
-        <div className={styles.category}>
-          <h3 className={styles.categorytext}> {item}</h3>
-        </div>
+        <Category>
+          <CategoryText>{item}</CategoryText>
+        </Category>
       </Link>
-      <ul className={styles.collection}>
-        {isLoading ? <div></div> : render(item)}
-      </ul>
+      <Collection>{isLoading ? <div></div> : render(item)}</Collection>
     </div>
   ));
 }

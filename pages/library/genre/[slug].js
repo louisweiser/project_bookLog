@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 
 import Background from "@/components/common/Background/blue.js";
 import Header from "@/components/common/Heading/Collection.js";
-import RenderGenreCover from "@/components/pages/library/RenderSlugGenreCover.js";
+import GenreCoveLibrary from "@/components/pages/library/GenreCoverLibrary.js";
 
 export default function GenreLibrary() {
   const router = useRouter();
@@ -13,7 +13,7 @@ export default function GenreLibrary() {
     <>
       <Background></Background>
       <Header title={slug}></Header>
-      <RenderGenreCover></RenderGenreCover>
+      <GenreCoveLibrary></GenreCoveLibrary>
     </>
   );
 }
