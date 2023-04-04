@@ -1,30 +1,41 @@
-import React, { useContext } from "react";
+import { useContext, useEffect } from "react";
+import { useRouter } from "next/router";
 import styled from "styled-components";
+
 import { MyContext } from "@/contexts/myContext.js";
 
-const Background = styled.div`
-  background-color: #032330;
-  height: 62px;
-  width: 100vw;
+const StyledSearchBarContainer = styled.div`
+  /*layout*/
   display: flex;
   justify-content: center;
   align-items: center;
+  /*dimension*/
+  height: 62px;
+  width: 100vw;
+  /*style*/
+  background-color: #032330;
 `;
 
-const SearchFieldPassive = styled.div`
+const StyledInputFieldContainer = styled.div`
+  /*layout*/
   display: flex;
   align-items: center;
+  justify-content: center;
+  /*dimension*/
   width: calc(100vw - 20px);
   height: 42px;
+  /*style*/
   border: none;
   border-radius: 5px;
   background-color: #03314b;
 `;
 
-const SearchInputField = styled.input`
-  width: calc(100vw - 20px);
+const StyledInputField = styled.input`
+  /*dimension*/
+  width: calc(100vw - 40px);
   height: 37px;
   margin: 5px;
+  /*style*/
   border: none;
   border-radius: 5px;
   background: none;
@@ -32,24 +43,36 @@ const SearchInputField = styled.input`
   background-color: #03314b;
 `;
 
-export default function SearchPage() {
+export default function SearchBar() {
   const { searchTerm, setSearchTerm } = useContext(MyContext);
+  const router = useRouter();
 
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
   };
+
+  useEffect(() => {
+    const handleRouteChange = () => {
+      setSearchTerm("");
+    }; //wenn die Seite verlassen wird soll searchTerm zurückgesetzt werden
+
+    router.events.on("routeChangeStart", handleRouteChange);
+
+    return () => {
+      router.events.off("routeChangeStart", handleRouteChange);
+    };
+  });
+
   return (
-    <>
-      <Background>
-        <SearchFieldPassive>
-          <SearchInputField
-            type="text"
-            value={searchTerm}
-            onChange={handleSearch}
-            placeholder="  search ..."
-          />
-        </SearchFieldPassive>
-      </Background>
-    </>
+    <StyledSearchBarContainer>
+      <StyledInputFieldContainer>
+        <StyledInputField
+          type="text"
+          value={searchTerm}
+          onChange={handleSearch}
+          placeholder="  search ..."
+        />
+      </StyledInputFieldContainer>
+    </StyledSearchBarContainer>
   );
 }

@@ -1,17 +1,24 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import styled from "styled-components";
-import { DataContext } from "@/contexts/dataContext.js";
 
-const Container = styled.div`
+import shuffleArray from "@/utils/shuffleArray.js";
+
+import { DataContext } from "@/contexts/dataContext.js";
+import { MyContext } from "@/contexts/myContext.js";
+
+const StyledContentContainer = styled.div`
+  /*layout*/
   display: block;
   justify-content: center;
   align-items: center;
   text-align: center;
   overflow-y: scroll;
+  /*dimension*/
   width: auto;
   max-height: 30vh;
   margin: 10px 5px 0px 5px;
   padding: 25px;
+  /*style*/
   background-color: #03314b;
   border-top: #032330 solid 2px;
   border-bottom: #032330 solid 2px;
@@ -19,6 +26,7 @@ const Container = styled.div`
 
 export default function BookContent() {
   const { contentData } = useContext(DataContext);
+  const { searchTerm } = useContext(MyContext);
 
   const getAllStories = contentData.reduce((accumulator, current) => {
     return accumulator.concat(current.stories);
@@ -29,38 +37,61 @@ export default function BookContent() {
   }, []);
 
   const allStoriesArray = getAllStories;
+  console.log(allStoriesArray);
   const allQuotesArray = getAllQuotes;
 
   function renderAllStories() {
-    const allStories = [];
+    const allRenderedStories = [];
     allStoriesArray.forEach((storyItem, index) => {
-      allStories.push(
-        <Container key={`${index}`}>
+      allRenderedStories.push(
+        <StyledContentContainer key={`${index}`}>
           <h3>{storyItem.title && storyItem.title}</h3>
           <p>{storyItem.text && storyItem.text}</p>
           {storyItem.page && <p>{storyItem.page}</p>}
-        </Container>
+        </StyledContentContainer>
       );
     });
-    return allStories;
+    return allRenderedStories;
   }
   function renderAllQuotes() {
-    const allQuotes = [];
+    const allRenderedQuotes = [];
     allQuotesArray.forEach((storyItem, index) => {
-      allQuotes.push(
-        <Container key={`${index}`}>
+      allRenderedQuotes.push(
+        <StyledContentContainer key={`${index + 0.5}`}>
           {storyItem.text && <p>{storyItem.text}</p>}
           {storyItem.page && <p>{storyItem.page}</p>}
-        </Container>
+        </StyledContentContainer>
       );
     });
-    return allQuotes;
+    return allRenderedQuotes;
+  }
+
+  const mergeArrays = (...arrays) => {
+    return arrays.flat();
+  };
+
+  const renderedContent = mergeArrays(renderAllQuotes(), renderAllStories());
+
+  const renderedContentMixed = shuffleArray(renderedContent);
+
+  function filterBySearchTerm(arr, searchTerm) {
+    return arr.filter((obj) => {
+      const searchText = searchTerm.toLowerCase();
+      const textMatch = obj.text && obj.text.toLowerCase().includes(searchText);
+      const titleMatch =
+        obj.title && obj.title.toLowerCase().includes(searchText);
+
+      return textMatch || titleMatch;
+    });
   }
 
   return (
     <>
-      <div>{allStoriesArray !== undefined && renderAllStories()}</div>
-      <div>{allQuotesArray !== undefined && renderAllQuotes()}</div>
+      {searchTerm === ""
+        ? allStoriesArray !== undefined &&
+          allQuotesArray !== undefined &&
+          renderedContentMixed
+        : searchContent}
     </>
   );
 }
