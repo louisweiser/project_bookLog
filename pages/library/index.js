@@ -1,23 +1,25 @@
-//components
+import styled from "styled-components";
+
 import Background from "@/components/common/Background/Illustration.js";
 import SearchPage from "@/components/pages/library/SearchBar.js";
 import FilterComponent from "@/components/pages/library/FilterBar";
 import BookLibrary from "@/components/pages/library/BookLibrary.js";
 import Navigation from "@/components/common/Navigation";
 
-import styles from "@/styles/pages/library.module.css";
+const StyledContainer = styled.div`
+  width: 100%;
+  height: calc(100vh - 54px);
+`;
 
-//main page 2/4
-//collection kann aus Daten erzeugt werden oder durch einen fetch
 export default function LibraryPage() {
   return (
     <>
       <Background color={"#03314b"}></Background>
-      <div className={styles.container}>
+      <StyledContainer>
         <SearchPage></SearchPage>
         {/* <FilterComponent></FilterComponent> */}
         <BookLibrary></BookLibrary>
-      </div>
+      </StyledContainer>
       <Navigation></Navigation>
     </>
   );

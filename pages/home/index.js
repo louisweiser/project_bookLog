@@ -6,7 +6,7 @@ import Navigation from "@/components/common/Navigation";
 export default function HomePage() {
   return (
     <>
-      <Background color={"#03314b"}></Background>
+      <Background color={"#b69b8a"}></Background>
       <Header title="BookLog"></Header>
       <DailyQuotes></DailyQuotes>
       <Navigation></Navigation>

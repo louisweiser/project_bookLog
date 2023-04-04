@@ -4,6 +4,7 @@ import sizeOf from "image-size";
 
 export default function handler(req, res) {
   const { id } = req.query; //die id enthält den Namen des Bildes
+  console.log("name des bildes", id);
   const dimensions = sizeOf(`./public/images/cover/${id}`); //hilsfunktion aus npm paket um breite und höhe des bildes zu ermitteln
   res.status(200).json(dimensions);
 }
