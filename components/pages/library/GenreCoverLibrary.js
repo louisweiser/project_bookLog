@@ -9,12 +9,14 @@ import { DataContext } from "@/contexts/dataContext.js";
 import { MyContext } from "@/contexts/myContext.js";
 
 const StyledList = styled.ul`
+  /*layout*/
   display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  /*dimension*/
   padding: 7.5px;
   width: 100vw;
-  flex-wrap: wrap;
   gap: 5px;
-  justify-content: space-between;
 `;
 
 export default function GenreCoverLibrary() {
@@ -24,25 +26,22 @@ export default function GenreCoverLibrary() {
   const { bookData } = useContext(DataContext);
   const { screenWidth } = useContext(MyContext);
 
-  function filterBooksByGenre(genre) {
-    const bookbygenre = bookData.filter((book) => book.genre === genre);
-
-    return bookbygenre;
-  }
+  const allBooksByGenre = bookData.filter((book) => book.genre === slug);
 
   function calculateHeights(booksArray) {
     if (!booksArray) {
       return;
     }
 
-    const relativeFactors = booksArray.map((book) => book.relativefactor);
+    const relativeFactorsArray = booksArray.map((book) => book.relativefactor);
 
     const heightArray = [];
 
-    for (let i = 0; i < relativeFactors.length; i += 2) {
-      if (i + 1 < relativeFactors.length) {
+    for (let i = 0; i < relativeFactorsArray.length; i += 2) {
+      if (i + 1 < relativeFactorsArray.length) {
         let height = Math.floor(
-          (screenWidth - 20) / (relativeFactors[i] + relativeFactors[i + 1])
+          (screenWidth - 20) /
+            (relativeFactorsArray[i] + relativeFactorsArray[i + 1])
         );
         if (height < 0) {
           height = 0;
@@ -50,7 +49,9 @@ export default function GenreCoverLibrary() {
         heightArray.push(height);
         heightArray.push(height);
       } else {
-        let height = Math.floor((screenWidth - 20) / 2 / relativeFactors[i]);
+        let height = Math.floor(
+          (screenWidth - 20) / 2 / relativeFactorsArray[i]
+        );
         if (height < 0) {
           height = 0;
         } //error handling
@@ -61,6 +62,7 @@ export default function GenreCoverLibrary() {
   }
 
   function renderCover() {
+    const heightArray = calculateHeights(allBooksByGenre);
     const renderedCover = Object.values(allBooksByGenre).map((book, index) => {
       return (
         <div key={index}>
@@ -75,9 +77,6 @@ export default function GenreCoverLibrary() {
     });
     return renderedCover;
   }
-
-  const allBooksByGenre = filterBooksByGenre(slug);
-  const heightArray = calculateHeights(allBooksByGenre);
 
   return <StyledList>{renderCover()}</StyledList>;
 }

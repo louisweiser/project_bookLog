@@ -12,7 +12,7 @@ import searchBooks from "@/components/common/Search";
 
 import styles from "./search.module.css";
 
-export default function Currentbook() {
+export default function ChooseCurrentBook() {
   const [searchTerm, setSearchTerm] = useState(""); //state for save the searching input
   const [initialHide, setInitialHide] = useState(true); //state for hiding animation when switching to page
   const { setCurrentbook } = useContext(MyContext); //global state for

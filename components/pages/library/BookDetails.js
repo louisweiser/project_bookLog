@@ -1,6 +1,6 @@
-import styled from "styled-components";
 import { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import styled from "styled-components";
 
 import CoverFromData from "@/components/common/Cover/BookCover.js";
 
@@ -19,7 +19,7 @@ const StyledContainer = styled.div`
   position: relative;
 `;
 
-const StyledCover = styled.div`
+const StyledCoverContainer = styled.div`
   /*layout*/
   display: flex;
   align-items: center;
@@ -32,12 +32,6 @@ const StyledCover = styled.div`
   top: -250px;
 `;
 
-const StyledButton = styled.button`
-  background: none;
-  border: white solid 2px;
-  padding: 10px;
-`;
-
 const StyledButtonContainer = styled.div`
   display: flex;
   width: calc(100vw - 20px);
@@ -46,7 +40,13 @@ const StyledButtonContainer = styled.div`
   gap: 10px;
 `;
 
-const StyledContent = styled.div`
+const StyledButton = styled.button`
+  background: none;
+  border: white solid 2px;
+  padding: 10px;
+`;
+
+const StyledContentContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -171,20 +171,20 @@ export default function BookDetails({ serverBook, serverContent }) {
 
   return (
     <StyledContainer>
-      <StyledCover>
+      <StyledCoverContainer>
         <CoverFromData slug={book.slug} height={300} />
-      </StyledCover>
+      </StyledCoverContainer>
       <hr />
       <StyledButtonContainer>
         <StyledButton>Story</StyledButton>
         <StyledButton>Quote</StyledButton>
       </StyledButtonContainer>
       <hr />
-      <StyledContent>
+      <StyledContentContainer>
         <div>{renderSummary()}</div>
         <div>{renderQuotes()}</div>
         <div>{renderStories()}</div>
-      </StyledContent>
+      </StyledContentContainer>
     </StyledContainer>
   );
 }

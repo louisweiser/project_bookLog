@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 import Background from "@/components/common/Background/Illustration.js";
-import SearchPage from "@/components/pages/reading/Search.js";
+import SearchPage from "@/components/pages/reading/SearchBar.js";
 import FilterComponent from "@/components/pages/reading/Filter.js";
 import Render from "@/components/pages/reading/RenderContent.js";
 import Navigation from "@/components/common/Navigation";

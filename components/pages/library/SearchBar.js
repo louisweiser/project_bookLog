@@ -1,15 +1,17 @@
 import React, { useState, useContext } from "react";
 import Link from "next/link";
-import { MyContext } from "@/contexts/myContext.js";
-import { DataContext } from "@/contexts/dataContext.js";
-import CoverFromData from "@/components/common/Cover/BookCover.js";
-import searchBooks from "@/components/common/Search";
-import { BackSVG } from "@/public/svgs/router";
 import styled, { keyframes } from "styled-components";
+
+import CoverFromData from "@/components/common/Cover/BookCover.js";
+import searchBook from "@/components/common/Search";
+
+import { DataContext } from "@/contexts/dataContext.js";
+
+import { BackSVG } from "@/public/svgs/router";
 
 const SlideUp = keyframes`
   0% {
-    top: calc(52px);
+    top: 52px;
   }
   100% {
     top: -100%;
@@ -21,55 +23,31 @@ const SlideDown = keyframes`
     top: -100%;
   }
   100% {
-    top: calc(52px);
+    top: 52px;
   }
 `;
 
-const Animation = keyframes`
-  0% {
-    margin-top: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
-  }
-  100% {
-    margin-top: 0px;
-    margin-left: 0px;
-    margin-right: 0;
-  }
-`;
-
-const Background = styled.div`
-  background-color: #032330;
-  height: 62px;
-  width: 100vw;
+const StyledSearchbarContainer = styled.div`
+  /*layput*/
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
   z-index: 5;
-`;
-
-const SearchField = styled.div`
-  display: flex;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  z-index: 10;
+  /*dimension*/
+  height: 62px;
   width: 100vw;
-  height: ${({ initialHide, myState }) =>
-    initialHide ? "42px" : myState ? "62px" : "42px"};
-  margin-bottom: 10px;
-  padding-left: 5px;
-  gap: 10px;
-  border: none;
-  background-color: #03314b;
-  border-bottom: ${({ myState }) => (myState ? "5px solid #032330" : "none")};
+  /*style*/
+  background-color: #032330;
 `;
 
-const SearchInputField = styled.input`
+const StyledSearchInputField = styled.input`
+  /*layput*/
   width: calc(100vw - 20px);
   height: 37px;
   margin: 5px;
+
+  /*style*/
   border: none;
   border-radius: 5px;
   background: none;
@@ -77,56 +55,65 @@ const SearchInputField = styled.input`
   background-color: #03314b;
 `;
 
-const ResultField = styled.div`
+const StyledResultFieldContainer = styled.div`
+  /*layout*/
   position: fixed;
   top: -100%;
   left: 0;
+  /*dimension*/
   width: 100%;
   height: calc(100vh - 37px);
+  /*style*/
   background-color: #03314b;
-  animation: ${({ initialHide, myState }) =>
-      initialHide ? "none" : myState ? SlideDown : SlideUp}
+  animation: ${({ initialHide, searchIsActive }) =>
+      initialHide ? "none" : searchIsActive ? SlideDown : SlideUp}
     ${({ initialHide }) => (initialHide ? "0s" : "0.5s")} ease-in-out forwards;
   z-index: 1;
 `;
 
-const List = styled.ul`
+const StyledList = styled.ul`
+  /*layout*/
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
+  /*dimension*/
   height: calc(100vh - 57px);
 `;
 
-const Row = styled.li`
+const StyledListItem = styled.li`
+  /*layout*/
   display: flex;
   flex-direction: row;
+  /*dimension*/
   margin: 20px 10px 0 10px;
 `;
 
-const Column = styled.div`
+const StyledBookInfoContainer = styled.div`
+  /*layout*/
   display: flex;
   flex-direction: column;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  /*dimension*/
   margin-left: 8px;
 `;
 
-export default function SearchPage() {
+export default function SearchBar() {
   const [searchTerm, setSearchTerm] = useState("");
   const [initialHide, setInitialHide] = useState(true);
-  const { myState, setMyState } = useContext(MyContext);
+  const [searchIsActive, setSearchIsActive] = useState(false);
   const { bookData } = useContext(DataContext);
 
-  const searchResults = searchBooks(searchTerm, bookData);
+  const searchResults = searchBook(searchTerm, bookData);
 
   const handleBackClick = () => {
-    setMyState(false);
+    setSearchIsActive(false);
     setSearchTerm("");
   };
 
   const handleOnClick = () => {
-    setMyState(true);
+    setSearchIsActive(true);
     setInitialHide(false);
   };
 
@@ -136,48 +123,49 @@ export default function SearchPage() {
 
   return (
     <>
-      <Background>
-        <SearchField initialHide={initialHide} myState={myState}>
-          {myState && !initialHide && (
-            <button onClick={handleBackClick}>
-              <BackSVG></BackSVG>
-            </button>
-          )}{" "}
-          <SearchInputField
-            type="text"
-            value={searchTerm}
-            onChange={handleInputChange}
-            onClick={handleOnClick}
-            placeholder="  search ..."
-          />
-        </SearchField>
-      </Background>
-      <ResultField initialHide={initialHide} myState={myState}>
+      <StyledSearchbarContainer>
+        {searchIsActive && (
+          <button onClick={handleBackClick}>
+            <BackSVG></BackSVG>
+          </button>
+        )}{" "}
+        <StyledSearchInputField
+          type="text"
+          value={searchTerm}
+          onChange={handleInputChange}
+          onClick={handleOnClick}
+          placeholder="  search ..."
+        />
+      </StyledSearchbarContainer>
+      <StyledResultFieldContainer
+        initialHide={initialHide}
+        searchIsActive={searchIsActive}
+      >
         {searchTerm !== "" && (
-          <List>
+          <StyledList>
             {searchResults.length !== 0 ? (
               searchResults.map((item) => (
                 <Link href={`/library/book/${item.slug}`} key={item.slug}>
-                  <Row>
+                  <StyledListItem>
                     <CoverFromData
                       slug={item.slug}
                       height={100}
                     ></CoverFromData>
-                    <Column>
+                    <StyledBookInfoContainer>
                       <h4>
                         {item.title} {item.subtitle}
                       </h4>
                       <h5>von {item.author}</h5>
-                    </Column>
-                  </Row>
+                    </StyledBookInfoContainer>
+                  </StyledListItem>
                 </Link>
               ))
             ) : (
               <h1>no result like {searchTerm}</h1>
             )}
-          </List>
+          </StyledList>
         )}
-      </ResultField>
+      </StyledResultFieldContainer>
     </>
   );
 }

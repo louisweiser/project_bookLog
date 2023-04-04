@@ -7,38 +7,44 @@ import CoverFromData from "@/components/common/Cover/BookCover.js";
 import { genreData } from "@/public/data/genre.js";
 import { DataContext } from "@/contexts/dataContext.js";
 
-const StyledListItem = styled.li`
-  margin-right: 10px;
-`;
-
-const StyledContainer = styled.div`
+const StyledHeadlineContainer = styled.div`
+  /*layout*/
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  /*dimension*/
   padding: 5px 15px 0px 15px;
   font-size: 18px;
 `;
 
 const StyledHeadline = styled.h3`
+  /*layout*/
   display: inline-block;
 `;
 
 const StyledList = styled.ul`
+  /*layout*/
   display: flex;
   list-style: none;
   overflow-x: scroll;
   white-space: nowrap;
+  /*dimension*/
   padding: 7px 0;
   margin-left: 10px;
 `;
 
-export default function BookLibrary() {
-  const { bookData } = useContext(DataContext); //Metadaten
-  const [isLoading, setIsLoading] = useState(true); //Fehlerbehandlung
+const StyledListItem = styled.li`
+  /*dimension*/
+  margin-right: 10px;
+`;
 
-  const FilterData = (array, key, value) => {
-    return array.filter((item) => item[key] === value);
+export default function BookLibrary() {
+  const { bookData } = useContext(DataContext);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const filterBooksByGenre = (array, key, target) => {
+    return array.filter((item) => item[key] === target);
   };
 
   useEffect(() => {
@@ -47,15 +53,15 @@ export default function BookLibrary() {
     }
   }, [bookData]); //Fehlerbehandlung: sicherstellen dass die daten vorhanden sind beim laden durch die url
 
-  function render(filter) {
-    const filteredArray = FilterData(bookData, "genre", filter);
-    let content = [];
-    for (let i = 0; i < filteredArray.length; i++) {
-      content.push(
+  function renderBooksByGenre(filter) {
+    const filteredBookArray = filterBooksByGenre(bookData, "genre", filter);
+    let renderedContent = [];
+    for (let i = 0; i < filteredBookArray.length; i++) {
+      renderedContent.push(
         <StyledListItem key={i}>
-          <Link href={`/library/book/${filteredArray[i].slug}`}>
+          <Link href={`/library/book/${filteredBookArray[i].slug}`}>
             <CoverFromData
-              slug={filteredArray[i].slug}
+              slug={filteredBookArray[i].slug}
               height={220}
             ></CoverFromData>
           </Link>
@@ -63,17 +69,19 @@ export default function BookLibrary() {
       );
     }
 
-    return content;
+    return renderedContent;
   }
 
   return genreData.map((item, index) => (
     <div key={index}>
       <Link href={`/library/genre/${item}`}>
-        <StyledContainer>
+        <StyledHeadlineContainer>
           <StyledHeadline>{item}</StyledHeadline>
-        </StyledContainer>
+        </StyledHeadlineContainer>
       </Link>
-      <StyledList>{isLoading ? <div></div> : render(item)}</StyledList>
+      <StyledList>
+        {isLoading ? <div></div> : renderBooksByGenre(item)}
+      </StyledList>
     </div>
   ));
 }

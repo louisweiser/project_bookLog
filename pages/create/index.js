@@ -1,6 +1,6 @@
 import FilterComponent from "@/components/pages/create/ToolBar.js";
 import Form from "@/components/pages/create/FormForNote.js";
-import Currentbook from "@/components/pages/create/Search.js";
+import Currentbook from "@/components/pages/create/ChooseCurrentBook.js";
 import Navigation from "@/components/common/Navigation";
 
 export default function CreatePage() {
