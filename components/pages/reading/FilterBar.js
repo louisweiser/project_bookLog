@@ -1,10 +1,10 @@
 import styled from "styled-components";
+
 import {
-  ShelfSVG,
-  CollectionSVG,
-  ZoomOutSVG,
-  RecentSVG,
   FilterSVG,
+  ShuffleSVG,
+  ZoomInSVG,
+  ListSVG,
   ResetSVG,
 } from "@/public/svgs/filter.js";
 
@@ -28,9 +28,9 @@ const StyledButton = styled.button`
   /*layout*/
   display: flex;
   /*dimension*/
+  gap: 5px;
   padding: 5px 10px;
   margin: 5px;
-  gap: 5px;
   /*style*/
   border: 1px solid #fffefb;
   border-radius: 20px;
@@ -46,38 +46,27 @@ export default function FilterBar() {
     <StyledList>
       <StyledListItem>
         <StyledButton>
-          <ShelfSVG></ShelfSVG>
-          Shelf
+          <FilterSVG></FilterSVG> Filter: All
         </StyledButton>
       </StyledListItem>
       <StyledListItem>
         <StyledButton>
-          <CollectionSVG></CollectionSVG>
-          Genre
+          <ShuffleSVG></ShuffleSVG>Random
         </StyledButton>
       </StyledListItem>
       <StyledListItem>
         <StyledButton>
-          <ZoomOutSVG></ZoomOutSVG>
-          Overview
+          <ZoomInSVG></ZoomInSVG>Details
         </StyledButton>
       </StyledListItem>
       <StyledListItem>
         <StyledButton>
-          <RecentSVG></RecentSVG>
-          Recent
+          <ListSVG></ListSVG>List
         </StyledButton>
       </StyledListItem>
       <StyledListItem>
         <StyledButton>
-          <FilterSVG></FilterSVG>
-          Filter: All
-        </StyledButton>
-      </StyledListItem>
-      <StyledListItem>
-        <StyledButton>
-          <ResetSVG></ResetSVG>
-          Reset
+          <ResetSVG></ResetSVG>Reset
         </StyledButton>
       </StyledListItem>
     </StyledList>

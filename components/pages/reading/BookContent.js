@@ -17,7 +17,7 @@ const Container = styled.div`
   border-bottom: #032330 solid 2px;
 `;
 
-export default function Render() {
+export default function BookContent() {
   const { contentData } = useContext(DataContext);
 
   const getAllStories = contentData.reduce((accumulator, current) => {
