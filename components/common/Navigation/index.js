@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import styled from "styled-components";
+
 import {
   HomeSVG,
   LibrarySVG,
@@ -12,7 +13,7 @@ import {
   HomeSVGActive,
 } from "@/public/svgs/navigationbar.js";
 
-const Navbar = styled.nav`
+const StyledNavigation = styled.nav`
   /*layout*/
   position: fixed;
   bottom: 0;
@@ -25,7 +26,7 @@ const Navbar = styled.nav`
   border-top-right-radius: 5px;
 `;
 
-const NavbarList = styled.ul`
+const StyledList = styled.ul`
   /*layout*/
   display: flex;
   justify-content: space-between;
@@ -38,7 +39,7 @@ const NavbarList = styled.ul`
   list-style: none;
 `;
 
-const NavbarListItem = styled.li`
+const StyledListItem = styled.li`
   /*layout*/
   display: flex;
   flex-direction: column;
@@ -57,56 +58,54 @@ const NavbarListItem = styled.li`
   }
 `;
 
-const Text = styled.h5`
+const StyledText = styled.h5`
   /*layout*/
-  text-align: center;
+  styledtext-align: center;
 `;
 
-const Navigation = () => {
+export default function Navigation() {
   const router = useRouter();
 
   return (
-    <Navbar>
-      <NavbarList>
+    <StyledNavigation>
+      <StyledList>
         <Link href="/home">
-          <NavbarListItem>
+          <StyledListItem>
             {router.pathname === "/home" ? <HomeSVGActive /> : <HomeSVG />}
-            <Text>Home</Text>
-          </NavbarListItem>
+            <StyledText>Home</StyledText>
+          </StyledListItem>
         </Link>
         <Link href="/library">
-          <NavbarListItem>
+          <StyledListItem>
             {router.pathname === "/library" ? (
               <LibrarySVGActive />
             ) : (
               <LibrarySVG />
             )}
-            <Text>Library</Text>
-          </NavbarListItem>
+            <StyledText>Library</StyledText>
+          </StyledListItem>
         </Link>
         <Link href="/reading">
-          <NavbarListItem>
+          <StyledListItem>
             {router.pathname === "/reading" ? (
               <ReadingSVGActive />
             ) : (
               <ReadingSVG />
             )}
-            <Text>Read</Text>
-          </NavbarListItem>
+            <StyledText>Read</StyledText>
+          </StyledListItem>
         </Link>
         <Link href="/create">
-          <NavbarListItem>
+          <StyledListItem>
             {router.pathname === "/create" ? (
               <CreateSVGActive />
             ) : (
               <CreateSVG />
             )}
-            <Text>Create</Text>
-          </NavbarListItem>
+            <StyledText>Create</StyledText>
+          </StyledListItem>
         </Link>
-      </NavbarList>
-    </Navbar>
+      </StyledList>
+    </StyledNavigation>
   );
-};
-
-export default Navigation;
+}

@@ -1,5 +1,5 @@
-import Image from "next/image";
 import { useContext } from "react";
+import Image from "next/image";
 import styled from "styled-components";
 
 import { MyContext } from "@/contexts/myContext.js";
@@ -20,6 +20,7 @@ const StyledHeader = styled.header`
 `;
 
 const StyledImageContainer = styled.div`
+  /*layout*/
   position: absolute;
   bottom: -7px;
   left: 0;

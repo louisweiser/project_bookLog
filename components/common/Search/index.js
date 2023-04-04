@@ -1,7 +1,4 @@
 export default function searchBooks(searchTerm, books) {
-  /*   if ((searchTerm = "")) {
-    return "";
-  } */
   const searchTermLowerCase = searchTerm.toLowerCase();
 
   const result = books.filter((book) => {

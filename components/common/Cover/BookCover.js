@@ -4,11 +4,14 @@ import styled from "styled-components";
 
 import { DataContext } from "@/contexts/dataContext.js";
 
-const StyledCoverContainer = styled.div`
-  border-radius: 8px;
+const StyledImageContainer = styled.div`
+  /*layout*/
   overflow-y: hidden;
+  /*dimension*/
   width: ${({ relativewidth }) => relativewidth}px;
   height: ${({ height }) => height}px;
+  /*style*/
+  border-radius: 8px;
 `;
 
 export default function BookCover({ slug, height }) {
@@ -31,7 +34,7 @@ export default function BookCover({ slug, height }) {
   const relativewidth = Math.floor(image[0].relativefactor * height);
 
   return (
-    <StyledCoverContainer relativewidth={relativewidth} height={height}>
+    <StyledImageContainer relativewidth={relativewidth} height={height}>
       <Image
         src={`/images/cover/${image[0].cover}`}
         width={relativewidth}
@@ -39,6 +42,6 @@ export default function BookCover({ slug, height }) {
         alt="Image"
         priority
       />
-    </StyledCoverContainer>
+    </StyledImageContainer>
   );
 }

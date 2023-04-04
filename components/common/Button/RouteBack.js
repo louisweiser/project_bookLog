@@ -5,12 +5,12 @@ import { BackSVG } from "@/public/svgs/router.js";
 export default function RouteBackButton() {
   const router = useRouter();
 
-  const handleBackClick = () => {
+  const handleOnClick = () => {
     router.back();
   };
 
   return (
-    <button onClick={handleBackClick}>
+    <button onClick={handleOnClick}>
       <BackSVG></BackSVG>
     </button>
   );
