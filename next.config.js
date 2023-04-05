@@ -13,4 +13,7 @@ module.exports = {
   publicRuntimeConfig: {
     staticFolder: "/public",
   },
+  compiler: {
+    styledComponents: true,
+  },
 };
