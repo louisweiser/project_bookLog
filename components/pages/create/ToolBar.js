@@ -14,7 +14,7 @@ import {
   ResetSVG,
 } from "@/public/svgs/filter.js";
 
-const List = styled.ul`
+const StyledList = styled.ul`
   /*layout*/
   display: flex;
   overflow-x: scroll;
@@ -28,9 +28,9 @@ const List = styled.ul`
   background-color: #03314b;
 `;
 
-const ListItem = styled.li``;
+const StyledListItem = styled.li``;
 
-const Button = styled.button`
+const StyledButton = styled.button`
   /*layout*/
   display: flex;
   border: 1px solid #fffefb;
@@ -45,14 +45,14 @@ const Button = styled.button`
 `;
 
 export default function FilterComponent() {
-  const { setMyStateCreate } = useContext(MyContext);
+  const { setChooseCurrentBook } = useContext(MyContext);
   const { theme, setTheme } = useContext(MyContext);
   const { setInput1 } = useContext(MyContext);
   const { setInput2 } = useContext(MyContext);
   const { setInput3 } = useContext(MyContext);
 
   const handleOnClick = () => {
-    setMyStateCreate(true);
+    setChooseCurrentBook(true);
   };
 
   const handleOnClear = () => {
@@ -62,9 +62,9 @@ export default function FilterComponent() {
   };
 
   return (
-    <List>
-      <ListItem>
-        <Button
+    <StyledList>
+      <StyledListItem>
+        <StyledButton
           active={theme === "quotes"}
           onClick={() => {
             setTheme("quotes");
@@ -72,10 +72,10 @@ export default function FilterComponent() {
         >
           <QuoteSVG />
           Quote
-        </Button>
-      </ListItem>
-      <ListItem>
-        <Button
+        </StyledButton>
+      </StyledListItem>
+      <StyledListItem>
+        <StyledButton
           active={theme === "stories"}
           onClick={() => {
             setTheme("stories");
@@ -83,10 +83,10 @@ export default function FilterComponent() {
         >
           <StorySVG />
           Story
-        </Button>
-      </ListItem>
-      <ListItem>
-        <Button
+        </StyledButton>
+      </StyledListItem>
+      <StyledListItem>
+        <StyledButton
           active={theme === "summary"}
           onClick={() => {
             setTheme("summary");
@@ -94,30 +94,30 @@ export default function FilterComponent() {
         >
           <SummarySVG />
           Summary
-        </Button>
-      </ListItem>
-      <ListItem>
+        </StyledButton>
+      </StyledListItem>
+      <StyledListItem>
         <Link href={"/create/newbook"}>
-          <Button>
+          <StyledButton>
             <AddBookSVG />
             New Book
             <ArrowRightSVG />
-          </Button>
+          </StyledButton>
         </Link>
-      </ListItem>
-      <ListItem>
-        <Button onClick={handleOnClick}>
+      </StyledListItem>
+      <StyledListItem>
+        <StyledButton onClick={handleOnClick}>
           <CurrentBookSVG />
           Current Book
           <ArrowRightSVG />
-        </Button>
-      </ListItem>
-      <ListItem>
-        <Button onClick={handleOnClear}>
+        </StyledButton>
+      </StyledListItem>
+      <StyledListItem>
+        <StyledButton onClick={handleOnClear}>
           <ResetSVG />
           Reset
-        </Button>
-      </ListItem>
-    </List>
+        </StyledButton>
+      </StyledListItem>
+    </StyledList>
   );
 }

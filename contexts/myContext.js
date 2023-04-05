@@ -6,12 +6,11 @@ import { useEffect } from "react";
 export const MyContext = createContext();
 
 export const MyProvider = ({ children }) => {
-  const [myState, setMyState] = useState(false);
   const [screenWidth, setScreenWidth] = useState(0);
 
   const [currentbook, setCurrentbook] = useState("dieunendlichegeschichte");
   const [theme, setTheme] = useState("quotes");
-  const [myStateCreate, setMyStateCreate] = useState(false);
+  const [chooseCurrentBook, setChooseCurrentBook] = useState(false);
   const [input1, setInput1] = useState("");
   const [input2, setInput2] = useState("");
   const [input3, setInput3] = useState("");
@@ -35,8 +34,6 @@ export const MyProvider = ({ children }) => {
   return (
     <MyContext.Provider
       value={{
-        myState,
-        setMyState,
         screenWidth,
         setScreenWidth,
         input1,
@@ -49,8 +46,8 @@ export const MyProvider = ({ children }) => {
         setCurrentbook,
         theme,
         setTheme,
-        myStateCreate,
-        setMyStateCreate,
+        chooseCurrentBook,
+        setChooseCurrentBook,
         searchTerm,
         setSearchTerm,
       }}

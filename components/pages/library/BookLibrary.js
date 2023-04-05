@@ -91,18 +91,8 @@ export default function BookLibrary() {
         </div>
       );
     });
-    return !isLoading && renderedLibary;
+    return renderedLibary;
   }
 
-  return renderLibary();
-  /* return genreData.map((item, index) => (
-    <div key={index}>
-      <Link href={`/library/genre/${item}`}>
-        <StyledHeadlineContainer>
-          <StyledHeadline>{item}</StyledHeadline>
-        </StyledHeadlineContainer>
-      </Link>
-      <StyledList>{!isLoading && renderBooksByGenre(item)}</StyledList>
-    </div>
-  )); */
+  return !isLoading && renderLibary();
 }

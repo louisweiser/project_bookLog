@@ -1,47 +1,43 @@
-import React, { useEffect } from "react";
-import { useState } from "react"; // state for searching input
-import { useContext } from "react"; //global state for
-import { MyContext } from "@/contexts/myContext.js"; //global state for
+import React, { useEffect, useState, useContext } from "react";
+
+import { MyContext } from "@/contexts/myContext.js";
 
 import CoverFromData from "@/components/common/Cover/BookCover.js";
 
-import { BackSVG } from "@/public/svgs/router"; //svg for back-button in search field
-import { DataContext } from "@/contexts/dataContext.js"; //global state for
+import { BackSVG } from "@/public/svgs/router";
+import { DataContext } from "@/contexts/dataContext.js";
 
 import searchBooks from "@/components/common/Search";
 
 import styles from "./search.module.css";
 
 export default function ChooseCurrentBook() {
-  const [searchTerm, setSearchTerm] = useState(""); //state for save the searching input
-  const [initialHide, setInitialHide] = useState(true); //state for hiding animation when switching to page
-  const { setCurrentbook } = useContext(MyContext); //global state for
-  const { myStateCreate, setMyStateCreate } = useContext(MyContext); //global state for
+  const [searchTerm, setSearchTerm] = useState("");
+  const [initialHide, setInitialHide] = useState(true);
+  const { setCurrentbook } = useContext(MyContext);
+  const { chooseCurrentBook, setChooseCurrentBook } = useContext(MyContext);
   const { bookData } = useContext(DataContext);
 
-  const searchResults = searchBooks(searchTerm, bookData); // logic results by searching in seaching field
+  const searchResults = searchBooks(searchTerm, bookData);
 
   useEffect(() => {
-    if (myStateCreate) {
+    if (chooseCurrentBook) {
       setInitialHide(false);
     }
-    // Wichtig: Wenn die Komponente unmountet wird oder sich ändert, solltest du deine Effekte
-    // wieder aufräumen, indem du eine "cleanup"-Funktion zurückgibst.
-  }, [myStateCreate]);
+  }, [chooseCurrentBook]);
 
   const handleBackClick = () => {
-    setMyStateCreate(false);
+    setChooseCurrentBook(false);
     setSearchTerm("");
-  }; //wenn die Suchanzeige geschlossen wird, wird Sucheingaben und das Suchfeld zurückgesetzt
+  };
 
   const handleOnClick = () => {
-    setMyStateCreate(true);
     setInitialHide(false);
-  }; //wenn das Suchfeld geklickt wird, erscheint die Suchanzeige
+  };
 
   const handleInputChange = (event) => {
     setSearchTerm(event.target.value);
-  }; // save input if searching
+  };
 
   return (
     <>
@@ -50,14 +46,14 @@ export default function ChooseCurrentBook() {
           className={
             initialHide
               ? styles.searchField_passiv
-              : myStateCreate
+              : chooseCurrentBook
               ? styles.searchField_active
               : styles.searchField_passiv
             //hier soll das Suchfeld in einer Animation erscheinen wenn das searchform geklickt wird, myState geht dann auf true
           }
         >
           {
-            myStateCreate && !initialHide && (
+            chooseCurrentBook && !initialHide && (
               <button onClick={handleBackClick}>
                 <BackSVG></BackSVG>
               </button>
@@ -78,7 +74,7 @@ export default function ChooseCurrentBook() {
           className={
             initialHide
               ? styles.resultField_initial
-              : myStateCreate
+              : chooseCurrentBook
               ? styles.resultField_active
               : styles.resultField_passive
             /*hier ist das Feld mit den Ergebnissen das eerst erscheint wenn der searchinput geklickt wird. Es erscheint durch eine Animation. Diese soll beim ersten laden der Seite jedoch nicht ausegführt werden (deswegen initial hide)*/
@@ -94,7 +90,7 @@ export default function ChooseCurrentBook() {
                       type="button"
                       onClick={() => {
                         setCurrentbook(item.slug);
-                        setMyStateCreate(false);
+                        setChooseCurrentBook(false);
                         setSearchTerm("");
                       }}
                     >
