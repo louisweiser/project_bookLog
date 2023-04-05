@@ -1,52 +1,64 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
 import styled, { css } from "styled-components";
 
+import { DataContext } from "@/contexts/dataContext.js";
+
 import addBook from "@/components/common/Data/addBook.js";
+
 import { genreData } from "@/public/data/genre.js";
 
 const sharedStyles = css`
+  /*layout*/
   display: block;
   text-align: center;
+  /*dimension*/
   width: calc(100vw - 10px);
   margin: 10px 5px 0px 5px;
   padding: 7px;
+  /*style*/
   background-color: #03314b;
   border: none;
   border-bottom: solid 1px #fffefb;
   outline: none;
 `;
 
-const StyledContainer = styled.div`
-  ${sharedStyles}
-`;
-
-const Input = styled.input`
-  ${sharedStyles}
-`;
-
-const Select = styled.select`
-  ${sharedStyles}
-`;
-
 const StyledForm = styled.form`
+  /*layout*/
   display: flex;
   flex-direction: column;
 `;
 
-const InputFile = styled.input`
+const StyledInputField = styled.input`
+  ${sharedStyles}
+`;
+
+const StyledSelectField = styled.select`
+  ${sharedStyles}
+`;
+
+const StyledFileContainerField = styled.div`
+  ${sharedStyles}
+`;
+
+const StyledFileInput = styled.input`
+  /*layout*/
   display: none;
 `;
 
-const FileButton = styled.button`
+const StyledFileButton = styled.button`
+  /*dimension*/
   width: 100%;
 `;
 
-const SubmitButton = styled.button`
+const StyledSubmitButton = styled.button`
+  /*layout*/
   display: block;
   text-align: center;
+  /*dimension*/
   width: calc(100vw - 10px);
   margin: 30px 5px 0px 5px;
   padding: 7px;
+  /*style*/
   background-color: #03314b;
   border: none;
   border: solid 1px #fffefb;
@@ -55,51 +67,58 @@ const SubmitButton = styled.button`
     background-color: black;
   }
 `;
+
 export default function FormForNewBook() {
+  const { setBookData, setContentData } = useContext(DataContext);
+
   const [title, setTitle] = useState("");
   const [subtitle, setSubtitle] = useState("");
-
   const [cover, setCover] = useState(null);
   const [genre, setGenre] = useState("");
   const [author, setAuthor] = useState("");
 
   const [fileValid, setFileValid] = useState(true);
+  const [imageDimensions, setImageDimensions] = useState({
+    width: null,
+    height: null,
+  });
+
   const fileInputRef = useRef();
-  const [dimensions, setDimensions] = useState({ width: null, height: null });
 
   useEffect(() => {
     async function fetchImageSize() {
       const res = await fetch(`/api/image-size?id=${cover.name}`);
       const data = await res.json();
-      setDimensions(data);
+      setImageDimensions(data);
     }
     if (cover) {
       fetchImageSize();
     }
   }, [cover]);
 
+  if (fileValid && cover) {
+    const reader = new FileReader();
+    reader.readAsDataURL(cover);
+    reader.onloadend = async () => {
+      const base64Data = reader.result;
+      const response = await fetch("/api/upload", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ cover: base64Data, fileName: cover.name }),
+      });
+
+      if (response.ok) {
+        console.log("Bilddatei erfolgreich gespeichert.");
+      } else {
+        console.error("Fehler beim Speichern der Bilddatei.");
+      }
+    };
+  }
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (fileValid && cover) {
-      const reader = new FileReader();
-      reader.readAsDataURL(cover);
-      reader.onloadend = async () => {
-        const base64Data = reader.result;
-        const response = await fetch("/api/upload", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ cover: base64Data, fileName: cover.name }),
-        });
-
-        if (response.ok) {
-          console.log("Bilddatei erfolgreich gespeichert.");
-        } else {
-          console.error("Fehler beim Speichern der Bilddatei.");
-        }
-      };
-    }
-    const relativFactor = dimensions.width / dimensions.height;
+    const relativFactor = imageDimensions.width / imageDimensions.height;
 
     const slug =
       title.replace(/\s+/g, "").toLowerCase() +
@@ -121,15 +140,23 @@ export default function FormForNewBook() {
 
     async function fetchBookData() {
       const response = await fetch("/api/get/books");
+      const data = await response.json();
+      setBookData(data);
+    }
+    async function fetchContentData() {
+      const response = await fetch("/api/get/bookcontent");
+      const data = await response.json();
+      setContentData(data);
     }
 
     fetchBookData();
+    fetchContentData();
   };
 
   return (
     <StyledForm onSubmit={handleSubmit}>
       <label htmlFor="title">
-        <Input
+        <StyledInputField
           placeholder="Title"
           type="text"
           id="title"
@@ -140,7 +167,7 @@ export default function FormForNewBook() {
         />
       </label>
       <label htmlFor="subtitle">
-        <Input
+        <StyledInputField
           placeholder="Subtitle"
           type="text"
           id="subtitle"
@@ -150,7 +177,7 @@ export default function FormForNewBook() {
         />
       </label>
       <label htmlFor="author">
-        <Input
+        <StyledInputField
           placeholder="Author"
           type="text"
           id="author"
@@ -161,7 +188,7 @@ export default function FormForNewBook() {
         />
       </label>
       <label htmlFor="genre">
-        <Select
+        <StyledSelectField
           value={genre}
           onChange={(e) => setGenre(e.target.value)}
           required
@@ -172,11 +199,11 @@ export default function FormForNewBook() {
               {genre}
             </option>
           ))}
-        </Select>
+        </StyledSelectField>
       </label>
       <label htmlFor="cover">
-        <StyledContainer>
-          <InputFile
+        <StyledFileContainerField>
+          <StyledFileInput
             type="file"
             ref={fileInputRef}
             required
@@ -202,18 +229,18 @@ export default function FormForNewBook() {
               webp) mit einer Größe von maximal 3 MB.
             </p>
           )}
-          <FileButton
+          <StyledFileButton
             type="button"
             onClick={() => {
               fileInputRef.current.click();
             }}
           >
             {cover ? cover.name : "Import Cover"}
-          </FileButton>
-        </StyledContainer>
+          </StyledFileButton>
+        </StyledFileContainerField>
       </label>
 
-      <SubmitButton type="submit">add book</SubmitButton>
+      <StyledSubmitButton type="submit">add book</StyledSubmitButton>
     </StyledForm>
   );
 }

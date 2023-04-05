@@ -121,7 +121,7 @@ const StyledResultButton = styled.button`
   width: 100vw;
 `;
 
-export default function ChooseCurrentBook() {
+export default function CurrentBook() {
   const [searchTerm, setSearchTerm] = useState("");
   const [initialHide, setInitialHide] = useState(true);
   const { setCurrentbook } = useContext(MyContext);

@@ -9,13 +9,10 @@ import CoverFromData from "@/components/common/Cover/BookCover.js";
 
 import styled from "styled-components";
 
-const Label = styled.div`
+const StyledInput1 = styled.input`
+  /*layout*/
   display: block;
-  border-radius: 20px;
-`;
-
-const Input1 = styled.input`
-  display: block;
+  /*dimension*/
   width: calc(100vw - 20px);
   margin: 10px 5px 0px 5px;
   padding: 7px;
@@ -25,44 +22,54 @@ const Input1 = styled.input`
   outline: none;
 `;
 
-const Input2 = styled.textarea`
+const StyledInput2 = styled.textarea`
+  /*layout*/
   display: block;
+  /*dimension*/
   width: calc(100vw - 20px);
   height: 300px;
   margin: 0px 5px;
   padding: 7px;
+  /*style*/
   background: none;
   border: none;
   outline: none;
   resize: none;
 `;
 
-const Input3 = styled.input`
+const StyledInput3 = styled.input`
+  /*layout*/
   display: block;
+  /*dimension*/
   width: calc(100vw - 20px);
   margin: 0px 5px 2px 5px;
   padding: 7px;
+  /*style*/
   background: none;
   border: none;
   border-top: solid 1px #fffefb;
   outline: none;
 `;
 
-const SubmitButton = styled.button`
-  display: flex;
-  justify-content: center;
-  padding: 2px;
-  background-color: hsl(202, 90%, 24%);
-  border-radius: 10px;
-`;
-
-const SubmitButtonContainer = styled.div`
+const StyledSubmitButtonContainer = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
   margin-top: 50px;
 `;
-export default function FormForNote() {
+
+const StyledSubmitButton = styled.button`
+  /*layout*/
+  display: flex;
+  justify-content: center;
+  /*dimension*/
+  padding: 2px;
+  /*style*/
+  background-color: hsl(202, 90%, 24%);
+  border-radius: 10px;
+`;
+
+export default function FormForNotes() {
   const { input1, setInput1 } = useContext(MyContext); //global state for
   const { input2, setInput2 } = useContext(MyContext); //global state for
   const { input3, setInput3 } = useContext(MyContext); //global state for
@@ -112,55 +119,53 @@ export default function FormForNote() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Label>
-        {theme !== "summary" && (
-          <>
-            <label htmlFor="input1"></label>
-            <Input1
-              placeholder="Headline"
-              type="text"
-              id="input1"
-              value={input1}
-              onChange={handleInput1Change}
-              maxLength="50"
-            />
-          </>
-        )}
-        <label htmlFor="input2"></label>
-        <Input2
-          placeholder={
-            theme === "summary"
-              ? "Enter summary here"
-              : theme === "quotes"
-              ? "Enter quote here"
-              : theme === "stories"
-              ? "Enter story here"
-              : "Enter content here"
-          }
-          type="text"
-          id="input2"
-          value={input2}
-          onChange={handleInput2Change}
-          required
-        />
-        {theme !== "summary" && (
-          <>
-            <label htmlFor="input3"></label>
-            <Input3
-              placeholder="Page"
-              type="number"
-              id="input3"
-              value={input3}
-              onChange={handleInput3Change}
-            />
-          </>
-        )}
-      </Label>
-      <SubmitButtonContainer>
-        <SubmitButton type="submit">
+      {theme !== "summary" && (
+        <>
+          <label htmlFor="input1"></label>
+          <StyledInput1
+            placeholder="Headline"
+            type="text"
+            id="input1"
+            value={input1}
+            onChange={handleInput1Change}
+            maxLength="50"
+          />
+        </>
+      )}
+      <label htmlFor="input2"></label>
+      <StyledInput2
+        placeholder={
+          theme === "summary"
+            ? "Enter summary here"
+            : theme === "quotes"
+            ? "Enter quote here"
+            : theme === "stories"
+            ? "Enter story here"
+            : "Enter content here"
+        }
+        type="text"
+        id="input2"
+        value={input2}
+        onChange={handleInput2Change}
+        required
+      />
+      {theme !== "summary" && (
+        <>
+          <label htmlFor="input3"></label>
+          <StyledInput3
+            placeholder="Page"
+            type="number"
+            id="input3"
+            value={input3}
+            onChange={handleInput3Change}
+          />
+        </>
+      )}
+      <StyledSubmitButtonContainer>
+        <StyledSubmitButton type="submit">
           <CoverFromData slug={currentbook} height={120}></CoverFromData>
-        </SubmitButton>
-      </SubmitButtonContainer>
+        </StyledSubmitButton>
+      </StyledSubmitButtonContainer>
     </form>
   );
 }
