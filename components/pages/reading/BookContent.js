@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import styled from "styled-components";
 
 import shuffleArray from "@/utils/shuffleArray.js";
@@ -27,6 +27,13 @@ const StyledContentContainer = styled.div`
 export default function BookContent() {
   const { contentData } = useContext(DataContext);
   const { searchTerm } = useContext(MyContext);
+  const [contentArray, setContentArray] = useState([]);
+
+  useEffect(() => {
+    setContentArray(
+      shuffleArray(mergeArrays(renderAllQuotes(), renderAllStories()))
+    );
+  }, []);
 
   const getAllStories = contentData.reduce((accumulator, current) => {
     return accumulator.concat(current.stories);
@@ -37,12 +44,19 @@ export default function BookContent() {
   }, []);
 
   const allStoriesArray = getAllStories;
-  console.log(allStoriesArray);
   const allQuotesArray = getAllQuotes;
 
   function renderAllStories() {
+    let array = [];
+
+    if (searchTerm !== "") {
+      array = filterBySearchTerm(allStoriesArray, searchTerm);
+    } else {
+      array = allStoriesArray;
+    }
+
     const allRenderedStories = [];
-    allStoriesArray.forEach((storyItem, index) => {
+    array.forEach((storyItem, index) => {
       allRenderedStories.push(
         <StyledContentContainer key={`${index}`}>
           <h3>{storyItem.title && storyItem.title}</h3>
@@ -54,8 +68,16 @@ export default function BookContent() {
     return allRenderedStories;
   }
   function renderAllQuotes() {
+    let array = [];
+
+    if (searchTerm !== "") {
+      array = filterBySearchTerm(allQuotesArray, searchTerm);
+    } else {
+      array = allQuotesArray;
+    }
+
     const allRenderedQuotes = [];
-    allQuotesArray.forEach((storyItem, index) => {
+    array.forEach((storyItem, index) => {
       allRenderedQuotes.push(
         <StyledContentContainer key={`${index + 0.5}`}>
           {storyItem.text && <p>{storyItem.text}</p>}
@@ -70,10 +92,6 @@ export default function BookContent() {
     return arrays.flat();
   };
 
-  const renderedContent = mergeArrays(renderAllQuotes(), renderAllStories());
-
-  const renderedContentMixed = shuffleArray(renderedContent);
-
   function filterBySearchTerm(arr, searchTerm) {
     return arr.filter((obj) => {
       const searchText = searchTerm.toLowerCase();
@@ -85,12 +103,14 @@ export default function BookContent() {
     });
   }
 
+  const searchContent = mergeArrays(renderAllQuotes(), renderAllStories());
+
   return (
     <>
       {searchTerm === ""
         ? allStoriesArray !== undefined &&
           allQuotesArray !== undefined &&
-          renderedContentMixed
+          contentArray
         : searchContent}
     </>
   );
