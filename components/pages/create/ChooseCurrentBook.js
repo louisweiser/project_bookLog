@@ -1,4 +1,6 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext, useRef } from "react";
+import { useRouter } from "next/router";
+import styled, { keyframes, css } from "styled-components";
 
 import { MyContext } from "@/contexts/myContext.js";
 
@@ -9,7 +11,117 @@ import { DataContext } from "@/contexts/dataContext.js";
 
 import searchBooks from "@/components/common/Search";
 
-import styles from "./search.module.css";
+const slideUp = keyframes`
+  0% {
+    top: 0;
+  }
+  100% {
+    top: -100%;
+  }
+`;
+
+const slideDown = keyframes`
+  0% {
+    top: -100%;
+  }
+  100% {
+    top: 0;
+  }
+`;
+
+const StyledSearchFieldContainer = styled.div`
+  /*layout*/
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: ${({ chooseCurrentBook }) => (chooseCurrentBook ? "0" : "-100%")};
+  z-index: 10;
+  /*dimension*/
+  width: 100vw;
+  height: 52px;
+  margin-bottom: 10px;
+  padding-left: 5px;
+  gap: 10px;
+  /*style*/
+  border: none;
+  background-color: #03314b;
+  border-bottom: 1px solid #fffefb;
+`;
+
+const StyledInputField = styled.input`
+  /*dimension*/
+  width: calc(100vw - 40px);
+  height: 37px;
+  margin: 5px;
+  /*style*/
+  border: none;
+  background: none;
+  outline: none;
+`;
+
+const StyledResultContainer = styled.div`
+  /*layout*/
+  position: fixed;
+  top: ${({ initialHide, chooseCurrentBook }) =>
+    initialHide ? "-100%" : chooseCurrentBook ? "0" : "-100%"};
+  left: 0;
+  z-index: 1;
+  /*dimension*/
+  width: 100vw;
+  height: 100vh;
+  padding-top: 52px;
+  /*style*/
+  background-color: #03314b;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  animation: ${({ chooseCurrentBook, initialHide }) =>
+    initialHide
+      ? "none"
+      : chooseCurrentBook
+      ? css`
+          ${slideDown} 0.6s ease-in-out forwards
+        `
+      : css`
+          ${slideUp} 0.3s ease-in-out forwards
+        `};
+`;
+
+const StyledResultList = styled.ul`
+  /*layout*/
+  display: column;
+  overflow-y: scroll;
+  /*dimension*/
+  height: calc(100vh - 52px);
+  width: 100vw;
+`;
+
+const StyledResultListItem = styled.li`
+  /*layout*/
+  display: flex;
+  flex-direction: row;
+  /*dimension*/
+  margin: 10px;
+  width: calc(100vw-20px);
+`;
+
+const StyledBookInfoContainer = styled.div`
+  /*layout*/
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  align-items: flex-start;
+  white-space: nowrap;
+  overflow: hidden;
+  /*dimension*/
+  margin-left: 8px;
+`;
+
+const StyledResultButton = styled.button`
+  /*layout*/
+  width: 100vw;
+  display: flex;
+  overflow: hidden;
+`;
 
 export default function ChooseCurrentBook() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -18,13 +130,33 @@ export default function ChooseCurrentBook() {
   const { chooseCurrentBook, setChooseCurrentBook } = useContext(MyContext);
   const { bookData } = useContext(DataContext);
 
+  const inputRef = useRef(null);
+
+  const router = useRouter();
+
   const searchResults = searchBooks(searchTerm, bookData);
 
   useEffect(() => {
     if (chooseCurrentBook) {
+      inputRef.current.focus();
       setInitialHide(false);
     }
   }, [chooseCurrentBook]);
+
+  useEffect(() => {
+    if (!chooseCurrentBook) {
+      return;
+    }
+    const handleRouteChange = () => {
+      setChooseCurrentBook(false);
+    }; //wenn die Seite verlassen wird soll searchTerm zurückgesetzt werden
+
+    router.events.on("routeChangeStart", handleRouteChange);
+
+    return () => {
+      router.events.off("routeChangeStart", handleRouteChange);
+    };
+  });
 
   const handleBackClick = () => {
     setChooseCurrentBook(false);
@@ -41,81 +173,61 @@ export default function ChooseCurrentBook() {
 
   return (
     <>
-      <div>
-        <div
-          className={
-            initialHide
-              ? styles.searchField_passiv
-              : chooseCurrentBook
-              ? styles.searchField_active
-              : styles.searchField_passiv
-            //hier soll das Suchfeld in einer Animation erscheinen wenn das searchform geklickt wird, myState geht dann auf true
-          }
-        >
-          {
-            chooseCurrentBook && !initialHide && (
-              <button onClick={handleBackClick}>
-                <BackSVG></BackSVG>
-              </button>
-            ) /*wenn das Suchfeld aktiv ist soll ein Button erscheinen der es wieder schließen lässt*/
-          }
-
-          <input
-            className={styles.searchInputField}
-            type="text"
-            value={searchTerm}
-            onChange={handleInputChange}
-            onClick={handleOnClick}
-            placeholder="  search ..."
-            /*das input feld soll immer zu sehen sein um die suchfuntion darzustellen, es ändert den status wenn es geklickt wird*/
-          />
-        </div>
-        <div
-          className={
-            initialHide
-              ? styles.resultField_initial
-              : chooseCurrentBook
-              ? styles.resultField_active
-              : styles.resultField_passive
-            /*hier ist das Feld mit den Ergebnissen das eerst erscheint wenn der searchinput geklickt wird. Es erscheint durch eine Animation. Diese soll beim ersten laden der Seite jedoch nicht ausegführt werden (deswegen initial hide)*/
-          }
-        >
-          {searchTerm !== "" && (
-            <ul className={styles.list}>
-              {searchResults.length !== 0 ? (
-                searchResults.map((item) => (
-                  <div key={item.slug}>
-                    <button
-                      className={styles.container}
-                      type="button"
-                      onClick={() => {
-                        setCurrentbook(item.slug);
-                        setChooseCurrentBook(false);
-                        setSearchTerm("");
-                      }}
-                    >
-                      <li className={styles.row}>
-                        <CoverFromData
-                          slug={item.slug}
-                          height={100}
-                        ></CoverFromData>
-                        <div className={styles.column}>
-                          <h4>
-                            {item.title} {item.subtitle}
-                          </h4>
-                          <h5>von {item.author}</h5>
-                        </div>
-                      </li>
-                    </button>
-                  </div>
-                ))
-              ) : (
-                <h1>no result like {searchTerm}</h1>
-              )}
-            </ul> //das ist die Liste der Suchergebnisse. Sie erscheint nur im active status der Suchkomponente
-          )}
-        </div>
-      </div>
+      <StyledSearchFieldContainer
+        initialHide={initialHide}
+        chooseCurrentBook={chooseCurrentBook}
+      >
+        {chooseCurrentBook && !initialHide && (
+          <button onClick={handleBackClick}>
+            <BackSVG></BackSVG>
+          </button>
+        )}{" "}
+        <StyledInputField
+          ref={inputRef}
+          type="text"
+          value={searchTerm}
+          onChange={handleInputChange}
+          onClick={handleOnClick}
+          placeholder="  search ..."
+        />
+      </StyledSearchFieldContainer>
+      <StyledResultContainer
+        initialHide={initialHide}
+        chooseCurrentBook={chooseCurrentBook}
+      >
+        {searchTerm !== "" && (
+          <StyledResultList>
+            {searchResults.length !== 0 ? (
+              searchResults.map((item) => (
+                <StyledResultButton
+                  key={item.slug}
+                  type="button"
+                  onClick={() => {
+                    setCurrentbook(item.slug);
+                    setChooseCurrentBook(false);
+                    setSearchTerm("");
+                  }}
+                >
+                  <StyledResultListItem>
+                    <CoverFromData
+                      slug={item.slug}
+                      height={100}
+                    ></CoverFromData>
+                    <StyledBookInfoContainer>
+                      <h4>
+                        {item.title} {item.subtitle}
+                      </h4>
+                      <h5>von {item.author}</h5>
+                    </StyledBookInfoContainer>
+                  </StyledResultListItem>
+                </StyledResultButton>
+              ))
+            ) : (
+              <h1>no result like {searchTerm}</h1>
+            )}
+          </StyledResultList>
+        )}
+      </StyledResultContainer>
     </>
   );
 }
