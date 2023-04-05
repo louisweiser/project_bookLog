@@ -10,6 +10,7 @@ const StyledImageContainer = styled.div`
   /*dimension*/
   width: ${({ relativewidth }) => relativewidth}px;
   height: ${({ height }) => height}px;
+  flex-shrink: 0;
   /*style*/
   border-radius: 8px;
 `;

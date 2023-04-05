@@ -94,7 +94,7 @@ const StyledBookInfoContainer = styled.div`
   flex-direction: column;
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
+  flex-grow: 1; // Erlaubt dem StyledBookInfoContainer, verfügbaren Platz zu nutzen
   /*dimension*/
   margin-left: 8px;
 `;

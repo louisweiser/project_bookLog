@@ -117,10 +117,8 @@ const StyledBookInfoContainer = styled.div`
 `;
 
 const StyledResultButton = styled.button`
-  /*layout*/
+  /*dimension*/
   width: 100vw;
-  display: flex;
-  overflow: hidden;
 `;
 
 export default function ChooseCurrentBook() {
