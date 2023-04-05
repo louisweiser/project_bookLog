@@ -53,8 +53,8 @@ export default function BookLibrary() {
     }
   }, [bookData]); //Fehlerbehandlung: sicherstellen dass die daten vorhanden sind beim laden durch die url
 
-  function renderBooksByGenre(filter) {
-    const filteredBookArray = filterBooksByGenre(bookData, "genre", filter);
+  function renderBooksByGenre(filteredBookArray) {
+    //const filteredBookArray = filterBooksByGenre(bookData, "genre", filter);
     let renderedContent = [];
     for (let i = 0; i < filteredBookArray.length; i++) {
       renderedContent.push(
@@ -72,16 +72,37 @@ export default function BookLibrary() {
     return renderedContent;
   }
 
-  return genreData.map((item, index) => (
+  function renderLibary() {
+    let renderedLibary = [];
+
+    genreData.map((item, index) => {
+      const filteredBookArray = filterBooksByGenre(bookData, "genre", item);
+      if (filteredBookArray.length < 1) {
+        return;
+      }
+      renderedLibary.push(
+        <div key={index}>
+          <Link href={`/library/genre/${item}`}>
+            <StyledHeadlineContainer>
+              <StyledHeadline>{item}</StyledHeadline>
+            </StyledHeadlineContainer>
+          </Link>
+          <StyledList>{renderBooksByGenre(filteredBookArray)}</StyledList>
+        </div>
+      );
+    });
+    return !isLoading && renderedLibary;
+  }
+
+  return renderLibary();
+  /* return genreData.map((item, index) => (
     <div key={index}>
       <Link href={`/library/genre/${item}`}>
         <StyledHeadlineContainer>
           <StyledHeadline>{item}</StyledHeadline>
         </StyledHeadlineContainer>
       </Link>
-      <StyledList>
-        {isLoading ? <div></div> : renderBooksByGenre(item)}
-      </StyledList>
+      <StyledList>{!isLoading && renderBooksByGenre(item)}</StyledList>
     </div>
-  ));
+  )); */
 }
