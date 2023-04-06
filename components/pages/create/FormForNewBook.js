@@ -86,71 +86,74 @@ export default function FormForNewBook() {
   const fileInputRef = useRef();
 
   useEffect(() => {
-    async function fetchImageSize() {
-      const res = await fetch(`/api/image-size?id=${cover.name}`);
-      const data = await res.json();
-      setImageDimensions(data);
-    }
-    if (cover) {
-      fetchImageSize();
-    }
-  }, [cover]);
+    if (imageDimensions.height && imageDimensions.width) {
+      const relativFactor = imageDimensions.width / imageDimensions.height;
 
-  if (fileValid && cover) {
-    const reader = new FileReader();
-    reader.readAsDataURL(cover);
-    reader.onloadend = async () => {
-      const base64Data = reader.result;
-      const response = await fetch("/api/upload", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ cover: base64Data, fileName: cover.name }),
-      });
+      if (relativFactor) {
+        console.log(relativFactor);
+        const slug =
+          title.replace(/\s+/g, "").toLowerCase() +
+          subtitle.replace(/\s+/g, "").toLowerCase();
 
-      if (response.ok) {
-        console.log("Bilddatei erfolgreich gespeichert.");
-      } else {
-        console.error("Fehler beim Speichern der Bilddatei.");
+        const newBookData = {
+          title: title,
+          subtitle: subtitle,
+          author: author,
+          genre: genre,
+          tag: [],
+          cover: cover.name,
+          coverpath: `/images/cover/${cover.name}}`,
+          slug: slug,
+          relativefactor: relativFactor,
+        };
+        addBook(newBookData);
+        setImageDimensions({
+          width: null,
+          height: null,
+        });
       }
-    };
-  }
+    }
+  }, [imageDimensions]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const relativFactor = imageDimensions.width / imageDimensions.height;
+    if (fileValid && cover && title !== "" && genre !== "" && author !== "") {
+      const reader = new FileReader();
+      reader.readAsDataURL(cover);
+      reader.onloadend = async () => {
+        const base64Data = reader.result;
+        const response = await fetch("/api/upload", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ cover: base64Data, fileName: cover.name }),
+        });
 
-    const slug =
-      title.replace(/\s+/g, "").toLowerCase() +
-      subtitle.replace(/\s+/g, "").toLowerCase();
+        if (response.ok) {
+          console.log(
+            "Bilddatei erfolgreich gespeichert. Dimensionen werden ermittelt..."
+          );
 
-    const newBookData = {
-      title: title,
-      subtitle: subtitle,
-      author: author,
-      genre: genre,
-      tag: [],
-      cover: cover.name,
-      coverpath: `/images/cover/${cover.name}}`,
-      slug: slug,
-      relativefactor: relativFactor,
-    };
+          async function fetchImageSize() {
+            const response = await fetch(`/api/image-size?id=${cover.name}`);
+            const data = await response.json();
+            setImageDimensions(data);
 
-    addBook(newBookData);
+            if (response.ok) {
+              console.log("Dimensionen wurden erfolgreich ermittelt.", data);
+            } else {
+              console.log("Fehler beim ermitteln der Dimensionen");
+            }
+          }
 
-    async function fetchBookData() {
-      const response = await fetch("/api/get/books");
-      const data = await response.json();
-      setBookData(data);
+          fetchImageSize();
+        } else {
+          console.error("Fehler beim Speichern der Bilddatei.");
+        }
+      };
+    } else {
+      console.log("Einhabe ungültig!");
     }
-    async function fetchContentData() {
-      const response = await fetch("/api/get/bookcontent");
-      const data = await response.json();
-      setContentData(data);
-    }
-
-    fetchBookData();
-    fetchContentData();
   };
 
   return (
