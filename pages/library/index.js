@@ -8,7 +8,7 @@ import Navigation from "@/components/common/Navigation";
 
 const StyledContainer = styled.div`
   width: 100%;
-  height: calc(100vh - 54px);
+  height: calc(100% - 54px);
 `;
 
 export default function LibraryPage() {

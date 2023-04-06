@@ -8,7 +8,7 @@ const StyledContainer = styled.div`
   text-align: center;
   /*dimension*/
   width: auto;
-  height: 30vh;
+  height: 30%;
   margin-top: 175px;
   padding: 20px;
   /*style*/

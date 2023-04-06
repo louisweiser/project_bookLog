@@ -62,7 +62,7 @@ const StyledResultFieldContainer = styled.div`
   left: 0;
   /*dimension*/
   width: 100%;
-  height: calc(100vh - 37px);
+  height: calc(100% - 37px);
   /*style*/
   background-color: #03314b;
   animation: ${({ initialHide, searchIsActive }) =>
@@ -77,7 +77,7 @@ const StyledList = styled.ul`
   flex-direction: column;
   overflow-y: scroll;
   /*dimension*/
-  height: calc(100vh - 57px);
+  height: calc(100% - 57px);
 `;
 
 const StyledListItem = styled.li`

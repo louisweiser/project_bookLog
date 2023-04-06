@@ -15,7 +15,7 @@ const StyledContentContainer = styled.div`
   overflow-y: scroll;
   /*dimension*/
   width: auto;
-  max-height: 30vh;
+  max-height: 30%;
   margin: 10px 5px 0px 5px;
   padding: 25px;
   /*style*/

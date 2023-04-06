@@ -68,7 +68,7 @@ const StyledResultContainer = styled.div`
   z-index: 1;
   /*dimension*/
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   padding-top: 52px;
   /*style*/
   background-color: #03314b;
@@ -91,7 +91,7 @@ const StyledResultList = styled.ul`
   display: column;
   overflow-y: scroll;
   /*dimension*/
-  height: calc(100vh - 52px);
+  height: calc(100% - 52px);
   width: 100vw;
 `;
 
