@@ -90,7 +90,11 @@ export default function FormForNewBook() {
       const relativFactor = imageDimensions.width / imageDimensions.height;
 
       if (relativFactor) {
-        console.log(relativFactor);
+        if (relativFactor > 0.5 && relativFactor < 0.9) {
+          console.log(
+            "Das Bildformat ist ungünstig für ein Cover. Bitte wähle ein anderes."
+          );
+        }
         const slug =
           title.replace(/\s+/g, "").toLowerCase() +
           subtitle.replace(/\s+/g, "").toLowerCase();
@@ -102,7 +106,7 @@ export default function FormForNewBook() {
           genre: genre,
           tag: [],
           cover: cover.name,
-          coverpath: `/images/cover/${cover.name}}`,
+          coverpath: `/images/cover/${cover.name}`,
           slug: slug,
           relativefactor: relativFactor,
         };
@@ -170,13 +174,13 @@ export default function FormForNewBook() {
             if (response.ok) {
               console.log("Dimensionen wurden erfolgreich ermittelt.", data);
             } else {
-              console.log("Fehler beim ermitteln der Dimensionen");
+              console.log("Fehler beim ermitteln der Dimensionen!");
             }
           }
 
           fetchImageSize();
         } else {
-          console.error("Fehler beim Speichern der Bilddatei.");
+          console.error("Fehler beim Speichern der Bilddatei!");
         }
       };
     } else {

@@ -2,6 +2,10 @@ import { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 
+import { MyContext } from "@/contexts/myContext.js";
+
+import Image from "next/image";
+
 import CoverFromData from "@/components/common/Cover/BookCover.js";
 
 import { DataContext } from "@/contexts/dataContext.js";
@@ -52,13 +56,34 @@ const StyledContentContainer = styled.div`
   gap: 20px;
 `;
 
+const Container = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+`;
+
+const StyledImage = styled(Image)`
+  filter: blur(20px);
+  opacity: 0.8;
+`;
+
 export default function BookDetails({ serverBook, serverContent }) {
   const router = useRouter();
 
   const { bookData, contentData } = useContext(DataContext);
+  const { screenWidth } = useContext(MyContext);
 
   const [book, setBook] = useState(null);
   const [bookContent, setBookContent] = useState(null);
+  const [image, setImage] = useState(null);
+
+  const FilterData = (array, key, value) => {
+    return array.filter((item) => item[key] === value);
+  };
 
   useEffect(() => {
     if (bookData.length === 0 && serverBook) {
@@ -71,6 +96,8 @@ export default function BookDetails({ serverBook, serverContent }) {
       if (book) {
         const content = contentData.find((item) => item.bookID === book.bookID);
         setBookContent(content);
+
+        setImage(FilterData(bookData, "slug", book.slug));
       }
     }
   }, [bookData, contentData, router.query.slug, serverBook, serverContent]);
@@ -171,6 +198,21 @@ export default function BookDetails({ serverBook, serverContent }) {
 
   return (
     <StyledContainer>
+      <Container>
+        {image && (
+          <StyledImage
+            className="background-image"
+            src={image[0].coverpath}
+            alt={"alt"}
+            width={screenWidth}
+            height={Math.floor(screenWidth / image[0].relativefactor)}
+            fit="cover"
+            objectpositionx="center"
+            objectpositiony="center"
+            priority={true}
+          />
+        )}
+      </Container>
       <StyledCoverContainer>
         <CoverFromData slug={book.slug} height={300} />
       </StyledCoverContainer>
@@ -199,7 +241,7 @@ export async function getServerSideProps(context) {
 
   // Bei einer serverseitigen Anfrage oder wenn DataContext nicht vorhanden ist, werden die Buchdaten anhand des Slugs aus der Datenbank geholt
   const slug = context.params.slug;
-  const response = await fetch(`http://localhost:3000//api/books`);
+  const response = await fetch("/api/get/books");
   const bookData = await response.json();
   const index = bookData.findIndex((book) => book.slug === slug);
 
@@ -211,7 +253,7 @@ export async function getServerSideProps(context) {
   }
 
   // Inhaltsdaten für das gefundene Buch aus der Datenbank abrufen
-  const contentResponse = await fetch(`http://localhost:3000//api/bookcontent`);
+  const contentResponse = await fetch("/api/get/bookcontent");
   const contentData = await contentResponse.json();
   const filteredContent = contentData.filter(
     (item) => item.bookID === bookData[index].bookID

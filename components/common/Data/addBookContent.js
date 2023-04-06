@@ -1,30 +1,4 @@
-async function createBookContent(bookID) {
-  try {
-    const response = await fetch("/api/add/addbookcontent", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ bookID }),
-    });
-
-    const data = await response.json();
-    if (response.ok) {
-      console.log(
-        "Content zum Buch erfolgreich hinzugefügt. Daten werden geladen...",
-        data
-      );
-    } else {
-      throw new Error(data.message);
-    }
-  } catch (error) {
-    console.error("Fehler beim Hinzufügen des Buchinhalts:", error);
-  }
-}
-
-export default createBookContent;
-
-/* function createBookContent(bookID) {
+function createBookContent(bookID) {
   return new Promise(async (resolve, reject) => {
     try {
       const response = await fetch("/api/add/addbookcontent", {
@@ -52,6 +26,8 @@ export default createBookContent;
   });
 }
 
+export default createBookContent;
+/*
 export default createBookContent; 
 
 Beide Code-Beispiele haben ihre eigenen Vorteile, und die Wahl des "besseren" Weges hängt von Ihren persönlichen Präferenzen und der Codebasis ab, in der Sie arbeiten.
