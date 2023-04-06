@@ -68,7 +68,7 @@ const StyledResultContainer = styled.div`
   z-index: 1;
   /*dimension*/
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   padding-top: 52px;
   /*style*/
   background-color: #03314b;
