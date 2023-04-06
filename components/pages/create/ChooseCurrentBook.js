@@ -37,7 +37,7 @@ const StyledSearchFieldContainer = styled.div`
   top: ${({ chooseCurrentBook }) => (chooseCurrentBook ? "0" : "-100%")};
   z-index: 10;
   /*dimension*/
-  width: 100vw;
+  width: 100%;
   height: 52px;
   margin-bottom: 10px;
   padding-left: 5px;
@@ -50,7 +50,7 @@ const StyledSearchFieldContainer = styled.div`
 
 const StyledInputField = styled.input`
   /*dimension*/
-  width: calc(100vw - 40px);
+  width: calc(100% - 40px);
   height: 37px;
   margin: 5px;
   /*style*/
@@ -67,7 +67,7 @@ const StyledResultContainer = styled.div`
   left: 0;
   z-index: 1;
   /*dimension*/
-  width: 100vw;
+  width: 100%;
   height: 100%;
   padding-top: 52px;
   /*style*/
@@ -92,7 +92,7 @@ const StyledResultList = styled.ul`
   overflow-y: scroll;
   /*dimension*/
   height: calc(100% - 52px);
-  width: 100vw;
+  width: 100%;
 `;
 
 const StyledResultListItem = styled.li`
@@ -101,7 +101,7 @@ const StyledResultListItem = styled.li`
   flex-direction: row;
   /*dimension*/
   margin: 10px;
-  width: calc(100vw-20px);
+  width: calc(100%-20px);
 `;
 
 const StyledBookInfoContainer = styled.div`
@@ -118,7 +118,7 @@ const StyledBookInfoContainer = styled.div`
 
 const StyledResultButton = styled.button`
   /*dimension*/
-  width: 100vw;
+  width: 100%;
 `;
 
 export default function CurrentBook() {

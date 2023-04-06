@@ -13,7 +13,7 @@ const StyledInput1 = styled.input`
   /*layout*/
   display: block;
   /*dimension*/
-  width: calc(100vw - 20px);
+  width: calc(100% - 20px);
   margin: 10px 5px 0px 5px;
   padding: 7px;
   background: none;
@@ -26,7 +26,7 @@ const StyledInput2 = styled.textarea`
   /*layout*/
   display: block;
   /*dimension*/
-  width: calc(100vw - 20px);
+  width: calc(100% - 20px);
   height: 300px;
   margin: 0px 5px;
   padding: 7px;
@@ -41,7 +41,7 @@ const StyledInput3 = styled.input`
   /*layout*/
   display: block;
   /*dimension*/
-  width: calc(100vw - 20px);
+  width: calc(100% - 20px);
   margin: 0px 5px 2px 5px;
   padding: 7px;
   /*style*/

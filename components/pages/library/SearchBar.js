@@ -36,14 +36,14 @@ const StyledSearchbarContainer = styled.div`
   z-index: 5;
   /*dimension*/
   height: 62px;
-  width: 100vw;
+  width: 100%;
   /*style*/
   background-color: #032330;
 `;
 
 const StyledSearchInputField = styled.input`
   /*layput*/
-  width: calc(100vw - 20px);
+  width: calc(100% - 20px);
   height: 37px;
   margin: 5px;
 

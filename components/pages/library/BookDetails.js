@@ -25,7 +25,7 @@ const StyledCoverContainer = styled.div`
   align-items: center;
   justify-content: center;
   /*dimension*/
-  width: calc(100vw - 40px);
+  width: calc(100% - 40px);
   margin-top: 20px;
   margin-left: 10px;
   position: absolute;
@@ -34,7 +34,7 @@ const StyledCoverContainer = styled.div`
 
 const StyledButtonContainer = styled.div`
   display: flex;
-  width: calc(100vw - 20px);
+  width: calc(100% - 20px);
   padding: 5px;
   justify-content: center;
   gap: 10px;

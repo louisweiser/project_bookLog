@@ -15,7 +15,7 @@ const StyledList = styled.ul`
   flex-wrap: wrap;
   /*dimension*/
   padding: 7.5px;
-  width: 100vw;
+  width: 100%;
   gap: 5px;
 `;
 

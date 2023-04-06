@@ -11,7 +11,7 @@ const StyledSearchBarContainer = styled.div`
   align-items: center;
   /*dimension*/
   height: 62px;
-  width: 100vw;
+  width: 100%;
   /*style*/
   background-color: #032330;
 `;
@@ -22,7 +22,7 @@ const StyledInputFieldContainer = styled.div`
   align-items: center;
   justify-content: center;
   /*dimension*/
-  width: calc(100vw - 20px);
+  width: calc(100% - 20px);
   height: 42px;
   /*style*/
   border: none;
@@ -32,7 +32,7 @@ const StyledInputFieldContainer = styled.div`
 
 const StyledInputField = styled.input`
   /*dimension*/
-  width: calc(100vw - 40px);
+  width: calc(100% - 40px);
   height: 37px;
   margin: 5px;
   /*style*/
