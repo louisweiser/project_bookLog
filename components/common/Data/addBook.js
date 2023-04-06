@@ -1,6 +1,7 @@
 import createBookContent from "@/components/common/Data/addBookContent.js";
 
 async function addBook(bookData) {
+  let fertiggeladen = false;
   try {
     const response = await fetch("/api/add/addbook", {
       method: "POST",
