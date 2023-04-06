@@ -107,38 +107,10 @@ export default function FormForNewBook() {
           relativefactor: relativFactor,
         };
         addBook(newBookData);
-
-        async function fetchBookData() {
-          const response = await fetch("/api/get/books");
-          const data = await response.json();
-          setBookData(data);
-          if (response.ok) {
-            console.log("Buch geladen");
-          }
-        }
-        async function fetchContentData() {
-          const response = await fetch("/api/get/bookcontent");
-          const data = await response.json();
-          setContentData(data);
-          if (response.ok) {
-            console.log("Content geladen");
-          }
-        }
-        setTimeout(() => {
-          fetchBookData();
-          fetchContentData();
-        }, 3000);
-
         setImageDimensions({
           width: null,
           height: null,
         });
-        setTitle("");
-        setSubtitle("");
-        setCover(null);
-        setGenre("");
-        setAuthor("");
-        setFileValid(true);
       }
     }
   }, [imageDimensions]);
