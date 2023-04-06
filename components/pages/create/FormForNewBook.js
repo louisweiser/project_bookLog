@@ -12,7 +12,7 @@ const sharedStyles = css`
   display: block;
   text-align: center;
   /*dimension*/
-  width: calc(100% - 10px);
+  width: calc(100vw - 10px);
   margin: 10px 5px 0px 5px;
   padding: 7px;
   /*style*/
@@ -55,7 +55,7 @@ const StyledSubmitButton = styled.button`
   display: block;
   text-align: center;
   /*dimension*/
-  width: calc(100% - 10px);
+  width: calc(100vw - 10px);
   margin: 30px 5px 0px 5px;
   padding: 7px;
   /*style*/
