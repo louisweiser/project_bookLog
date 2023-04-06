@@ -8,7 +8,7 @@ import Navigation from "@/components/common/Navigation";
 
 const StyledContainer = styled.div`
   width: 100%;
-  height: calc(100% - 53px);
+  height: calc(100vh - 53px);
 `;
 
 export default function ReadingPage() {
