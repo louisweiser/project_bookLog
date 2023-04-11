@@ -45,7 +45,7 @@ const StyledButtonContainer = styled.div`
 `;
 
 const StyledButton = styled.button`
-  background: none;
+  background: ${({ active }) => (active ? "red" : "none")};
   border: white solid 2px;
   padding: 10px;
 `;
@@ -76,10 +76,12 @@ export default function BookDetails({ serverBook, serverContent }) {
 
   const { bookData, contentData } = useContext(DataContext);
   const { screenWidth } = useContext(MyContext);
+  const { edit } = useContext(MyContext);
 
   const [book, setBook] = useState(null);
   const [bookContent, setBookContent] = useState(null);
   const [image, setImage] = useState(null);
+  const [contentState, setContentState] = useState(null);
 
   const FilterData = (array, key, value) => {
     return array.filter((item) => item[key] === value);
@@ -110,6 +112,22 @@ export default function BookDetails({ serverBook, serverContent }) {
   const summaryArray = bookContent.summary;
   const storiesArray = bookContent.stories;
   const quotesArray = bookContent.quotes;
+
+  const handleStoryOnClick = () => {
+    if (contentState === "stories") {
+      setContentState(null);
+    } else {
+      setContentState("stories");
+    }
+  };
+
+  const handleQuoteOnClick = () => {
+    if (contentState === "quotes") {
+      setContentState(null);
+    } else {
+      setContentState("quotes");
+    }
+  };
 
   function renderSummary() {
     if (!summaryArray) {
@@ -218,14 +236,32 @@ export default function BookDetails({ serverBook, serverContent }) {
       </StyledCoverContainer>
       <hr />
       <StyledButtonContainer>
-        <StyledButton>Story</StyledButton>
-        <StyledButton>Quote</StyledButton>
+        <StyledButton
+          onClick={handleStoryOnClick}
+          active={contentState === "stories"}
+        >
+          Story
+        </StyledButton>
+        <StyledButton
+          onClick={handleQuoteOnClick}
+          active={contentState === "quotes"}
+        >
+          Quote
+        </StyledButton>
       </StyledButtonContainer>
       <hr />
       <StyledContentContainer>
-        <div>{renderSummary()}</div>
-        <div>{renderQuotes()}</div>
-        <div>{renderStories()}</div>
+        {contentState === "quotes" ? (
+          <div>{renderQuotes()}</div>
+        ) : contentState === "stories" ? (
+          <div>{renderStories()}</div>
+        ) : (
+          <>
+            <div>{renderSummary()}</div>
+            <div>{renderQuotes()}</div>
+            <div>{renderStories()}</div>
+          </>
+        )}
       </StyledContentContainer>
     </StyledContainer>
   );

@@ -383,11 +383,7 @@ export const ListSVG = () => {
     </svg>
   );
 };
-/* export const SVG = () => {
-    return (
-      
-    );
-  }; */
+
 /* export const SVG = () => {
     return (
       

@@ -17,6 +17,8 @@ export const MyProvider = ({ children }) => {
 
   const [searchTerm, setSearchTerm] = useState("");
 
+  const [edit, setEdit] = useState(false);
+
   useEffect(() => {
     function handleResize() {
       setScreenWidth(Math.floor(window.innerWidth));
@@ -50,6 +52,8 @@ export const MyProvider = ({ children }) => {
         setChooseCurrentBook,
         searchTerm,
         setSearchTerm,
+        edit,
+        setEdit,
       }}
     >
       {children}
@@ -60,6 +64,6 @@ export const MyProvider = ({ children }) => {
 import { useContext } from "react";
 import { MyContext } from "@/contexts/myContext.js";
 
-const { searchTerm, setSearchTerm } = useContext(MyContext);
+const { edit, setEdit } = useContext(MyContext);
 
 */
