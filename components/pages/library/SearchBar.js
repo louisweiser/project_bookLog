@@ -28,7 +28,7 @@ const SlideDown = keyframes`
 `;
 
 const StyledSearchbarContainer = styled.div`
-  /*layput*/
+  /*layout*/
   display: flex;
   justify-content: center;
   align-items: center;
@@ -41,18 +41,29 @@ const StyledSearchbarContainer = styled.div`
   background-color: #032330;
 `;
 
-const StyledSearchInputField = styled.input`
-  /*layput*/
-  width: calc(100vw - 20px);
-  height: 37px;
-  margin: 5px;
+const StyledSearchInputFieldContainer = styled.div`
+  /*layout*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /*dimension*/
+  height: ${({ searchIsActive }) => (searchIsActive ? "52px" : "47px")};
+  width: ${({ searchIsActive }) =>
+    searchIsActive ? "100vw" : "calc(100vw - 10px)"};
+  gap: 10px;
+  /*style*/
+  background-color: #03314b;
+  border-radius: ${({ searchIsActive }) => (searchIsActive ? "0" : "5px")};
+`;
 
+const StyledSearchInputField = styled.input`
+  /*layout*/
+  width: calc(100vw - 45px);
+  height: 37px;
   /*style*/
   border: none;
-  border-radius: 5px;
   background: none;
   outline: none;
-  background-color: #03314b;
 `;
 
 const StyledResultFieldContainer = styled.div`
@@ -124,18 +135,20 @@ export default function SearchBar() {
   return (
     <>
       <StyledSearchbarContainer>
-        {searchIsActive && (
-          <button onClick={handleBackClick}>
-            <BackSVG></BackSVG>
-          </button>
-        )}{" "}
-        <StyledSearchInputField
-          type="text"
-          value={searchTerm}
-          onChange={handleInputChange}
-          onClick={handleOnClick}
-          placeholder="  search ..."
-        />
+        <StyledSearchInputFieldContainer searchIsActive={searchIsActive}>
+          {searchIsActive && (
+            <button onClick={handleBackClick}>
+              <BackSVG></BackSVG>
+            </button>
+          )}
+          <StyledSearchInputField
+            type="text"
+            value={searchTerm}
+            onChange={handleInputChange}
+            onClick={handleOnClick}
+            placeholder="  search ..."
+          />
+        </StyledSearchInputFieldContainer>
       </StyledSearchbarContainer>
       <StyledResultFieldContainer
         initialHide={initialHide}
