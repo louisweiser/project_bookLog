@@ -1,8 +1,10 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 
 import { MyContext } from "@/contexts/myContext.js";
+
+import { BackSVG } from "@/public/svgs/router";
 
 const StyledSearchBarContainer = styled.div`
   /*layout*/
@@ -16,39 +18,47 @@ const StyledSearchBarContainer = styled.div`
   background-color: #032330;
 `;
 
-const StyledInputFieldContainer = styled.div`
+const StyledSearchInputFieldContainer = styled.div`
   /*layout*/
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   /*dimension*/
-  width: calc(100vw - 20px);
-  height: 42px;
+  height: ${({ searchIsActive }) => (searchIsActive ? "52px" : "47px")};
+  width: ${({ searchIsActive }) =>
+    searchIsActive ? "100vw" : "calc(100vw - 15px)"};
+  gap: 10px;
   /*style*/
-  border: none;
-  border-radius: 5px;
   background-color: #03314b;
+  border-radius: ${({ searchIsActive }) => (searchIsActive ? "0" : "5px")};
 `;
 
-const StyledInputField = styled.input`
-  /*dimension*/
-  width: calc(100vw - 40px);
+const StyledSearchInputField = styled.input`
+  /*layout*/
+  width: calc(100vw - 45px);
   height: 37px;
-  margin: 5px;
   /*style*/
   border: none;
-  border-radius: 5px;
   background: none;
   outline: none;
-  background-color: #03314b;
 `;
 
 export default function SearchBar() {
   const { searchTerm, setSearchTerm } = useContext(MyContext);
+  const [searchIsActive, setSearchIsActive] = useState(false);
   const router = useRouter();
 
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
+  };
+
+  const handleOnClick = () => {
+    setSearchIsActive(true);
+  };
+
+  const handleBackClick = () => {
+    setSearchIsActive(false);
+    setSearchTerm("");
   };
 
   useEffect(() => {
@@ -65,14 +75,20 @@ export default function SearchBar() {
 
   return (
     <StyledSearchBarContainer>
-      <StyledInputFieldContainer>
-        <StyledInputField
+      <StyledSearchInputFieldContainer searchIsActive={searchIsActive}>
+        {searchIsActive && (
+          <button onClick={handleBackClick}>
+            <BackSVG></BackSVG>
+          </button>
+        )}
+        <StyledSearchInputField
           type="text"
           value={searchTerm}
           onChange={handleSearch}
+          onClick={handleOnClick}
           placeholder="  search ..."
         />
-      </StyledInputFieldContainer>
+      </StyledSearchInputFieldContainer>
     </StyledSearchBarContainer>
   );
 }

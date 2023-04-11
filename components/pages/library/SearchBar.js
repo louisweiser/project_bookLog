@@ -49,7 +49,7 @@ const StyledSearchInputFieldContainer = styled.div`
   /*dimension*/
   height: ${({ searchIsActive }) => (searchIsActive ? "52px" : "47px")};
   width: ${({ searchIsActive }) =>
-    searchIsActive ? "100vw" : "calc(100vw - 10px)"};
+    searchIsActive ? "100vw" : "calc(100vw - 15px)"};
   gap: 10px;
   /*style*/
   background-color: #03314b;
