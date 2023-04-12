@@ -91,7 +91,7 @@ export const EditSVG = () => {
   return (
     <svg
       fill="currentColor"
-      rokeWidth="0"
+      rokewidth="0"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       height="16px"
@@ -109,7 +109,7 @@ export const DeleteSVG = () => {
   return (
     <svg
       fill="currentColor"
-      rokeWidth="0"
+      rokewidth="0"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 1024 1024"
       height="16px"

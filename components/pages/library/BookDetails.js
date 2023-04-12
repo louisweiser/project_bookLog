@@ -19,7 +19,7 @@ const StyledContainer = styled.div`
   padding: 100px 10px 10px 10px;
   gap: 10px;
   background-color: #03314b;
-  border-radius: 50px;
+  border-radius: 50px 50px 0 0;
   position: relative;
 `;
 
@@ -37,11 +37,16 @@ const StyledCoverContainer = styled.div`
 `;
 
 const StyledButtonContainer = styled.div`
+  /*layout*/
   display: flex;
-  width: calc(100vw - 20px);
-  padding: 5px;
   justify-content: center;
+  /*dimension*/
+  width: calc(100vw - 20px);
+  padding: 20px 5px;
   gap: 10px;
+  /*style*/
+  border-top: 2px solid white;
+  border-bottom: 2px solid white;
 `;
 
 const StyledButton = styled.button`
@@ -56,7 +61,11 @@ const StyledContentContainer = styled.div`
   gap: 20px;
 `;
 
-const Container = styled.div`
+const StyledContentEntryContainer = styled.div`
+  border-bottom: 2px solid white;
+`;
+
+const StyledImageContainer = styled.div`
   position: fixed;
   top: 0;
   left: 0;
@@ -139,10 +148,9 @@ export default function BookDetails({ serverBook, serverContent }) {
       (summary, index) => {
         if (typeof summary === "object" && summary.text) {
           return (
-            <div key={index}>
+            <StyledContentEntryContainer key={index}>
               <p>{summary.text}</p>
-              <hr />
-            </div>
+            </StyledContentEntryContainer>
           );
         }
         return null;
@@ -150,11 +158,11 @@ export default function BookDetails({ serverBook, serverContent }) {
     );
 
     return (
-      <div>
+      <>
         <h3>Summary:</h3>
 
         <div>{renderedSummary}</div>
-      </div>
+      </>
     );
   }
 
@@ -167,12 +175,11 @@ export default function BookDetails({ serverBook, serverContent }) {
     const renderedStories = Object.values(storiesArray).map((story, index) => {
       if (typeof story === "object") {
         return (
-          <div key={index}>
+          <StyledContentEntryContainer key={index}>
             <h3>{story.title}</h3>
             <p>{story.text}</p>
             <p>Seite: {story.page !== null ? story.page : "Nicht verfügbar"}</p>
-            <hr />
-          </div>
+          </StyledContentEntryContainer>
         );
       }
       return null;
@@ -181,7 +188,7 @@ export default function BookDetails({ serverBook, serverContent }) {
     return (
       <div>
         <h3>Stories:</h3>
-        <hr />
+
         <div>{renderedStories}</div>
       </div>
     );
@@ -196,11 +203,10 @@ export default function BookDetails({ serverBook, serverContent }) {
     const renderedQuotes = Object.values(quotesArray).map((quote, index) => {
       if (typeof quote === "object" && quote.text) {
         return (
-          <div key={index}>
+          <StyledContentEntryContainer key={index}>
             <p>{quote.text}</p>
             <p>Seite: {quote.page !== null ? quote.page : "Nicht verfügbar"}</p>
-            <hr />
-          </div>
+          </StyledContentEntryContainer>
         );
       }
       return null;
@@ -216,7 +222,7 @@ export default function BookDetails({ serverBook, serverContent }) {
 
   return (
     <StyledContainer>
-      <Container>
+      <StyledImageContainer>
         {image && (
           <StyledImage
             className="background-image"
@@ -230,11 +236,10 @@ export default function BookDetails({ serverBook, serverContent }) {
             priority={true}
           />
         )}
-      </Container>
+      </StyledImageContainer>
       <StyledCoverContainer>
         <CoverFromData slug={book.slug} height={300} />
       </StyledCoverContainer>
-      <hr />
       <StyledButtonContainer>
         <StyledButton
           onClick={handleStoryOnClick}
@@ -249,7 +254,6 @@ export default function BookDetails({ serverBook, serverContent }) {
           Quote
         </StyledButton>
       </StyledButtonContainer>
-      <hr />
       <StyledContentContainer>
         {contentState === "quotes" ? (
           <div>{renderQuotes()}</div>
